@@ -15,7 +15,10 @@ public class ActivityController implements BackInterface{
 
     private void initialize(){
 
+
     }
+
+
 
     @FXML
     private void toHome(ActionEvent event) throws IOException {
