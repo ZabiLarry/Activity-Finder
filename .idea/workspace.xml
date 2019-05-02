@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="App is now functional, will be usable once data is stored">
-      <change beforePath="$PROJECT_DIR$/src/sample/Activity.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Activity.fxml" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="just up to dating">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/ActivityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ActivityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Browse.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Browse.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Favorites.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/FavoritesController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/HomePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HomePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/HomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HomePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Indoor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Indoor.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Outdoor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Outdoor.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SettingsController.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,15 +73,15 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="549" />
-          <entry key="PLAIN_TEXT" value="110" />
+          <entry key="JAVA" value="798" />
+          <entry key="PLAIN_TEXT" value="127" />
           <entry key="XML" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="43" />
+          <entry key="JAVA" value="44" />
           <entry key="XML" value="15" />
         </counts>
       </usages-collector>
@@ -115,11 +123,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/ActivityController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="528">
+              <caret line="36" column="61" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -130,8 +138,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/HomePageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
+            <state relative-caret-position="256">
+              <caret line="22" column="80" lean-forward="true" selection-start-line="22" selection-start-column="80" selection-end-line="22" selection-end-column="80" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/SettingsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -176,10 +196,10 @@
         <option value="$PROJECT_DIR$/src/sample/FavoritesController.java" />
         <option value="$PROJECT_DIR$/src/sample/IndoorController.java" />
         <option value="$PROJECT_DIR$/src/sample/OutdoorController.java" />
-        <option value="$PROJECT_DIR$/src/sample/SettingsController.java" />
-        <option value="$PROJECT_DIR$/src/sample/HomePageController.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/ActivityController.java" />
+        <option value="$PROJECT_DIR$/src/sample/HomePageController.java" />
+        <option value="$PROJECT_DIR$/src/sample/SettingsController.java" />
       </list>
     </option>
   </component>
@@ -234,7 +254,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556799227282" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556801118068" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/FashionStore_CodeReview/FashionStore_CodeReview" />
     <property name="project.structure.last.edited" value="Project" />
@@ -342,6 +362,14 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
     </task>
+    <task id="LOCAL-00001" summary="just up to dating">
+      <created>1556799243404</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1556799243405</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -349,6 +377,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Designer" />
       <window_info id="Image Layers" />
@@ -360,7 +389,7 @@
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3295082" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -392,7 +421,8 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="All classes exist" />
     <MESSAGE value="App is now functional, will be usable once data is stored" />
-    <option name="LAST_COMMIT_MESSAGE" value="App is now functional, will be usable once data is stored" />
+    <MESSAGE value="just up to dating" />
+    <option name="LAST_COMMIT_MESSAGE" value="just up to dating" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -545,31 +575,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/SettingsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Browse.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="83" selection-start-line="20" selection-start-column="83" selection-end-line="20" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HomePageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -600,8 +610,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/ActivityController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="528">
+          <caret line="36" column="61" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HomePageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="22" column="80" lean-forward="true" selection-start-line="22" selection-start-column="80" selection-end-line="22" selection-end-column="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/SettingsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

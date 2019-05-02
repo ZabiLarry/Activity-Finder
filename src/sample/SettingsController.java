@@ -15,6 +15,7 @@ public class SettingsController {
     private void initialize(){
 
     }
+
     @FXML
     private void toHome(ActionEvent event) throws IOException {
         Parent homeViewParent = FXMLLoader.load(getClass().getResource("HomePage.fxml"));

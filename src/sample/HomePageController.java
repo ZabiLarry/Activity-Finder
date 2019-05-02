@@ -16,8 +16,8 @@ public class HomePageController {
 
     }
     @FXML
-    private void toFavorites(ActionEvent event) throws IOException {
-        Parent homeViewParent = FXMLLoader.load(getClass().getResource("Favorites.fxml"));
+    private void toSettings(ActionEvent event) throws IOException {
+        Parent homeViewParent = FXMLLoader.load(getClass().getResource("Settings.fxml"));
         Scene homeScene = new Scene(homeViewParent);
 
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
