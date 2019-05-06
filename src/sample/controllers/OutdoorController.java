@@ -1,17 +1,21 @@
-package sample;
+package sample.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
 import java.io.IOException;
 
-public interface BackInterface {
+public class OutdoorController {
 
+    private void initialize(){
+
+    }
+    @FXML
     private void toHome(ActionEvent event) throws IOException {
         Parent homeViewParent = FXMLLoader.load(getClass().getResource("views/homePageView.fxml"));
         Scene homeScene = new Scene(homeViewParent);

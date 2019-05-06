@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class DatabaseConnection {
 
-    static String url = "jdbc:mysql://den1.mysql5.gear.host/project2group14?user=project2group14&password=Rp93~j70!tGG";
+    static String url = "jdbc:mysql://den1.mysql5.gear.host/project2group14?User=project2group14&password=Rp93~j70!tGG";
     static Statement statement;
     static String returnValue;
 
