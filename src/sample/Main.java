@@ -14,8 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        databaseConnection.testQuery(databaseConnection.getConnection());
+        DatabaseConnection.DB_Connection();
     }
 
 
