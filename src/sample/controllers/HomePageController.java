@@ -47,21 +47,12 @@ public class HomePageController extends AbstractController implements Initializa
 
     @FXML
     private void toOutdoor(ActionEvent event) throws IOException {
-        Parent homeViewParent = FXMLLoader.load(getClass().getResource("views/outdoorView.fxml"));
-        Scene homeScene = new Scene(homeViewParent);
+        changeScene(event, "../views/outdoorView.fxml");
 
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(homeScene);
-        window.show();
     }
     @FXML
     private void toIndoor(ActionEvent event) throws IOException {
-        Parent homeViewParent = FXMLLoader.load(getClass().getResource("views/indoorView.fxml"));
-        Scene homeScene = new Scene(homeViewParent);
-
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(homeScene);
-        window.show();
+        changeScene(event, "../views/indoorView.fxml");
     }
 
 

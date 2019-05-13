@@ -3,6 +3,7 @@ package sample.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,8 +15,10 @@ import sample.BackInterface;
 
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ActivityController implements BackInterface {
+public class ActivityController extends AbstractController implements BackInterface, Initializable {
 
     @FXML
     TextField tfName, tfLoc, tfWeb;
@@ -26,7 +29,8 @@ public class ActivityController implements BackInterface {
     @FXML
     CheckBox cbFav;
 
-    private void initialize(){
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         tfName.setText("");//to get from db
         tfLoc.setText("");//to get from db
         tfWeb.setText("");//to get from db
@@ -52,19 +56,11 @@ public class ActivityController implements BackInterface {
                 cbRec.setValue("5");
                 break;
         }
-
     }
-
-
 
     @FXML
     private void toHome(ActionEvent event) throws IOException {
-        Parent homeViewParent = FXMLLoader.load(getClass().getResource("views/homePageView.fxml"));
-        Scene homeScene = new Scene(homeViewParent);
-
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(homeScene);
-        window.show();
+      homePage(event);
     }
 
 }
