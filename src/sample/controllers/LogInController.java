@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import sample.utils.DatabaseConnection;
 
 public class LogInController {
     @FXML
@@ -31,4 +32,27 @@ public class LogInController {
 
         }
     }
+
+    public void logOnto(){
+        for(int counter =0; counter<= DatabaseConnection.getUsersSize() + 1; ++counter){
+            if(txtUserName.getText().equals(DatabaseConnection.getUsername(counter))){
+                if(txtPassword.getText().equals(DatabaseConnection.getPassword(counter)))
+                { System.out.println("login success");
+            }
+
+        }
+    }
 }
+
+public int[] favourites(){
+
+
+        int[] fav ={};
+        return fav;
+}
+
+
+}
+
+
+
