@@ -118,7 +118,7 @@ public class DatabaseConnection {
 
 }
 
-    static void addActivities(String name, String location, String contact, String type) {
+    public void addActivities(String name, String location, String contact, String type) {
         try {
             statement.executeUpdate("INSERT INTO activity (name, location, contact, type) VALUES ('" + name + "','" + location + "','" + contact + "','" + type + "'");
             System.out.println("Book added.");
