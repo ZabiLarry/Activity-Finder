@@ -7,7 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import sample.DatabaseConnection;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +28,41 @@ public class IndoorController extends AbstractController implements Initializabl
 
     @FXML
     private void toHome(ActionEvent event) throws IOException {
-       homePage(event);
+        changeScene(event, "../views/homePageView.fxml");
+
     }
+    @FXML
+    private void toBadminton(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+        DatabaseConnection.showActivity("badminton");
+
+    }
+    @FXML
+    private void toVolleyball(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+        DatabaseConnection.showActivity("volleyball");
+    }
+    @FXML
+    private void toSoccer(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+        DatabaseConnection.showActivity("soccer");
+    }
+    @FXML
+    private void toBoxing(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+        DatabaseConnection.showActivity("boxing");
+    }
+    @FXML
+    private void toFitness(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+        DatabaseConnection.showActivity("fitness");
+    }
+    @FXML
+    private void toSquash(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+        DatabaseConnection.showActivity("squash");
+    }
+
+
 }
+

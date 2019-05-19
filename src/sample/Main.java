@@ -20,6 +20,7 @@ public class Main extends Application {
         // connection after last query/method was executed.
         DatabaseConnection db = new DatabaseConnection();
 
+
         // ...
 
         db.testQuery();

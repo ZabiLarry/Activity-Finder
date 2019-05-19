@@ -1,6 +1,12 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import sample.model.Activity;
+
+import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Properties;
 
 public class DatabaseConnection {
@@ -124,6 +130,38 @@ public class DatabaseConnection {
             System.out.println("Book added.");
         } catch (SQLException var6) {
             System.out.println("An error occurred on executing the adding query.");
+        }
+    }
+
+        public static ArrayList<Activity> selectActivities(String name) {
+
+        ArrayList<Activity> activitiesList = new ArrayList<>();
+            try {
+                ResultSet rs = statement.executeQuery("SELECT * FROM activity WHERE name = " + name);
+                Activity activity;
+                while (rs.next()) {
+                    activity=new Activity(rs.getInt("id"), rs.getString("name"), rs.getString("location"), rs.getString("contact"), rs.getString("type"), rs.getBoolean("indoor"), rs.getBoolean("outdoor"));
+                    activitiesList.add(activity);
+                }
+            } catch (SQLException var10) {
+                System.out.println("An error occurred on executing select query.");
+            }
+            return activitiesList;
+    }
+
+    public static void showActivity(String name){
+        ArrayList<Activity> list = selectActivities(name);
+
+        Object[] row = new Object[7];
+        for(int i=0;i<list.size();i++){
+            row[0] = list.get(i).getId();
+            row[1] = list.get(i). getName();
+            row[2] = list.get(i). getLocation();
+            row[3] = list.get(i). getContact();
+            row[4] = list.get(i). getType();
+            row[5] = list.get(i). getIndoor();
+            row[6] = list.get(i). getOutdoor();
+            System.out.println(row);
         }
 
     }
