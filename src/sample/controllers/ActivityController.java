@@ -11,14 +11,13 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sample.BackInterface;
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ActivityController extends AbstractController implements BackInterface, Initializable {
+public class ActivityController extends AbstractController {
 
     @FXML
     TextField tfName, tfLoc, tfWeb;

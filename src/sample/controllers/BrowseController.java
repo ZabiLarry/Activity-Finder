@@ -8,7 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.BackInterface;
+import sample.*;
 
 import javax.swing.text.html.ListView;
 import java.io.IOException;
