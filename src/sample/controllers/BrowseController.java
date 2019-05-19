@@ -7,10 +7,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.BackInterface;
 
+import javax.swing.text.html.ListView;
 import java.io.IOException;
 
-public class BrowseController {
+public class BrowseController implements BackInterface {
+
+    @FXML
+    ListView listAct;
 
     private void initialize(){
 

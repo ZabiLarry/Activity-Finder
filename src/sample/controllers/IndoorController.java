@@ -7,10 +7,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.BackInterface;
 
 import java.io.IOException;
 
-public class IndoorController {
+public class IndoorController implements BackInterface {
 
     private void initialize(){
 
