@@ -19,9 +19,14 @@ import java.util.ResourceBundle;
 
 public class BrowseController extends AbstractController implements Initializable {
 
+    private ListView listAct;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        Singleton singleton = null;
+        DatabaseConnection.showActivity(singleton.getActivity().getName());
     }
 
 
@@ -29,5 +34,7 @@ public class BrowseController extends AbstractController implements Initializabl
     private void toHome(ActionEvent event) throws IOException {
        homePage(event);
     }
+
+
 
 }

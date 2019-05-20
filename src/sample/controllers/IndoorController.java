@@ -55,7 +55,9 @@ public class IndoorController extends AbstractController implements Initializabl
     @FXML
     private void toFitness(ActionEvent event) throws IOException {
         changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("fitness");
+
+        Singleton fitness = null;
+        fitness.getInstance();
     }
     @FXML
     private void toSquash(ActionEvent event) throws IOException {
