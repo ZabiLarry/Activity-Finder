@@ -8,6 +8,7 @@ public class DatabaseConnection {
     static Statement statement;
     static String returnValue;
     static int returnValueInt;
+    static int[] returnValueArr;
     //"jdbc:mysql://localhost:3306/project_2";
 
     private Properties properties;
@@ -136,6 +137,46 @@ public class DatabaseConnection {
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     static void addRating(String userid, String activityid, int rating) {
         try {
             statement.executeQuery("INSERT INTO rating (userid, activityid, rating)VALUES ('" +userid +"','"+activityid+"',''"+rating+"'");
@@ -159,20 +200,19 @@ public class DatabaseConnection {
         }
     }
 
-    public static String getFavourites(int counter) {
+    public static int[] getFavourites(int counter) {
         try {
             ResultSet rs = statement.executeQuery("SELECT favourite FROM user WHERE id = " + counter);
             if (rs.next()) {
                 returnValue = rs.getString(1);
-                return returnValue;
+                return returnValueArr;
             }
         } catch (SQLException var2) {
             System.out.println("An error occurred on executing the query.");
         }
 
-        return "";
+        return returnValueArr;
     }
-
 
     public static int getFavoriteSize() {
         DB_Connection();
@@ -189,6 +229,7 @@ public class DatabaseConnection {
 
         return 0;
     }
+
 
 
 }
