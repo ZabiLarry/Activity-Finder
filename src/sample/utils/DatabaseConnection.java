@@ -185,16 +185,17 @@ public class DatabaseConnection {
 
 
     static void addRating(String userid, String activityid, int rating) {
-    public void addActivities(String name, String location, String contact, String type) {
-        try {
-            statement.executeQuery("INSERT INTO rating (userid, activityid, rating)VALUES ('" +userid +"','"+activityid+"',''"+rating+"'");
-            System.out.println("rating added");
-        } catch (SQLException var7) {
-            System.out.println("");
+
+            try {
+                statement.executeQuery("INSERT INTO rating (userid, activityid, rating)VALUES ('" + userid + "','" + activityid + "',''" + rating + "'");
+                System.out.println("rating added");
+            } catch (SQLException var7) {
+                System.out.println("");
 
 
+            }
         }
-    }
+    
 
 
     static void addFavorite(String userid, String favouriteid, String eventid) {
