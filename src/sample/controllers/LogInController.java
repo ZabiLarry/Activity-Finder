@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 
 public class LogInController {
     @FXML
-    private Label lblStatus;
+    private Label lblStatus;//
 
     @FXML
     private TextField txtUserName;
