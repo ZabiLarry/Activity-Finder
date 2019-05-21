@@ -11,28 +11,33 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-import sample.DatabaseConnection;
+import sample.model.Activity;
+
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class BrowseController extends AbstractController implements Initializable {
 
-    private ListView listAct;
+    private ListView<Activity> listAct;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        Singleton singleton = null;
-        DatabaseConnection.showActivity(singleton.getActivity().getName());
+
     }
 
 
     @FXML
     private void toHome(ActionEvent event) throws IOException {
        homePage(event);
+    }
+
+    public void recieveFunction(ObservableList<Activity> activitiesList){
+        listAct.setItems(activitiesList);
     }
 
 

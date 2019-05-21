@@ -7,10 +7,8 @@
     </content>
     <orderEntry type="jdk" jdkName="10" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-<<<<<<< HEAD
     <orderEntry type="library" exported="" name="mysql-connector-java-5.1" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.28-bin" level="project" />
-=======
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
@@ -47,6 +45,5 @@
         <SOURCES />
       </library>
     </orderEntry>
->>>>>>> 9545c106b069d7b1eb592c042483e43de16092cd
   </component>
 </module>

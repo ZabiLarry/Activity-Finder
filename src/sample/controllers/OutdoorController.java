@@ -8,7 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.DatabaseConnection;
+import sample.utils.DatabaseConnection;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,7 +45,7 @@ public class OutdoorController extends AbstractController implements Initializab
     @FXML
     private void toFishing(ActionEvent event) throws IOException {
         changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("fishing");
+        //DatabaseConnection.showActivity("fishing");
     }
     @FXML
     private void toAdventure(ActionEvent event) throws IOException {
