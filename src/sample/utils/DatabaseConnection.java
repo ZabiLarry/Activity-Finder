@@ -5,6 +5,9 @@ import javafx.collections.ObservableList;
 import sample.model.Activity;
 
 import javax.swing.table.DefaultTableModel;
+
+import sample.Main;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,6 +23,8 @@ public class DatabaseConnection {
 
     private Properties properties;
     private Connection connection;
+
+    Main main = new Main();
 
 
 
@@ -128,22 +133,30 @@ public class DatabaseConnection {
 
     static void addRegistration(String name, String address, String email, String username, String password) {
         try {
-            statement.executeUpdate("INSERT INTO users (name, address, ssn, email, username, password)VALUES (  '" + name + "','" + address + "','" + email + "','" + username + "','" + password + "')");
+            statement.executeUpdate("INSERT INTO user (email, username, password)VALUES (  '" + email + "','" + username + "','" + password + "')");
         } catch (SQLException var7) {
             System.out.println("An error occurred on executing the registration query.");
         }
 
 
+
+}
+
+    public void updateEmail(String email){
+        try {
+            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE username = " + main.getLoggedInUser().getUsername());
+        } catch (SQLException var7) {
+            System.out.println("An error occurred on executing the registration query.");
+        }
     }
 
-    static void addActivities(String name, String location, String contact, String type) {
+    static void addActivity(String name, String location, String contact, String type, boolean indoor, boolean outdoor) {
         try {
-            statement.executeUpdate("INSERT INTO activity (name, location, contact, type) VALUES ('" + name + "','" + location + "','" + contact + "','" + type + "'");
-            System.out.println("Activities added.");
+            statement.executeUpdate("INSERT INTO activity (name, location, contact, type, indoor, outdoor) VALUES ('" + name + "','" + location + "','" + contact + "','" + type + "','"+ indoor + "','" + outdoor + "'");
+            System.out.println("Book added.");
         } catch (SQLException var6) {
             System.out.println("An error occurred on executing the adding query.");
         }
-
     }
 
 
