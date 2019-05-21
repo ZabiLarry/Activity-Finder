@@ -34,26 +34,12 @@ public class ActivityController extends AbstractController {
         tfLoc.setText("");//to get from db
         tfWeb.setText("");//to get from db
 
-        if (true) {//to get from db
-            cbFav.setSelected(false);
+        if (true) {//to get from db for fav
+            cbFav.setSelected(true);
         }
 
-        switch (cbRec.getValue().toString()){//to ger from db
-            case "1":
-                cbRec.setValue("1");
-                break;
-            case "2":
-                cbRec.setValue("2");
-                break;
-            case "3":
-                cbRec.setValue("3");
-                break;
-            case "4":
-                cbRec.setValue("4");
-                break;
-            case "5":
-                cbRec.setValue("5");
-                break;
+        if (true) {//to get from db for rate
+            cbFav.setSelected(true);
         }
     }
 
