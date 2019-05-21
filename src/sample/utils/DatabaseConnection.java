@@ -1,8 +1,16 @@
 package sample.utils;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import sample.model.Activity;
+
+import javax.swing.table.DefaultTableModel;
+
 import sample.Main;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Properties;
 
 public class DatabaseConnection {
@@ -17,6 +25,8 @@ public class DatabaseConnection {
     private Connection connection;
 
     Main main = new Main();
+
+
 
 
     public DatabaseConnection() {
@@ -150,19 +160,17 @@ public class DatabaseConnection {
     }
 
 
-
     static void addRating(String userid, String activityid, int rating) {
 
-            try {
-                statement.executeQuery("INSERT INTO rating (userid, activityid, rating)VALUES ('" + userid + "','" + activityid + "',''" + rating + "'");
-                System.out.println("rating added");
-            } catch (SQLException var7) {
-                System.out.println("");
+        try {
+            statement.executeQuery("INSERT INTO rating (userid, activityid, rating)VALUES ('" + userid + "','" + activityid + "',''" + rating + "'");
+            System.out.println("rating added");
+        } catch (SQLException var7) {
+            System.out.println("");
 
 
-            }
         }
-    
+    }
 
 
     static void addFavorite(String userid, String favouriteid, String eventid) {
@@ -176,37 +184,35 @@ public class DatabaseConnection {
         }
     }
 
-    public static int[] getFavourites(int counter) {
-        try {
-            ResultSet rs = statement.executeQuery("SELECT favourite FROM user WHERE id = " + counter);
-            if (rs.next()) {
-                returnValue = rs.getString(1);
-                return returnValueArr;
-            }
-        } catch (SQLException var2) {
-            System.out.println("An error occurred on executing the query.");
-        }
+    public static ObservableList<Activity> selectActivities(String name) {
 
-        return returnValueArr;
+        ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
+        try {
+            ResultSet rs = statement.executeQuery("SELECT location FROM activity WHERE name = " + name);
+            Activity activity;
+            while (rs.next()) {
+                activity = new Activity(rs.getInt("id"), rs.getString("name"), rs.getString("location"), rs.getString("contact"), rs.getString("type"), rs.getBoolean("indoor"), rs.getBoolean("outdoor"));
+                activitiesList.add(activity);
+            }
+        } catch (SQLException var10) {
+            System.out.println("An error occurred on executing select query.");
+        }
+        return activitiesList;
     }
 
-    public static int getFavoriteSize() {
-        DB_Connection();
+    public static void showActivity(String name) {
+        ObservableList<Activity> list = selectActivities(name);
 
-        try {
-            ResultSet rs = statement.executeQuery("SELECT COUNT(favouriteid) FROM users");
-            if (rs.next()) {
-                returnValueInt = rs.getInt(1);
-                return returnValueInt;
-            }
-        } catch (SQLException var1) {
-            System.out.println("An error occurred on executing the query.");
+        Object[] row = new Object[2];
+        for (int i = 0; i < list.size(); i = i + 2) {
+            row[i] = list.get(i).getLocation();
+            System.out.println(row[i]);
+            row[i + 1] = list.get(i).getType();
+            System.out.println(row[i + 1]);
         }
 
-        return 0;
+
+
     }
-
-
-
 }
 

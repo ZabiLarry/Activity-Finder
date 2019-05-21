@@ -13,11 +13,11 @@
          </font>
       </Label>
       <Button layoutX="32.0" layoutY="28.0" mnemonicParsing="false" onAction="#toHome" prefHeight="41.0" prefWidth="53.0" text="Home" />
-      <Button fx:id="b6" layoutX="417.0" layoutY="256.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Button" />
-      <Button fx:id="b3" layoutX="417.0" layoutY="157.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Button" />
-      <Button fx:id="b5" layoutX="244.0" layoutY="256.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Button" />
-      <Button fx:id="b4" layoutX="73.0" layoutY="256.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Button" />
-      <Button fx:id="b2" layoutX="244.0" layoutY="157.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Button" />
-      <Button fx:id="b1" layoutX="73.0" layoutY="157.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Button" />
+      <Button fx:id="b6" layoutX="417.0" layoutY="256.0" mnemonicParsing="false" onAction="#toSomething" prefHeight="70.0" prefWidth="112.0" text="Something" />
+      <Button fx:id="b3" layoutX="417.0" layoutY="157.0" mnemonicParsing="false" onAction="#toSwimming" prefHeight="70.0" prefWidth="112.0" text="Swimming" />
+      <Button fx:id="b5" layoutX="244.0" layoutY="256.0" mnemonicParsing="false" onAction="#toAdventure" prefHeight="70.0" prefWidth="112.0" text="Adventure" />
+      <Button fx:id="b4" layoutX="73.0" layoutY="256.0" mnemonicParsing="false" onAction="#toFishing" prefHeight="70.0" prefWidth="112.0" text="Fishing" />
+      <Button fx:id="b2" layoutX="244.0" layoutY="157.0" mnemonicParsing="false" onAction="#toClimbing" prefHeight="70.0" prefWidth="112.0" text="Climbing" />
+      <Button fx:id="b1" layoutX="73.0" layoutY="157.0" mnemonicParsing="false" onAction="#toKajak" prefHeight="70.0" prefWidth="112.0" text="Kajak" />
    </children>
 </AnchorPane>
