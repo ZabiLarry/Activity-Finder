@@ -14,7 +14,7 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <Button fx:id="btnName" layoutX="63.0" layoutY="165.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Name" />
+      <Button fx:id="btnName" layoutX="63.0" layoutY="165.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Type" />
       <Button fx:id="btnLoc" layoutX="63.0" layoutY="253.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Location" />
       <Button layoutX="205.0" layoutY="165.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Rating" />
       <Button layoutX="205.0" layoutY="253.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Favorite" />

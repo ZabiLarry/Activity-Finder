@@ -1,4 +1,4 @@
-package sample;
+package sample.utils;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +14,8 @@ public class DatabaseConnection {
 
     static Statement statement;
     static String returnValue;
-
+    static int returnValueInt;
+    static int[] returnValueArr;
     //"jdbc:mysql://localhost:3306/project_2";
 
     private Properties properties;
@@ -40,8 +41,8 @@ public class DatabaseConnection {
     }
 
     //Close connection when everything is finished
-    public void closeConnection () throws SQLException{
-        if(connection!=null) {
+    public void closeConnection() throws SQLException {
+        if (connection != null) {
             connection.close();
         }
     }
@@ -63,8 +64,7 @@ public class DatabaseConnection {
     }
 
 
-
-    public void testQuery(){
+    public void testQuery() {
         try {
             statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM user;");
@@ -80,9 +80,7 @@ public class DatabaseConnection {
 
     }
 
-
-
-    static String getUsername(int counter) {
+    public static String getUsername(int counter) {
         try {
             ResultSet rs = statement.executeQuery("SELECT username FROM user WHERE id = " + counter);
             if (rs.next()) {
@@ -96,7 +94,23 @@ public class DatabaseConnection {
         return "";
     }
 
-    static String getPassword(int counter) {
+    public static int getUsersSize() {
+        DB_Connection();
+
+        try {
+            ResultSet rs = statement.executeQuery("SELECT COUNT(userid) FROM users");
+            if (rs.next()) {
+                returnValueInt = rs.getInt(1);
+                return returnValueInt;
+            }
+        } catch (SQLException var1) {
+            System.out.println("An error occurred on executing the query.");
+        }
+
+        return 0;
+    }
+
+    public static String getPassword(int counter) {
         try {
             ResultSet rs = statement.executeQuery("SELECT password FROM users WHERE id = " + counter);
             if (rs.next()) {
@@ -118,21 +132,90 @@ public class DatabaseConnection {
         }
 
 
-
-
-
-
-
-}
+    }
 
     static void addActivities(String name, String location, String contact, String type) {
         try {
             statement.executeUpdate("INSERT INTO activity (name, location, contact, type) VALUES ('" + name + "','" + location + "','" + contact + "','" + type + "'");
-            System.out.println("Book added.");
+            System.out.println("Activities added.");
         } catch (SQLException var6) {
             System.out.println("An error occurred on executing the adding query.");
         }
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    static void addRating(String userid, String activityid, int rating) {
+
+            try {
+                statement.executeQuery("INSERT INTO rating (userid, activityid, rating)VALUES ('" + userid + "','" + activityid + "',''" + rating + "'");
+                System.out.println("rating added");
+            } catch (SQLException var7) {
+                System.out.println("");
+
+
+            }
+        }
+    
+
+
+    static void addFavorite(String userid, String favouriteid, String eventid) {
+        try {
+            statement.executeQuery("INSERT INTO favourites (userid, activityid, rating)VALUES ('" + userid + "','" + favouriteid + "',''" + eventid + "'");
+            System.out.println("favorite added");
+        } catch (SQLException var7) {
+            System.out.println("");
+
+
+        }
+    }
+<<<<<<< HEAD:src/sample/DatabaseConnection.java
 
     public static ArrayList<Activity> selectActivities(String name) {
 
@@ -162,8 +245,40 @@ public class DatabaseConnection {
 
 
         }
+=======
+>>>>>>> 9545c106b069d7b1eb592c042483e43de16092cd:src/sample/utils/DatabaseConnection.java
 
+    public static int[] getFavourites(int counter) {
+        try {
+            ResultSet rs = statement.executeQuery("SELECT favourite FROM user WHERE id = " + counter);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+                return returnValueArr;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on executing the query.");
+        }
+
+        return returnValueArr;
     }
-}
 
+    public static int getFavoriteSize() {
+        DB_Connection();
+
+        try {
+            ResultSet rs = statement.executeQuery("SELECT COUNT(favouriteid) FROM users");
+            if (rs.next()) {
+                returnValueInt = rs.getInt(1);
+                return returnValueInt;
+            }
+        } catch (SQLException var1) {
+            System.out.println("An error occurred on executing the query.");
+        }
+
+        return 0;
+    }
+
+
+
+}
 
