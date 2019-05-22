@@ -9,14 +9,14 @@ public class Activity {
     private Boolean indoor;
     private Boolean outdoor;
 
-    public Activity(int id, String name, String location, String contact, String type, Boolean indoor, Boolean outdoor) {
-        this.id = id;
-        this.name = name;
-        this.location = location;
-        this.contact = contact;
-        this.type = type;
-        this.indoor = indoor;
-        this.outdoor = outdoor;
+    public Activity(int id, String name, String location,String contact, String type, Boolean indoor, Boolean outdoor){
+        this.id=id;
+        this.name=name;
+        this.location=location;
+        this.contact=contact;
+        this.type=type;
+        this.indoor=indoor;
+        this.outdoor=outdoor;
     }
 
     public int getId() {
@@ -34,6 +34,7 @@ public class Activity {
     public void setName(String name) {
         this.name = name;
     }
+
 
     public String getLocation() {
         return location;
@@ -63,16 +64,17 @@ public class Activity {
         return indoor;
     }
 
-    public void setIndoor(Boolean indoor) {
-        this.indoor = indoor;
-    }
-
     public Boolean getOutdoor() {
         return outdoor;
+    }
+
+    public void setIndoor(Boolean indoor) {
+        this.indoor = indoor;
     }
 
     public void setOutdoor(Boolean outdoor) {
         this.outdoor = outdoor;
     }
+
 }
 

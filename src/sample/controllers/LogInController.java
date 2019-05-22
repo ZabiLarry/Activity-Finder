@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 public class LogInController extends AbstractController {
     @FXML
-    private Label lblStatus;
+    private Label lblStatus;//
 
     @FXML
     private TextField txtUserName;
