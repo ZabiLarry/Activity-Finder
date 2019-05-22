@@ -16,7 +16,7 @@ public class DatabaseConnection {
     private Properties properties;
     private Connection connection;
 
-    Main main = new Main();
+
 
 
     public DatabaseConnection() {
@@ -132,15 +132,16 @@ public class DatabaseConnection {
 
 }
 
-    public void updateEmail(String email){
+    public static void updateEmail(String email){
+        Main main = new Main();
         try {
-            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE username = " + main.getLoggedInUser().getUsername());
+            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE id = " + main.getLoggedInUser().getId());
         } catch (SQLException var7) {
             System.out.println("An error occurred on executing the registration query.");
         }
     }
 
-    static void addActivity(String name, String location, String contact, String type, boolean indoor, boolean outdoor) {
+    public static void addActivity(String name, String location, String contact, String type, boolean indoor, boolean outdoor) {
         try {
             statement.executeUpdate("INSERT INTO activity (name, location, contact, type, indoor, outdoor) VALUES ('" + name + "','" + location + "','" + contact + "','" + type + "','"+ indoor + "','" + outdoor + "'");
             System.out.println("Book added.");
@@ -191,7 +192,6 @@ public class DatabaseConnection {
     }
 
     public static int getFavoriteSize() {
-        DB_Connection();
 
         try {
             ResultSet rs = statement.executeQuery("SELECT COUNT(favouriteid) FROM users");
@@ -204,6 +204,19 @@ public class DatabaseConnection {
         }
 
         return 0;
+    }
+
+
+    public static void newUser(String email, String password){
+
+        try {
+            statement.executeQuery("INSERT into user (password, email) VALUES (" + password + "," + email + ")");
+
+        } catch (SQLException var1) {
+            System.out.println("An error occurred on executing the query.");
+        }
+
+
     }
 
 
