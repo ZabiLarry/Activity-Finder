@@ -10,6 +10,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import sample.Main;
+import sample.model.Activity;
 import sample.model.RegularUser;
 import sample.model.User;
 import sample.utils.DatabaseConnection;
@@ -54,7 +55,7 @@ public class LogInController extends AbstractController {
 
 
     //login  method that creates an object
-    public void login(){
+   /* public void login(){
 
         int counter;
         for(counter =0; counter<= DatabaseConnection.getUsersSize() + 1; ++counter){
@@ -73,6 +74,24 @@ public class LogInController extends AbstractController {
 
             }
         }
+    }*/
+
+   public void login() {
+        if (txtUserName.getText().equals(DatabaseConnection.getEmail(txtUserName.getText()))) {
+            if (txtPassword.getText().equals(DatabaseConnection.getPassword(txtUserName.getText(), txtPassword.getText()))) {
+                System.out.println("Login success");
+
+                RegularUser user = new RegularUser(DatabaseConnection.getEmail(txtUserName.getText()),DatabaseConnection.getID(txtUserName.getText()));
+                main.setLoggedInUser(user);
+
+
+            } else {
+                System.out.println("Wrong password");
+            }
+
+        System.out.println("Wrong user");
+
+
     }
 
     public int[] favourites() {

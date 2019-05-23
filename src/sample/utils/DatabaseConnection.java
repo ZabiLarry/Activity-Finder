@@ -87,9 +87,13 @@ public class DatabaseConnection {
 
     }
 
-    public static String getEmail(int counter) {
+
+
+    //changed to just fetching username since we don't know the ID before the user has given us their login
+
+    public static String getEmail(String email) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT email FROM user WHERE id = " + counter);
+            ResultSet rs = statement.executeQuery("SELECT email FROM user WHERE id = " + email);
             if (rs.next()) {
                 returnValue = rs.getString(1);
                 return returnValue;
@@ -117,9 +121,10 @@ public class DatabaseConnection {
         return 0;
     }
 
-    public static String getPassword(int counter) {
+    public static String getPassword(String email, String password) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT password FROM users WHERE id = " + counter);
+            ResultSet rs = statement.executeQuery("SELECT password FROM users WHERE email = " + email +"AND password= " + password
+            );
             if (rs.next()) {
                 returnValue = rs.getString(1);
                 return returnValue;
@@ -212,6 +217,23 @@ public class DatabaseConnection {
             row[i + 1] = list.get(i).getType();
             System.out.println(row[i + 1]);
         }
+    }
+
+    public static int getID(String email) {
+
+        try {
+            ResultSet rs = statement.executeQuery("SELECT iduser FROM users WHERE email = " + email);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+                return returnValueInt;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on executing the query.");
+
+
+        }
+
+        return 0;
     }
 
 
