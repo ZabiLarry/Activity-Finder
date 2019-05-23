@@ -50,16 +50,18 @@ public class SettingsController extends AbstractController{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
     }
 
     private void updateEmail(){
-        //databaseconnection updateemail()
+
+        DatabaseConnection.updateEmail(emailTF.getText());
 
     }
 
     private void addActivity(){
 
-        //databaseconnection addActivity(nameTF.getText(), locationTF.getText(), main.getLoggedInUser().getEmail(), typeTF.getText(), inCheck.isSelected(), outCheck.isSelected())
+        DatabaseConnection.addActivity(nameTF.getText(), locationTF.getText(), main.getLoggedInUser().getEmail(), typeTF.getText(), inCheck.isShowing(), outCheck.isShowing());
     }
 
 }

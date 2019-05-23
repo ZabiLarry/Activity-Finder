@@ -33,12 +33,12 @@ public class LogInController extends AbstractController {
     Main main = new Main();
 
     public void login(ActionEvent event) throws IOException {
-        if (txtUserName.getText().equals("User")&& txtPassword.getText().equals("pass")) {
+        if (txtUserName.getText().equals("User") && txtPassword.getText().equals("pass")) {
             lblStatus.setText("Login Success");
             homePage(event);
             //to add setLoggedInUser()
         } else {
-           lblStatus.setText("Login Failed");
+            lblStatus.setText("Login Failed");
 
             Alert alert = new Alert(Alert.AlertType.ERROR, "login failed", ButtonType.OK);
             alert.showAndWait();
@@ -53,8 +53,6 @@ public class LogInController extends AbstractController {
     }
 
 
-
-
     //login  method that creates an object
     public void login(){
 
@@ -67,22 +65,23 @@ public class LogInController extends AbstractController {
                 main.setLoggedInUser(user);
 
 
-            }
-            else{ System.out.println("failed");
+
+                } else {
+                    System.out.println("failed");
 
                 }
 
+            }
         }
     }
-}
 
-public int[] favourites(){
+    public int[] favourites() {
 
 
-        int[] fav ={};
+        int[] fav = {};
         return fav;
 
-}
+    }
 
 
 }

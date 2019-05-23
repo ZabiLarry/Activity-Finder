@@ -5,9 +5,9 @@ public class CommercialUser extends User {
     private String phoneNumber;
     private String address;
 
-    public CommercialUser(String name, String email, String name1, String phoneNumber, String address) {
-        super(name, email);
-        this.name = name1;
+    public CommercialUser(String email, int id, String name, String phoneNumber, String address) {
+        super(email, id);
+        this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
     }

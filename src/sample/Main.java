@@ -65,6 +65,7 @@ public class Main extends Application {
 
     public void setLoggedInUser(User user){
         this.loggedInUser = user;
+
     }
 
     public User getLoggedInUser(){
