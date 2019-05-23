@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import sample.controllers.LogInController;
 import sample.model.User;
 
 import sample.model.Activity;

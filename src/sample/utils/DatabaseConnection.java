@@ -87,9 +87,9 @@ public class DatabaseConnection {
 
     }
 
-    public static String getUsername(int counter) {
+    public static String getEmail(int counter) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT username FROM user WHERE id = " + counter);
+            ResultSet rs = statement.executeQuery("SELECT email FROM user WHERE id = " + counter);
             if (rs.next()) {
                 returnValue = rs.getString(1);
                 return returnValue;
@@ -160,10 +160,10 @@ public class DatabaseConnection {
     }
 
 
-    static void addRating(String userid, String activityid, int rating) {
+    static void addRating(int userid, String activityid, int rating) {
 
         try {
-            statement.executeQuery("INSERT INTO rating (userid, activityid, rating)VALUES ('" + userid + "','" + activityid + "',''" + rating + "'");
+            statement.executeQuery("INSERT INTO rating (userid, activityid, rating)VALUES WHERE userid=userid ('" + userid + "','" + activityid + "',''" + rating + "'");
             System.out.println("rating added");
         } catch (SQLException var7) {
             System.out.println("");
