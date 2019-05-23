@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-
     <list default="true" id="2f004174-0ed8-4be5-b17d-d30fc3dd0e05" name="Default Changelist" comment="" />
-
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,19 +9,15 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
-
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-
-            <state relative-caret-position="510">
+            <state relative-caret-position="680">
               <caret line="45" selection-start-line="45" selection-end-line="45" />
             </state>
           </provider>
@@ -32,76 +26,53 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/controllers/LogInController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="58" column="24" lean-forward="true" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
-              <folding>
-                <element signature="method#login#0;class#LogInController#0" />
-                <element signature="e#853#980#1" />
-                <element signature="e#986#1169#1" />
-                <marker date="1558535489711" expanded="true" signature="2101:2103" ph="{...}" />
-
-              </folding>
+            <state relative-caret-position="-364">
+              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-
         <entry file="file://$PROJECT_DIR$/src/sample/model/CommercialUser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-151">
               <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/model/CommercialUser.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/utils/DatabaseConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-
-            <state relative-caret-position="348">
-              <caret line="132" lean-forward="true" selection-start-line="132" selection-end-line="132" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#addRating#0;class#DatabaseConnection#0" />
-                <element signature="method#addFavorite#0;class#DatabaseConnection#0" />
-                <element signature="method#selectActivities#0;class#DatabaseConnection#0" />
-                <element signature="method#showActivity#0;class#DatabaseConnection#0" />
-
-              </folding>
+            <state relative-caret-position="751">
+              <caret line="161" selection-start-line="161" selection-end-line="161" />
             </state>
           </provider>
         </entry>
       </file>
-
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/model/RegularUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-
+            <state relative-caret-position="68">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-
         <entry file="file://$PROJECT_DIR$/src/sample/model/Rating.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
               <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-
         <entry file="file://$PROJECT_DIR$/src/sample/controllers/IndoorController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-111">
-              <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
+            <state relative-caret-position="926">
+              <caret line="89" selection-start-line="89" selection-end-line="89" />
             </state>
           </provider>
         </entry>
@@ -109,9 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/model/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
-
+            <state relative-caret-position="459">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
@@ -119,10 +89,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/controllers/SettingsController.java">
           <provider selected="true" editor-type-id="text-editor">
-
-            <state relative-caret-position="833">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
-
+            <state relative-caret-position="374">
+              <caret line="67" selection-start-line="67" selection-end-line="67" />
             </state>
           </provider>
         </entry>
@@ -159,7 +127,6 @@
         <option value="$PROJECT_DIR$/src/sample/DatabaseConnection.java" />
         <option value="$PROJECT_DIR$/src/sample/views/loginView.fxml" />
         <option value="$PROJECT_DIR$/src/sample/BackInterface.java" />
-
         <option value="$PROJECT_DIR$/src/sample/model/CommercialUser.java" />
         <option value="$PROJECT_DIR$/src/sample/controllers/SettingsController.java" />
         <option value="$PROJECT_DIR$/src/sample/controllers/ActivityController.java" />
@@ -169,14 +136,13 @@
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/utils/DatabaseConnection.java" />
         <option value="$PROJECT_DIR$/src/sample/controllers/LogInController.java" />
-
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="15" />
-    <option name="width" value="1388" />
-    <option name="height" value="790" />
+    <option name="width" value="1386" />
+    <option name="height" value="788" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -190,11 +156,6 @@
             <path>
               <item name="Activity-Finder" type="b2602c69:ProjectViewProjectNode" />
               <item name="Activity-Finder" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Activity-Finder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Activity-Finder" type="462c0819:PsiDirectoryNode" />
-              <item name="libs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Activity-Finder" type="b2602c69:ProjectViewProjectNode" />
@@ -220,6 +181,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Activity-Finder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Activity-Finder" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Activity-Finder" type="b2602c69:ProjectViewProjectNode" />
@@ -298,20 +266,19 @@
     <option name="totallyTimeSpent" value="11002000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="15" y="0" width="1386" height="788" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25263953" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.3289689" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3289689" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30687022" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -319,16 +286,16 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="right" id="Maven" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3289689" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" visible="true" weight="0.03857791" />
+      <window_info anchor="right" id="Ant Build" order="1" visible="true" weight="0.03846154" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Maven Projects" order="7" />
-
+      <window_info anchor="right" id="Maven" order="8" />
     </layout>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -374,12 +341,10 @@
         </state>
       </provider>
     </entry>
-
     <entry file="file://$PROJECT_DIR$/src/sample/controllers/AbstractController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-
         </state>
       </provider>
     </entry>
@@ -392,13 +357,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controllers/BrowseController.java">
       <provider selected="true" editor-type-id="text-editor">
-
         <state relative-caret-position="306">
           <caret line="38" selection-start-line="38" selection-end-line="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-
         </state>
       </provider>
     </entry>
@@ -411,15 +374,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controllers/SettingsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
+        <state relative-caret-position="374">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controllers/IndoorController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-111">
-          <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
+        <state relative-caret-position="926">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
         </state>
       </provider>
     </entry>
@@ -427,54 +390,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/model/RegularUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/model/CommercialUser.java">
       <provider selected="true" editor-type-id="text-editor">
-
         <state relative-caret-position="-151">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
-
-        <state relative-caret-position="348">
-          <caret line="132" lean-forward="true" selection-start-line="132" selection-end-line="132" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#addRating#0;class#DatabaseConnection#0" />
-            <element signature="method#addFavorite#0;class#DatabaseConnection#0" />
-            <element signature="method#selectActivities#0;class#DatabaseConnection#0" />
-            <element signature="method#showActivity#0;class#DatabaseConnection#0" />
-
-          </folding>
+        <state relative-caret-position="459">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
-
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="680">
           <caret line="45" selection-start-line="45" selection-end-line="45" />
         </state>
       </provider>
@@ -489,15 +431,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controllers/LogInController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="58" column="24" lean-forward="true" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
-          <folding>
-            <element signature="method#login#0;class#LogInController#0" />
-            <element signature="e#853#980#1" />
-            <element signature="e#986#1169#1" />
-            <marker date="1558535489711" expanded="true" signature="2101:2103" ph="{...}" />
-
-          </folding>
+        <state relative-caret-position="-364">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
     </entry>
