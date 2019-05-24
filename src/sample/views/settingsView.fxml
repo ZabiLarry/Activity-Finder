@@ -15,7 +15,7 @@
          </font>
       </Label>
       <Button layoutX="31.0" layoutY="28.0" mnemonicParsing="false" onAction="#toHome" prefHeight="41.0" prefWidth="54.0" text="Home" />
-      <Button layoutX="39.0" layoutY="258.0" mnemonicParsing="false" onAction="#updateEmail" text="Change" />
+      <Button layoutX="39.0" layoutY="258.0" mnemonicParsing="false" onAction="#changeEmail" text="Change" />
       <Label layoutX="40.0" layoutY="174.0" text="E-mail:" />
       <TextField fx:id="emailTF" layoutX="39.0" layoutY="210.0" />
       <Label layoutX="368.0" layoutY="126.0" text="Add Activity">

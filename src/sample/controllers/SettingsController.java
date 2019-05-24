@@ -42,12 +42,14 @@ public class SettingsController extends AbstractController{
 
     Main main = new Main();
 
-    private void updateEmail(){
+    @FXML
+    private void changeEmail(){
 
         DatabaseConnection.updateEmail(emailTF.getText());
 
     }
 
+    @FXML
     private void addActivity(){
 
         DatabaseConnection.addActivity(nameTF.getText(), locTF.getText(), main.getLoggedInUser().getEmail(), typeTF.getText(), inCheck.isShowing(), outCheck.isShowing());
