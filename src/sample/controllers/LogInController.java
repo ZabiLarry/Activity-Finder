@@ -14,7 +14,11 @@ import sample.utils.DatabaseConnection;
 
 import javax.xml.crypto.Data;
 
-public class LogInController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class LogInController extends AbstractController {
     @FXML
     private Label lblStatus;//
 
@@ -24,16 +28,23 @@ public class LogInController {
     @FXML
     private TextField txtPassword;
 
-    public void login(ActionEvent event) {
+    public void login(ActionEvent event) throws IOException {
         if (txtUserName.getText().equals("User")&& txtPassword.getText().equals("pass")) {
             lblStatus.setText("Login Success");
+            homePage(event);
+            //to add setLoggedInUser()
         } else {
-         //   lblStatus.setText("Login Failed");
+           lblStatus.setText("Login Failed");
 
             Alert alert = new Alert(Alert.AlertType.ERROR, "login failed", ButtonType.OK);
             alert.showAndWait();
 
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 
 
@@ -66,6 +77,7 @@ public int[] favourites(){
 
         int[] fav ={};
         return fav;
+
 }
 
 

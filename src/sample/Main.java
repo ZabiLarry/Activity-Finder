@@ -5,7 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import sample.model.User;
+
 import sample.model.Activity;
+
 import sample.utils.DatabaseConnection;
 import sample.utils.MailSender;
 import sample.utils.PdfFormatter;
@@ -49,11 +53,21 @@ public class Main extends Application {
         // mail test
      //   MailSender.sendForgottenPassword("karl.i.lundh@gmail.com", "karl", "test");
 
-
     }
 
 
     public static void main(String[] args) {
         launch(args);
+
+    }
+
+    User loggedInUser;
+
+    public void setLoggedInUser(User user){
+        this.loggedInUser = user;
+    }
+
+    public User getLoggedInUser(){
+        return loggedInUser;
     }
 }

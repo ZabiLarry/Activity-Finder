@@ -14,16 +14,20 @@ import javafx.stage.Stage;
 import sample.model.Activity;
 
 
+import sample.*;
+
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+
 public class BrowseController extends AbstractController implements Initializable {
+
 
     @FXML
     private ListView<String> listAct;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
