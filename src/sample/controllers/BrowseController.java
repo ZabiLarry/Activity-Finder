@@ -21,7 +21,8 @@ import java.util.ResourceBundle;
 
 public class BrowseController extends AbstractController implements Initializable {
 
-    private ListView<Activity> listAct;
+    @FXML
+    private ListView<String> listAct;
 
 
     @Override
@@ -36,8 +37,15 @@ public class BrowseController extends AbstractController implements Initializabl
        homePage(event);
     }
 
-    public void recieveFunction(ObservableList<Activity> activitiesList){
-        listAct.setItems(activitiesList);
+    public void recieveFunction(ArrayList<String> activitiesList){
+
+        ObservableList<String> checkList = FXCollections.observableList(activitiesList);
+
+        for(int i=0;i<activitiesList.size();i++)
+        {
+            listAct.setItems(checkList);
+        }
+
     }
 
 

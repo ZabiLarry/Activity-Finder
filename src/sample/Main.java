@@ -28,12 +28,13 @@ public class Main extends Application {
 
 
         // ...
-
         db.testQuery();
+        db.closeConnection();
+
 
         //...
 
-        db.closeConnection();
+
 
         // pdf test
         PdfFormatter.createPDF("myPDF.pdf", "I really like this application");

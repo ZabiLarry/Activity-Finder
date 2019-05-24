@@ -171,35 +171,22 @@ public class DatabaseConnection {
         }
     }
 
-    public static ObservableList<Activity> selectActivities(String name) {
+    public static ArrayList<String> selectActivities(String name) {
 
-        ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
+        ArrayList<String> activitiesList = new ArrayList<>();
         try {
-            ResultSet rs = statement.executeQuery("SELECT location FROM activity WHERE name = " + name);
-            Activity activity;
+                ResultSet rs = statement.executeQuery("SELECT location FROM activity WHERE name =  " + name);
+            String location;
             while (rs.next()) {
-                activity = new Activity(rs.getInt("id"), rs.getString("name"), rs.getString("location"), rs.getString("contact"), rs.getString("type"), rs.getBoolean("indoor"), rs.getBoolean("outdoor"));
-                activitiesList.add(activity);
+                location =  rs.getString("location");
+                activitiesList.add(location);
             }
         } catch (SQLException var10) {
             System.out.println("An error occurred on executing select query.");
         }
+
         return activitiesList;
     }
 
-    public static void showActivity(String name) {
-        ObservableList<Activity> list = selectActivities(name);
-
-        Object[] row = new Object[2];
-        for (int i = 0; i < list.size(); i = i + 2) {
-            row[i] = list.get(i).getLocation();
-            System.out.println(row[i]);
-            row[i + 1] = list.get(i).getType();
-            System.out.println(row[i + 1]);
-        }
-
-
-
-    }
 }
 

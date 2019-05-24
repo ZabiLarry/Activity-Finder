@@ -17,7 +17,6 @@ import java.util.ResourceBundle;
 
 import static sample.utils.DatabaseConnection.DB_Connection;
 import static sample.utils.DatabaseConnection.selectActivities;
-import static sample.utils.DatabaseConnection.showActivity;
 
 public class IndoorController extends AbstractController implements Initializable {
 
@@ -58,17 +57,17 @@ public class IndoorController extends AbstractController implements Initializabl
     @FXML
     private void toVolleyball(ActionEvent event) throws IOException {
         changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("volleyball");
+
     }
     @FXML
     private void toSoccer(ActionEvent event) throws IOException {
         changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("soccer");
+
     }
     @FXML
     private void toBoxing(ActionEvent event) throws IOException {
         changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("boxing");
+
     }
     @FXML
     private void toFitness(ActionEvent event) throws IOException {
@@ -78,7 +77,7 @@ public class IndoorController extends AbstractController implements Initializabl
     @FXML
     private void toSquash(ActionEvent event) throws IOException {
         changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("squash");
+
     }
 
 
