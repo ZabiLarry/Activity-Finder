@@ -33,7 +33,7 @@ public class LogInController extends AbstractController {
 
     Main main = new Main();
 
-    public void login(ActionEvent event) throws IOException {
+    /*public void login(ActionEvent event) throws IOException {
         if (txtUserName.getText().equals("User") && txtPassword.getText().equals("pass")) {
             lblStatus.setText("Login Success");
             homePage(event);
@@ -46,7 +46,7 @@ public class LogInController extends AbstractController {
 
 
         }
-    }
+    }*/
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,55 +55,60 @@ public class LogInController extends AbstractController {
 
 
     //login  method that creates an object
-   /* public void login(){
+   public void login(ActionEvent event) throws IOException {
 
         int counter;
         for(counter =0; counter<= DatabaseConnection.getUsersSize() + 1; ++counter){
             if(txtUserName.getText().equals(DatabaseConnection.getEmail(counter))){
                 if(txtPassword.getText().equals(DatabaseConnection.getPassword(counter)))
                 { System.out.println("login success");
-                RegularUser user = new RegularUser(DatabaseConnection.getEmail(counter), DatabaseConnection.getPassword(counter));
+                RegularUser user = new RegularUser(DatabaseConnection.getEmail(counter), DatabaseConnection.getID(txtUserName.getText()));
                 main.setLoggedInUser(user);
+                lblStatus.setText("Login Success");
+                homePage(event);
 
 
 
                 } else {
                     System.out.println("failed");
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "login failed", ButtonType.OK);
+                alert.showAndWait();
 
                 }
 
             }
         }
-    }*/
+    }
 
-   public void login() {
+    /*public void login(ActionEvent event) throws IOException {
         if (txtUserName.getText().equals(DatabaseConnection.getEmail(txtUserName.getText()))) {
             if (txtPassword.getText().equals(DatabaseConnection.getPassword(txtUserName.getText(), txtPassword.getText()))) {
                 System.out.println("Login success");
 
-                RegularUser user = new RegularUser(DatabaseConnection.getEmail(txtUserName.getText()),DatabaseConnection.getID(txtUserName.getText()));
+                RegularUser user = new RegularUser(DatabaseConnection.getEmail(txtUserName.getText()), DatabaseConnection.getID(txtUserName.getText()));
                 main.setLoggedInUser(user);
+
+                lblStatus.setText("Login Success");
+                homePage(event);
 
 
             } else {
                 System.out.println("Wrong password");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "login failed", ButtonType.OK);
+                alert.showAndWait();
             }
 
-        System.out.println("Wrong user");
+            System.out.println("Wrong user");
+
+
+        }*/
 
 
     }
 
-    public int[] favourites() {
 
 
-        int[] fav = {};
-        return fav;
 
-    }
-
-
-}
 
 
 

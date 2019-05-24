@@ -91,46 +91,46 @@ public class DatabaseConnection {
 
     //changed to just fetching username since we don't know the ID before the user has given us their login
 
-    public static String getEmail(String email) {
+    public static String getEmail(int counter) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT email FROM user WHERE id = " + email);
+            ResultSet rs = statement.executeQuery("SELECT email FROM user WHERE iduser =" + counter);
             if (rs.next()) {
                 returnValue = rs.getString(1);
+
                 return returnValue;
             }
         } catch (SQLException var2) {
-            System.out.println("An error occurred on executing the query.");
+            System.out.println("An error occurred on fetching email query");
         }
 
         return "";
     }
 
     public static int getUsersSize() {
-        DB_Connection();
+
 
         try {
-            ResultSet rs = statement.executeQuery("SELECT COUNT(userid) FROM users");
+            ResultSet rs = statement.executeQuery("SELECT COUNT(iduser) FROM user");
             if (rs.next()) {
                 returnValueInt = rs.getInt(1);
                 return returnValueInt;
             }
         } catch (SQLException var1) {
-            System.out.println("An error occurred on executing the query.");
+            System.out.println("An error occurred on fetching user size");
         }
 
         return 0;
     }
 
-    public static String getPassword(String email, String password) {
+    public static String getPassword(int counter) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT password FROM users WHERE email = " + email +"AND password= " + password
-            );
+            ResultSet rs = statement.executeQuery("SELECT password FROM user WHERE iduser = " + counter);
             if (rs.next()) {
                 returnValue = rs.getString(1);
                 return returnValue;
             }
         } catch (SQLException var2) {
-            System.out.println("An error occurred on executing the query.");
+            System.out.println("An error occurred on fetching password query.");
         }
 
         return "";
@@ -222,13 +222,13 @@ public class DatabaseConnection {
     public static int getID(String email) {
 
         try {
-            ResultSet rs = statement.executeQuery("SELECT iduser FROM users WHERE email = " + email);
+            ResultSet rs = statement.executeQuery("SELECT iduser FROM user WHERE email = " + email);
             if (rs.next()) {
                 returnValue = rs.getString(1);
                 return returnValueInt;
             }
         } catch (SQLException var2) {
-            System.out.println("An error occurred on executing the query.");
+            System.out.println("An error occurred on fetching ID query");
 
 
         }
