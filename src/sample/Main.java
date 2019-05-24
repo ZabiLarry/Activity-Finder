@@ -5,9 +5,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import sample.model.User;
+
+import sample.model.Activity;
+
 import sample.utils.DatabaseConnection;
 import sample.utils.MailSender;
 import sample.utils.PdfFormatter;
+
+import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -23,6 +30,7 @@ public class Main extends Application {
         // connection after last query/method was executed.
         DatabaseConnection db = new DatabaseConnection();
 
+
         // ...
 
         db.testQuery();
@@ -34,14 +42,32 @@ public class Main extends Application {
         // pdf test
         PdfFormatter.createPDF("myPDF.pdf", "I really like this application");
 
+
+
+        /*ArrayList<Activity> activities = new ArrayList();
+        do {
+            activities.add(new Activity());
+        }*/
+
         // mail test
      //   MailSender.sendForgottenPassword("karl.i.lundh@gmail.com", "karl", "test");
-
 
     }
 
 
     public static void main(String[] args) {
         launch(args);
+
+    }
+
+    User loggedInUser;
+
+    public void setLoggedInUser(User user){
+        this.loggedInUser = user;
+
+    }
+
+    public User getLoggedInUser(){
+        return loggedInUser;
     }
 }

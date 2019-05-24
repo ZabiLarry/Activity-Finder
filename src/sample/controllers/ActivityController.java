@@ -11,14 +11,13 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sample.BackInterface;
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ActivityController extends AbstractController implements BackInterface, Initializable {
+public class ActivityController extends AbstractController {
 
     @FXML
     TextField tfName, tfLoc, tfWeb;
@@ -35,26 +34,12 @@ public class ActivityController extends AbstractController implements BackInterf
         tfLoc.setText("");//to get from db
         tfWeb.setText("");//to get from db
 
-        if (true) {//to get from db
-            cbFav.setSelected(false);
+        if (true) {//to get from db for fav
+            cbFav.setSelected(true);
         }
 
-        switch (cbRec.getValue().toString()){//to ger from db
-            case "1":
-                cbRec.setValue("1");
-                break;
-            case "2":
-                cbRec.setValue("2");
-                break;
-            case "3":
-                cbRec.setValue("3");
-                break;
-            case "4":
-                cbRec.setValue("4");
-                break;
-            case "5":
-                cbRec.setValue("5");
-                break;
+        if (true) {//to get from db for rate
+            cbFav.setSelected(true);
         }
     }
 

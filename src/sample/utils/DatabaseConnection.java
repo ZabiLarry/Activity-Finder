@@ -1,17 +1,32 @@
 package sample.utils;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import sample.model.Activity;
+
+import javax.swing.table.DefaultTableModel;
+
+import sample.Main;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Properties;
 
 public class DatabaseConnection {
 
     static Statement statement;
     static String returnValue;
-
+    static int returnValueInt;
+    static int[] returnValueArr;
     //"jdbc:mysql://localhost:3306/project_2";
 
     private Properties properties;
     private Connection connection;
+
+
+
+
 
 
     public DatabaseConnection() {
@@ -33,8 +48,8 @@ public class DatabaseConnection {
     }
 
     //Close connection when everything is finished
-    public void closeConnection () throws SQLException{
-        if(connection!=null) {
+    public void closeConnection() throws SQLException {
+        if (connection != null) {
             connection.close();
         }
     }
@@ -56,8 +71,7 @@ public class DatabaseConnection {
     }
 
 
-
-    public void testQuery(){
+    public void testQuery() {
         try {
             statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM user;");
@@ -73,9 +87,7 @@ public class DatabaseConnection {
 
     }
 
-
-
-    static String getUsername(int counter) {
+    public static String getUsername(int counter) {
         try {
             ResultSet rs = statement.executeQuery("SELECT username FROM user WHERE id = " + counter);
             if (rs.next()) {
@@ -89,7 +101,23 @@ public class DatabaseConnection {
         return "";
     }
 
-    static String getPassword(int counter) {
+    public static int getUsersSize() {
+        DB_Connection();
+
+        try {
+            ResultSet rs = statement.executeQuery("SELECT COUNT(userid) FROM users");
+            if (rs.next()) {
+                returnValueInt = rs.getInt(1);
+                return returnValueInt;
+            }
+        } catch (SQLException var1) {
+            System.out.println("An error occurred on executing the query.");
+        }
+
+        return 0;
+    }
+
+    public static String getPassword(int counter) {
         try {
             ResultSet rs = statement.executeQuery("SELECT password FROM users WHERE id = " + counter);
             if (rs.next()) {
@@ -105,28 +133,101 @@ public class DatabaseConnection {
 
     static void addRegistration(String name, String address, String email, String username, String password) {
         try {
-            statement.executeUpdate("INSERT INTO users (name, address, ssn, email, username, password)VALUES (  '" + name + "','" + address + "','" + email + "','" + username + "','" + password + "')");
+            statement.executeUpdate("INSERT INTO user (email, username, password)VALUES (  '" + email + "','" + username + "','" + password + "')");
         } catch (SQLException var7) {
             System.out.println("An error occurred on executing the registration query.");
         }
 
 
 
-
-
-
-
 }
 
-    static void addActivities(String name, String location, String contact, String type) {
+    public static void updateEmail(String email){
+        Main main = new Main();
         try {
-            statement.executeUpdate("INSERT INTO activity (name, location, contact, type) VALUES ('" + name + "','" + location + "','" + contact + "','" + type + "'");
+            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE id = " + main.getLoggedInUser().getId());
+        } catch (SQLException var7) {
+            System.out.println("An error occurred on executing the registration query.");
+        }
+    }
+
+    public static void addActivity(String name, String location, String contact, String type, boolean indoor, boolean outdoor) {
+        try {
+            statement.executeUpdate("INSERT INTO activity (name, location, contact, type, indoor, outdoor) VALUES ('" + name + "','" + location + "','" + contact + "','" + type + "','"+ indoor + "','" + outdoor + "'");
             System.out.println("Book added.");
         } catch (SQLException var6) {
             System.out.println("An error occurred on executing the adding query.");
         }
+    }
+
+
+    static void addRating(String userid, String activityid, int rating) {
+
+        try {
+            statement.executeQuery("INSERT INTO rating (userid, activityid, rating)VALUES ('" + userid + "','" + activityid + "',''" + rating + "'");
+            System.out.println("rating added");
+        } catch (SQLException var7) {
+            System.out.println("");
+
+
+        }
+    }
+
+
+    static void addFavorite(String userid, String favouriteid, String eventid) {
+        try {
+            statement.executeQuery("INSERT INTO favourites (userid, activityid, rating)VALUES ('" + userid + "','" + favouriteid + "',''" + eventid + "'");
+            System.out.println("favorite added");
+        } catch (SQLException var7) {
+            System.out.println("");
+
+
+        }
+    }
+
+    public static ObservableList<Activity> selectActivities(String name) {
+
+        ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
+        try {
+            ResultSet rs = statement.executeQuery("SELECT location FROM activity WHERE name = " + name);
+            Activity activity;
+            while (rs.next()) {
+                activity = new Activity(rs.getInt("id"), rs.getString("name"), rs.getString("location"), rs.getString("contact"), rs.getString("type"), rs.getBoolean("indoor"), rs.getBoolean("outdoor"));
+                activitiesList.add(activity);
+            }
+        } catch (SQLException var10) {
+            System.out.println("An error occurred on executing select query.");
+        }
+        return activitiesList;
+    }
+
+
+    public static void showActivity(String name) {
+        ObservableList<Activity> list = selectActivities(name);
+
+        Object[] row = new Object[2];
+        for (int i = 0; i < list.size(); i = i + 2) {
+            row[i] = list.get(i).getLocation();
+            System.out.println(row[i]);
+            row[i + 1] = list.get(i).getType();
+            System.out.println(row[i + 1]);
+        }
+    }
+
+
+    public static void newUser(String email, String password){
+
+        try {
+            statement.executeQuery("INSERT into user (password, email) VALUES (" + password + "," + email + ")");
+
+        } catch (SQLException var1) {
+            System.out.println("An error occurred on executing the query.");
+        }
+
 
     }
-}
 
+
+    
+}
 

@@ -1,4 +1,13 @@
 package sample.model;
 
-public class OutdoorActivity extends Activity {
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class OutdoorActivity implements Initializable {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }
