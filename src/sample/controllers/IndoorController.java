@@ -59,7 +59,7 @@ public class IndoorController extends AbstractController implements Initializabl
 
     }
     @FXML
-    private void toVolleyball(ActionEvent event) throws IOException {
+    private void toVollyball(ActionEvent event) throws IOException {
         changeScene(event, "../views/browseView.fxml");
 
     }
@@ -74,7 +74,37 @@ public class IndoorController extends AbstractController implements Initializabl
 
     }
     @FXML
-    private void toFitness(ActionEvent event) throws IOException {
+    private void toBoxercise(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+
+    }
+    @FXML
+    private void toThaiBoxing(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+
+    }
+    @FXML
+    private void toBasketball(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+
+    }
+    @FXML
+    private void toJuJitsui(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+
+    }
+    @FXML
+    private void toClimbing(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+
+    }
+    @FXML
+    private void toPaddleball(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+
+    }
+    @FXML
+    private void toSwimming(ActionEvent event) throws IOException {
         changeScene(event, "../views/browseView.fxml");
 
     }
@@ -83,6 +113,7 @@ public class IndoorController extends AbstractController implements Initializabl
         changeScene(event, "../views/browseView.fxml");
 
     }
+
 
 
 }

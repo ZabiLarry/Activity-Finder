@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.BrowseController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.BrowseController">
    <children>
       <Label layoutX="205.0" layoutY="27.0" text="Browse">
          <font>
@@ -18,7 +18,7 @@
       <Button fx:id="btnLoc" layoutX="63.0" layoutY="253.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Location" />
       <Button layoutX="205.0" layoutY="165.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Rating" />
       <Button layoutX="205.0" layoutY="253.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Favorite" />
-      <ListView fx:id="listAct" fixedCellSize="1.0" layoutX="359.0" layoutY="136.0" prefHeight="247.0" prefWidth="200.0" />
+      <ListView fx:id="listAct" fixedCellSize="1.0" layoutX="331.0" layoutY="136.0" prefHeight="247.0" prefWidth="260.0" />
       <Button layoutX="32.0" layoutY="30.0" mnemonicParsing="false" onAction="#toHome" prefHeight="41.0" prefWidth="56.0" text="Home" />
       <Label layoutX="63.0" layoutY="119.0" text="Sort by">
          <font>

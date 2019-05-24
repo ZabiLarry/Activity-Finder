@@ -51,10 +51,5 @@ public class OutdoorController extends AbstractController implements Initializab
     private void toAdventure(ActionEvent event) throws IOException {
         changeScene(event, "../views/browseView.fxml");
     }
-    @FXML
-    private void toSomething(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
-
-    }
 
 }

@@ -15,6 +15,7 @@ import sample.model.Activity;
 
 
 import sample.*;
+import sample.utils.DatabaseConnection;
 
 
 import java.io.IOException;
