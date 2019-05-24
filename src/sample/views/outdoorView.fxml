@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.OutdoorController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.OutdoorController">
    <children>
       <Label layoutX="210.0" layoutY="42.0" text="Outdoor">
          <font>
@@ -13,11 +13,10 @@
          </font>
       </Label>
       <Button layoutX="32.0" layoutY="28.0" mnemonicParsing="false" onAction="#toHome" prefHeight="41.0" prefWidth="53.0" text="Home" />
-      <Button fx:id="b6" layoutX="417.0" layoutY="256.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Button" />
-      <Button fx:id="b3" layoutX="417.0" layoutY="157.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Button" />
-      <Button fx:id="b5" layoutX="244.0" layoutY="256.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Button" />
-      <Button fx:id="b4" layoutX="73.0" layoutY="256.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Button" />
-      <Button fx:id="b2" layoutX="244.0" layoutY="157.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Button" />
-      <Button fx:id="b1" layoutX="73.0" layoutY="157.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Button" />
+      <Button fx:id="kajak" layoutX="417.0" layoutY="157.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Kajaking" />
+      <Button fx:id="zipline" layoutX="335.0" layoutY="256.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Zipline" />
+      <Button fx:id="fishing" layoutX="154.0" layoutY="256.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Fishing" />
+      <Button fx:id="outSwim" layoutX="244.0" layoutY="157.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Swimming" textAlignment="CENTER" />
+      <Button fx:id="outClimb" layoutX="73.0" layoutY="157.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Bouldering Climbing" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>
