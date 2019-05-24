@@ -29,7 +29,7 @@ public class SettingsController extends AbstractController{
     TextField nameTF;
 
     @FXML
-    TextField locTF;
+    TextField locationTF;
 
     @FXML
     TextField typeTF;
@@ -43,19 +43,6 @@ public class SettingsController extends AbstractController{
     Main main = new Main();
 
     @FXML
-    private void changeEmail(){
-
-        DatabaseConnection.updateEmail(emailTF.getText());
-
-    }
-
-    @FXML
-    private void addActivity(){
-
-        DatabaseConnection.addActivity(nameTF.getText(), locTF.getText(), main.getLoggedInUser().getEmail(), typeTF.getText(), inCheck.isShowing(), outCheck.isShowing());
-    }
-
-    @FXML
     private void toHome(ActionEvent event) throws IOException {
         homePage(event);
     }
@@ -66,6 +53,15 @@ public class SettingsController extends AbstractController{
 
     }
 
+    private void updateEmail(){
 
+        DatabaseConnection.updateEmail(emailTF.getText());
+
+    }
+
+    private void addActivity(){
+
+        DatabaseConnection.addActivity(nameTF.getText(), locationTF.getText(), main.getLoggedInUser().getEmail(), typeTF.getText(), inCheck.isShowing(), outCheck.isShowing());
+    }
 
 }

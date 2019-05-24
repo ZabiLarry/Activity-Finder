@@ -33,7 +33,7 @@ public class HomePageController extends AbstractController implements Initializa
 //        window.setScene(homeScene);
 //        window.show();
 
-        changeScene(event, "../views/settingsView.fxml");
+        changeScene(event, "../views/loginView.fxml");
     }
 
     @FXML
@@ -60,11 +60,5 @@ public class HomePageController extends AbstractController implements Initializa
         changeScene(event, "../views/indoorView.fxml");
     }
 
-    @FXML
-    private void logOut(ActionEvent event) throws IOException {
-
-        changeScene(event, "../views/loginView.fxml");
-
-    }
 
 }
