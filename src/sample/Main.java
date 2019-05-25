@@ -60,7 +60,7 @@ public class Main extends Application {
 
     }
 
-    User loggedInUser;
+    private User loggedInUser;
 
     public void setLoggedInUser(User user){
         this.loggedInUser = user;
