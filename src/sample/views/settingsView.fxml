@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,14 +9,33 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.SettingsController">
    <children>
-      <Label layoutX="215.0" layoutY="41.0" text="Settings">
+      <Label layoutX="214.0" layoutY="34.0" text="Settings">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
       <Button layoutX="31.0" layoutY="28.0" mnemonicParsing="false" onAction="#toHome" prefHeight="41.0" prefWidth="54.0" text="Home" />
-      <Button layoutX="57.0" layoutY="211.0" mnemonicParsing="false" onAction="#updateEmail" text="Change" />
-      <Label layoutX="57.0" layoutY="128.0" text="E-mail:" />
-      <TextField fx:id="emailTF" layoutX="57.0" layoutY="167.0" />
+      <Button layoutX="39.0" layoutY="258.0" mnemonicParsing="false" onAction="#changeEmail" text="Change" />
+      <Label layoutX="40.0" layoutY="174.0" text="E-mail:" />
+      <TextField fx:id="emailTF" layoutX="39.0" layoutY="210.0" />
+      <Label layoutX="368.0" layoutY="126.0" text="Add Activity">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="76.0" layoutY="126.0" text="Change e-mail">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="339.0" layoutY="174.0" text="Name:" />
+      <TextField fx:id="nameTF" layoutX="339.0" layoutY="210.0" />
+      <TextField fx:id="locTF" layoutX="339.0" layoutY="284.0" />
+      <TextField fx:id="typeTF" layoutX="339.0" layoutY="360.0" />
+      <Label layoutX="339.0" layoutY="262.0" text="Location:" />
+      <Label layoutX="339.0" layoutY="333.0" text="Type:" />
+      <Button layoutX="518.0" layoutY="360.0" mnemonicParsing="false" onAction="#addActivity" text="Add" />
+      <CheckBox fx:id="inCB" layoutX="501.0" layoutY="288.0" mnemonicParsing="false" text="Indoor" />
+      <CheckBox fx:id="outCB" layoutX="503.0" layoutY="214.0" mnemonicParsing="false" text="Outdoor" />
    </children>
 </AnchorPane>
