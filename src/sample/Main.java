@@ -1,6 +1,8 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -30,10 +32,7 @@ public class Main extends Application {
         // connection after last query/method was executed.
         DatabaseConnection db = new DatabaseConnection();
 
-
         // ...
-        db.testQuery();
-        db.closeConnection();
 
 
         //...

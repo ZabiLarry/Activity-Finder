@@ -9,24 +9,24 @@ import javax.swing.table.DefaultTableModel;
 import sample.Main;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
 
 public class DatabaseConnection {
 
-    static Statement statement;
-    static String returnValue;
-    static int returnValueInt;
+    public static Statement statement;
+    public static String returnValue;
+    public static int returnValueInt;
     static int[] returnValueArr;
     //"jdbc:mysql://localhost:3306/project_2";
 
     private Properties properties;
     private Connection connection;
+    PreparedStatement prepstate = null;
 
     Main main = new Main();
-
-
 
 
     public DatabaseConnection() {
@@ -139,10 +139,9 @@ public class DatabaseConnection {
         }
 
 
+    }
 
-}
-
-    public void updateEmail(String email){
+    public void updateEmail(String email) {
         try {
             statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE username = " + main.getLoggedInUser().getUsername());
         } catch (SQLException var7) {
@@ -150,9 +149,9 @@ public class DatabaseConnection {
         }
     }
 
-    static void addActivity(String name, String location, String contact, String type, boolean indoor, boolean outdoor) {
+    static void addActivity(String name, String location, String contact, String type, byte indoor, byte outdoor) {
         try {
-            statement.executeUpdate("INSERT INTO activity (name, location, contact, type, indoor, outdoor) VALUES ('" + name + "','" + location + "','" + contact + "','" + type + "','"+ indoor + "','" + outdoor + "'");
+            statement.executeUpdate("INSERT INTO activity (name, location, contact, type, indoor, outdoor) VALUES ('" + name + "','" + location + "','" + contact + "','" + type + "','" + indoor + "','" + outdoor + "'");
             System.out.println("Book added.");
         } catch (SQLException var6) {
             System.out.println("An error occurred on executing the adding query.");
@@ -184,15 +183,138 @@ public class DatabaseConnection {
         }
     }
 
-    public static ArrayList<String> selectActivities(String name) {
+    public ObservableList<Activity> selectActivities(String name) {
 
-        ArrayList<String> activitiesList = new ArrayList<>();
+        ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
         try {
-                ResultSet rs = statement.executeQuery("SELECT location FROM activity WHERE name =  " + name);
-            String location;
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT  `name`, `location`, `contact`, `type`, `indoor`, `outdoor` FROM activity WHERE name = " + name + ";");
+            String rsName;
+            String rsLocation;
+            String rsContact;
+            String rsType;
+            byte rsIndoor;
+            byte rsOutdoor;
             while (rs.next()) {
-                location =  rs.getString("location");
-                activitiesList.add(location);
+                rsName = rs.getString("name");
+                rsLocation = rs.getString("location");
+                rsContact = rs.getString("contact");
+                rsType = rs.getString("type");
+                rsIndoor = rs.getByte("indoor");
+                rsOutdoor = rs.getByte("outdoor");
+                activitiesList.add(new Activity(rsName, rsLocation, rsContact,rsType, rsIndoor, rsOutdoor));
+            }
+        } catch (SQLException var10) {
+            System.out.println("An error occurred on executing select query.");
+        }
+
+        return activitiesList;
+    }
+
+    public ObservableList<Activity> browseController() {
+        ObservableList<Activity> listForDisplay = FXCollections.observableArrayList();
+        try {
+            statement = connection.createStatement();
+            String rsName;
+            String rsLocation;
+            String rsContact;
+            String rsType;
+            byte rsIndoor;
+            byte rsOutdoor;
+            ResultSet rs = statement.executeQuery("SELECT `name`, `location`, `contact`, `type`, `indoor`, `outdoor` FROM activity");
+            while (rs.next()) {
+                rsName = rs.getString("name");
+                rsLocation = rs.getString("location");
+                rsContact = rs.getString("contact");
+                rsType = rs.getString("type");
+                rsIndoor = rs.getByte("indoor");
+                rsOutdoor = rs.getByte("outdoor");
+
+
+                listForDisplay.add(new Activity(rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
+            }
+        } catch (SQLException | NullPointerException ex) {
+            System.err.println(LocalDateTime.now() + " : " + ex.getMessage());
+            System.out.println("An error occurred on executing the query.");
+        }
+        return listForDisplay;
+    }
+
+    public ObservableList<Activity> sortByType() {
+
+        ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
+        try {
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT  `name`, `location`, `contact`, `type`, `indoor`, `outdoor` FROM activity ORDER BY type ASC");
+            String rsName;
+            String rsLocation;
+            String rsContact;
+            String rsType;
+            byte rsIndoor;
+            byte rsOutdoor;
+            while (rs.next()) {
+                rsName = rs.getString("name");
+                rsLocation = rs.getString("location");
+                rsContact = rs.getString("contact");
+                rsType = rs.getString("type");
+                rsIndoor = rs.getByte("indoor");
+                rsOutdoor = rs.getByte("outdoor");
+                activitiesList.add(new Activity(rsName, rsLocation, rsContact,rsType, rsIndoor, rsOutdoor));
+            }
+        } catch (SQLException var10) {
+            System.out.println("An error occurred on executing select query.");
+        }
+
+        return activitiesList;
+    }
+
+    public ObservableList<Activity> sortByLocation() {
+
+        ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
+        try {
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT  `name`, `location`, `contact`, `type`, `indoor`, `outdoor` FROM activity ORDER BY location ASC");
+            String rsName;
+            String rsLocation;
+            String rsContact;
+            String rsType;
+            byte rsIndoor;
+            byte rsOutdoor;
+            while (rs.next()) {
+                rsName = rs.getString("name");
+                rsLocation = rs.getString("location");
+                rsContact = rs.getString("contact");
+                rsType = rs.getString("type");
+                rsIndoor = rs.getByte("indoor");
+                rsOutdoor = rs.getByte("outdoor");
+                activitiesList.add(new Activity(rsName, rsLocation, rsContact,rsType, rsIndoor, rsOutdoor));
+            }
+        } catch (SQLException var10) {
+            System.out.println("An error occurred on executing select query.");
+        }
+
+        return activitiesList;
+    }
+    public ObservableList<Activity> sortByRating() {
+
+        ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
+        try {
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT  `name`, `location`, `contact`, `type`, `indoor`, `outdoor` FROM activity ORDER BY location ASC");
+            String rsName;
+            String rsLocation;
+            String rsContact;
+            String rsType;
+            byte rsIndoor;
+            byte rsOutdoor;
+            while (rs.next()) {
+                rsName = rs.getString("name");
+                rsLocation = rs.getString("location");
+                rsContact = rs.getString("contact");
+                rsType = rs.getString("type");
+                rsIndoor = rs.getByte("indoor");
+                rsOutdoor = rs.getByte("outdoor");
+                activitiesList.add(new Activity(rsName, rsLocation, rsContact,rsType, rsIndoor, rsOutdoor));
             }
         } catch (SQLException var10) {
             System.out.println("An error occurred on executing select query.");

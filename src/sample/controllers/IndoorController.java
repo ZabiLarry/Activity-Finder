@@ -18,10 +18,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-import static sample.utils.DatabaseConnection.DB_Connection;
-import static sample.utils.DatabaseConnection.selectActivities;
 
 public class IndoorController extends AbstractController implements Initializable {
+
+    DatabaseConnection dbconnect = new DatabaseConnection();
 
 
     private void initialize(){
@@ -40,23 +40,18 @@ public class IndoorController extends AbstractController implements Initializabl
     }
     @FXML
     private void toBadminton(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../views/browseView.fxml"));
-            try {
-
-                loader.load();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-
+        try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+        Parent root = (Parent) loader.load();
         BrowseController browseController = loader.getController();
-        browseController.recieveFunction(DatabaseConnection.selectActivities("badminton"));
-        Parent root = loader.getRoot();
+        browseController.recieveFunction(dbconnect.selectActivities("badminton"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
 
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
     @FXML
     private void toVollyball(ActionEvent event) throws IOException {

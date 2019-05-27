@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import sample.utils.DatabaseConnection;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,21 +37,29 @@ public class HomePageController extends AbstractController implements Initializa
 
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(homeScene);
-       window.show();
+        window.show();
 
         changeScene(event, "../views/loginView.fxml");
     }
 
     @FXML
     private void toBrowse(ActionEvent event) throws IOException {
-       Parent homeViewParent = FXMLLoader.load(getClass().getResource("views/browseView.fxml"));
-        Scene homeScene = new Scene(homeViewParent);
 
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(homeScene);
-        window.show();
+        try {
+            DatabaseConnection db = new DatabaseConnection();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(db.browseController());
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
 
-        changeScene(event, "../views/browseView.fxml");
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
 
