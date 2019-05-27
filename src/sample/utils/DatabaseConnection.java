@@ -87,10 +87,13 @@ public class DatabaseConnection {
 
     }
 
-    public static String logInVerification(String email) {
+    public static String getUsername(int counter) {
         try {
-            statement.executeQuery("SELECT password FROM user WHERE email = '" + email + "';");
-
+            ResultSet rs = statement.executeQuery("SELECT username FROM user WHERE id = " + counter);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+                return returnValue;
+            }
         } catch (SQLException var2) {
             System.out.println("An error occurred on executing the query.");
         }
@@ -137,7 +140,7 @@ public class DatabaseConnection {
 
 
 
-}
+    }
 
     public static void updateEmail(String email){
         Main main = new Main();
@@ -148,16 +151,10 @@ public class DatabaseConnection {
         }
     }
 
-
-
     public static void addActivity(String name, String location, String contact, String type, boolean indoor, boolean outdoor) {
-        Main main = new Main();
         try {
             statement.executeUpdate("INSERT INTO activity (name, location, contact, type, indoor, outdoor) VALUES ('" + name + "','" + location + "','" + contact + "','" + type + "','"+ indoor + "','" + outdoor + "'");
             System.out.println("Book added.");
-            Activity activity = new Activity(name, location, contact, type, indoor, outdoor);
-            int id= statement.executeUpdate("select id from activity where name = ('" + name + "' AND type = '" + type + "')");
-            statement.executeUpdate("insert into commercialuser_has_activity (commercialUser_idcommercialUser, activity_idactivity) values ('" + main.getLoggedInUser().getId() + "','" + id + "')");
         } catch (SQLException var6) {
             System.out.println("An error occurred on executing the adding query.");
         }
@@ -195,7 +192,7 @@ public class DatabaseConnection {
             ResultSet rs = statement.executeQuery("SELECT location FROM activity WHERE name = " + name);
             Activity activity;
             while (rs.next()) {
-                activity = new Activity(rs.getString("name"), rs.getString("location"), rs.getString("contact"), rs.getString("type"), rs.getBoolean("indoor"), rs.getBoolean("outdoor"));
+                activity = new Activity(rs.getInt("id"), rs.getString("name"), rs.getString("location"), rs.getString("contact"), rs.getString("type"), rs.getBoolean("indoor"), rs.getBoolean("outdoor"));
                 activitiesList.add(activity);
             }
         } catch (SQLException var10) {
@@ -230,39 +227,7 @@ public class DatabaseConnection {
 
     }
 
-    public static String getID(String email){
-
-        try {
-            return String.valueOf((statement.executeQuery("SELECT id from user WHERE email = '" + email + "')")));
-
-        } catch (SQLException var1) {
-            System.out.println("An error occurred on executing the query.");
-        }
-
-        return "";
-    }
-
-    public static ArrayList getFavorites(String iduser){
 
 
-        ArrayList list = new ArrayList();
-
-        try {
-            statement.executeQuery("SELECT activity_idactivity from user_has_activity WHERE user_iduser = '" + iduser + "'");
-
-        } catch (SQLException var1) {
-            System.out.println("An error occurred on executing the query.");
-        }
-
-        return list;
-    }
-
-
-
-
-
-
-
-    
 }
 

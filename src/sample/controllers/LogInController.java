@@ -1,21 +1,12 @@
 package sample.controllers;
 
-import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import sample.Main;
-import sample.model.CommercialUser;
-import sample.model.RegularUser;
-import sample.model.User;
 import sample.utils.DatabaseConnection;
-
-import javax.xml.crypto.Data;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,14 +17,13 @@ public class LogInController extends AbstractController {
     private Label lblStatus;//
 
     @FXML
-    private TextField emailTF;
+    private TextField txtUserName;
 
     @FXML
-    private TextField passwordTF;
+    private TextField txtPassword;
 
-    Main main = new Main();
 
-    /*public void login(ActionEvent event) throws IOException {
+    public void login(ActionEvent event) throws IOException {
         if (txtUserName.getText().equals("User") && txtPassword.getText().equals("pass")) {
             lblStatus.setText("Login Success");
             homePage(event);
@@ -45,7 +35,7 @@ public class LogInController extends AbstractController {
             alert.showAndWait();
 
         }
-    }*/
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,19 +44,8 @@ public class LogInController extends AbstractController {
 
 
     //login  method that creates an object
-   /* public void login() {
-
-        if (DatabaseConnection.logInVerification(emailTF.getText())==passwordTF.getText()){
-
-            RegularUser user = new RegularUser(emailTF.getText(), Integer.parseInt(DatabaseConnection.getID(emailTF.getText())), )
-            main.setLoggedInUser();
-
-
-
-        }
-
-
-        *//*for (int counter = 0; counter <= DatabaseConnection.getUsersSize() + 1; ++counter) {
+    public void logOnto() {
+        for (int counter = 0; counter <= DatabaseConnection.getUsersSize() + 1; ++counter) {
             if (txtUserName.getText().equals(DatabaseConnection.getUsername(counter))) {
                 if (txtPassword.getText().equals(DatabaseConnection.getPassword(counter))) {
                     System.out.println("login success");
@@ -80,8 +59,17 @@ public class LogInController extends AbstractController {
                 }
 
             }
-        }*//*
-    }*/
+        }
+    }
+
+    public void forgotPass(ActionEvent event) {
+
+        try {
+            changeScene(event, "/views/forgotPasswordView.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public int[] favourites() {
 

@@ -9,7 +9,8 @@ public class Activity {
     private Boolean indoor;
     private Boolean outdoor;
 
-    public Activity(String name, String location,String contact, String type, Boolean indoor, Boolean outdoor){
+    public Activity(int id, String name, String location,String contact, String type, Boolean indoor, Boolean outdoor){
+        this.id=id;
         this.name=name;
         this.location=location;
         this.contact=contact;
