@@ -20,11 +20,13 @@ public class IndoorController extends AbstractController implements Initializabl
     @FXML
     private Button vollyball, boxing, badminton, thaiBoxing, climbing, juJitsu, basketball, boxercise, soccer, swimming, squash, paddleBall;
 
+    DatabaseConnection dbconnect = new DatabaseConnection();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // size for the subsequent buttons
         BackgroundSize bs = new BackgroundSize(112, 70, false, false, true, false);
+
 
         BackgroundImage backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/vollyball.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
         vollyball.setBackground(new Background(backgroundImage));
@@ -75,8 +77,9 @@ public class IndoorController extends AbstractController implements Initializabl
 
     @FXML
     private void toBadminton(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
-        FXMLLoader loader = new FXMLLoader();
+        try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+        Parent root = (Parent) loader.load();
         loader.setLocation(getClass().getResource("../views/browseView.fxml"));
         try {
 
@@ -86,34 +89,66 @@ public class IndoorController extends AbstractController implements Initializabl
         }
 
         BrowseController browseController = loader.getController();
-        browseController.recieveFunction(DatabaseConnection.selectActivities("badminton"));
-        Parent root = loader.getRoot();
+        browseController.recieveFunction(dbconnect.selectActivities("badminton"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
 
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
-    private void toVolleyball(ActionEvent event) throws IOException {
+    private void toVollyball(ActionEvent event) throws IOException {
         changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("volleyball");
+
     }
 
     @FXML
     private void toSoccer(ActionEvent event) throws IOException {
         changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("soccer");
+
     }
 
     @FXML
     private void toBoxing(ActionEvent event) throws IOException {
         changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("boxing");
+
+    }
+    @FXML
+    private void toBoxercise(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+
     }
 
     @FXML
-    private void toFitness(ActionEvent event) throws IOException {
+    private void toThaiBoxing(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+
+    }
+    @FXML
+    private void toBasketball(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+
+    }
+    @FXML
+    private void toJuJitsui(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+
+    }
+    @FXML
+    private void toClimbing(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+
+    }
+    @FXML
+    private void toPaddleball(ActionEvent event) throws IOException {
+        changeScene(event, "../views/browseView.fxml");
+
+    }
+    @FXML
+    private void toSwimming(ActionEvent event) throws IOException {
         changeScene(event, "../views/browseView.fxml");
 
     }
@@ -121,8 +156,9 @@ public class IndoorController extends AbstractController implements Initializabl
     @FXML
     private void toSquash(ActionEvent event) throws IOException {
         changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("squash");
+
     }
+
 
 
 }

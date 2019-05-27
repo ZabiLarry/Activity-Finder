@@ -1,80 +1,78 @@
 package sample.model;
 
-public class Activity {
-    private int id;
-    private String name;
-    private String location;
-    private String contact;
-    private String type;
-    private Boolean indoor;
-    private Boolean outdoor;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
-    public Activity(int id, String name, String location,String contact, String type, Boolean indoor, Boolean outdoor){
-        this.id=id;
-        this.name=name;
-        this.location=location;
-        this.contact=contact;
-        this.type=type;
+public class Activity {
+    private StringProperty name;
+    private StringProperty location;
+    private StringProperty contact;
+    private StringProperty type;
+    private Byte indoor;
+    private Byte outdoor;
+
+    public Activity(String name, String location, String contact, String type, byte indoor, byte outdoor){
+        this.name= new SimpleStringProperty(name);
+        this.location= new SimpleStringProperty(location);
+        this.contact= new SimpleStringProperty(contact);
+        this.type= new SimpleStringProperty(type);
         this.indoor=indoor;
         this.outdoor=outdoor;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
-        return name;
+        return name.get();
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String value) {
+        name.set(value);
     }
 
 
     public String getLocation() {
-        return location;
+        return location.get();
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocation(String value) {
+        location.set(value);
     }
 
     public String getContact() {
-        return contact;
+        return contact.get();
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setContact(String value) {
+        contact.set(value);
     }
 
     public String getType() {
-        return type;
+        return type.get();
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(String value) {
+        type.set(value);
     }
 
-    public Boolean getIndoor() {
+    public Byte getIndoor() {
         return indoor;
     }
 
-    public Boolean getOutdoor() {
+    public Byte getOutdoor() {
         return outdoor;
     }
 
-    public void setIndoor(Boolean indoor) {
+    public void setIndoor(Byte indoor) {
         this.indoor = indoor;
     }
 
-    public void setOutdoor(Boolean outdoor) {
+    public void setOutdoor(Byte outdoor) {
         this.outdoor = outdoor;
     }
+
+    public StringProperty nameProperty(){return name;}
+    public StringProperty locationProperty(){return location;}
+    public StringProperty contactProperty(){return contact;}
+    public StringProperty typeProperty(){return type;}
 
 }
 

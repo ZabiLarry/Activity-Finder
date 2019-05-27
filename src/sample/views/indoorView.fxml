@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.IndoorController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.IndoorController">
    <children>
       <Label layoutX="235.0" layoutY="41.0" text="Indoor">
          <font>
@@ -13,17 +13,18 @@
          </font>
       </Label>
       <Button layoutX="32.0" layoutY="28.0" mnemonicParsing="false" onAction="#toHome" prefHeight="41.0" prefWidth="55.0" text="Home" />
-      <Button fx:id="basketball" layoutX="306.0" layoutY="193.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Basketball" />
-      <Button fx:id="badminton" layoutX="306.0" layoutY="111.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Badminton" />
-      <Button fx:id="juJitsu" layoutX="179.0" layoutY="193.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Ju Jitsui" />
-      <Button fx:id="climbing" layoutX="53.0" layoutY="193.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Climbing" />
-      <Button fx:id="vollyball" layoutX="179.0" layoutY="111.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" style="-fx-text-fill: black; -fx-text-stroke: white;" text="Vollyball" />
-      <Button fx:id="boxing" layoutX="53.0" layoutY="111.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Boxing" />
-      <Button fx:id="soccer" layoutX="53.0" layoutY="278.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Soccer" />
-      <Button fx:id="swimming" layoutX="179.0" layoutY="278.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Swimming" />
-      <Button fx:id="squash" layoutX="306.0" layoutY="278.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Squash" />
-      <Button fx:id="thaiBoxing" layoutX="434.0" layoutY="111.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Thai Boxing" />
-      <Button fx:id="boxercise" layoutX="434.0" layoutY="193.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Boxercise" />
-      <Button fx:id="paddleBall" layoutX="434.0" layoutY="278.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Paddle Ball" />
+      <Button fx:id="basketball" layoutX="306.0" layoutY="193.0" mnemonicParsing="false" onAction="#toBasketball" prefHeight="70.0" prefWidth="112.0" text="Basketball" />
+      <Button fx:id="badminton" layoutX="306.0" layoutY="111.0" mnemonicParsing="false" onAction="#toBadminton" prefHeight="70.0" prefWidth="112.0" text="Badminton" />
+      <Button fx:id="juJitsu" layoutX="179.0" layoutY="193.0" mnemonicParsing="false" onAction="#toJuJitsui" prefHeight="70.0" prefWidth="112.0" text="Ju Jitsui" />
+      <Button fx:id="climbing" layoutX="53.0" layoutY="193.0" mnemonicParsing="false" onAction="#toClimbing" prefHeight="70.0" prefWidth="112.0" text="Climbing" />
+      <Button fx:id="vollyball" layoutX="179.0" layoutY="111.0" mnemonicParsing="false" onAction="#toVollyball" prefHeight="70.0" prefWidth="112.0" text="Vollyball" />
+      <Button fx:id="boxing" layoutX="53.0" layoutY="111.0" mnemonicParsing="false" onAction="#toBoxing" prefHeight="70.0" prefWidth="112.0" text="Boxing" />
+      <Button fx:id="soccer" layoutX="53.0" layoutY="278.0" mnemonicParsing="false" onAction="#toSoccer" prefHeight="70.0" prefWidth="112.0" text="Soccer" />
+      <Button fx:id="swimming" layoutX="179.0" layoutY="278.0" mnemonicParsing="false" onAction="#toSwimming" prefHeight="70.0" prefWidth="112.0" text="Swimming" />
+      <Button fx:id="squash" layoutX="306.0" layoutY="278.0" mnemonicParsing="false" onAction="#toSquash" prefHeight="70.0" prefWidth="112.0" text="Squash" />
+      <Button fx:id="thaiBoxing" layoutX="434.0" layoutY="111.0" mnemonicParsing="false" onAction="#toThaiBoxing" prefHeight="70.0" prefWidth="112.0" text="Thai Boxing" />
+      <Button fx:id="boxercise" layoutX="434.0" layoutY="193.0" mnemonicParsing="false" onAction="#toBoxercise" prefHeight="70.0" prefWidth="112.0" text="Boxercise" />
+      <Button fx:id="paddleBall" layoutX="434.0" layoutY="278.0" mnemonicParsing="false" onAction="#toPaddleball" prefHeight="70.0" prefWidth="112.0" text="Paddle Ball" />
+
    </children>
 </AnchorPane>

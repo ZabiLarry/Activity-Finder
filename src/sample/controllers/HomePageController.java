@@ -2,10 +2,16 @@ package sample.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
+import sample.utils.DatabaseConnection;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,26 +32,34 @@ public class HomePageController extends AbstractController implements Initializa
 
     @FXML
     private void toSettings(ActionEvent event) throws IOException {
-//        Parent homeViewParent = FXMLLoader.load(getClass().getResource("views/settingsView.fxml"));
-//        Scene homeScene = new Scene(homeViewParent);
-//
-//        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-//        window.setScene(homeScene);
-//        window.show();
+        Parent homeViewParent = FXMLLoader.load(getClass().getResource("views/settingsView.fxml"));
+        Scene homeScene = new Scene(homeViewParent);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(homeScene);
+        window.show();
 
         changeScene(event, "../views/settingsView.fxml");
     }
 
     @FXML
     private void toBrowse(ActionEvent event) throws IOException {
-//        Parent homeViewParent = FXMLLoader.load(getClass().getResource("views/browseView.fxml"));
-//        Scene homeScene = new Scene(homeViewParent);
-//
-//        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-//        window.setScene(homeScene);
-//        window.show();
 
-        changeScene(event, "../views/browseView.fxml");
+        try {
+            DatabaseConnection db = new DatabaseConnection();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(db.browseController());
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
 
