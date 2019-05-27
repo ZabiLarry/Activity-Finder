@@ -35,12 +35,12 @@ public class LogInController extends AbstractController {
 
         Main main = new Main();
 
-        if (passwordTF.getText().equals(DatabaseConnection.logInVerification(emailTF.getText()))){
+        if (passwordTF.getText().equals(DatabaseConnection.logInVerification(emailTF.getText()))) {
 
             RegularUser user = new RegularUser(emailTF.getText(), Integer.parseInt(DatabaseConnection.getID(emailTF.getText())), DatabaseConnection.getFavorites(DatabaseConnection.getID(emailTF.getText())));
             main.setLoggedInUser(user);
 
-        }else {
+        } else {
             lblStatus.setText("Wrong Password");
         }
 
@@ -98,16 +98,8 @@ public class LogInController extends AbstractController {
         }
     }
 
-    public int[] favourites() {
-
-
-        int[] fav = {};
-        return fav;
-
-
-
-
 }
+
 
 
 
