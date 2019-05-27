@@ -32,6 +32,8 @@ public class Main extends Application {
         DatabaseConnection db = new DatabaseConnection();
 
 
+
+
         // ...
 
         db.testQuery();

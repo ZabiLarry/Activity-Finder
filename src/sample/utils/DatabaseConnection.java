@@ -2,6 +2,8 @@ package sample.utils;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TextField;
+import org.w3c.dom.Text;
 import sample.model.Activity;
 
 import javax.swing.table.DefaultTableModel;
@@ -250,6 +252,36 @@ public class DatabaseConnection {
     }
 
 
-    
+    public boolean isInt(TextField input){
+
+        try{
+            int test = Integer.parseInt(input.getText());
+            System.out.println("works");
+            return true;
+
+
+        }catch(NumberFormatException e){
+            System.out.println("fails");
+            return false;
+
+        }
+    }
+
+    public void isString(TextField input){
+
+        if(!input.getText().matches("[a-zA-Z]+")){
+            System.out.println("only letters");
+        }
+        else{
+            System.out.println("works");
+        }
+
+
+
+    }
+
+
 }
+
+
 
