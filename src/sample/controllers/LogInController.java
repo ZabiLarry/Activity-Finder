@@ -1,12 +1,20 @@
 package sample.controllers;
 
+
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import sample.Main;
 import sample.model.Activity;
 import sample.model.RegularUser;
 import sample.utils.DatabaseConnection;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import sample.utils.DatabaseConnection;
+
+import java.io.IOException;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -20,9 +28,23 @@ public class LogInController extends AbstractController {
     private TextField emailTF;
 
     @FXML
-    private TextField passwordTF;
+    private PasswordField passwordTF;
 
-    Main main = new Main();
+
+    public void login() {
+
+        Main main = new Main();
+
+        if (passwordTF.getText().equals(DatabaseConnection.logInVerification(emailTF.getText()))){
+
+            RegularUser user = new RegularUser(emailTF.getText(), Integer.parseInt(DatabaseConnection.getID(emailTF.getText())), DatabaseConnection.getFavorites(DatabaseConnection.getID(emailTF.getText())));
+            main.setLoggedInUser(user);
+
+        }else {
+            lblStatus.setText("Wrong Password");
+        }
+
+    }
 
     /*public void login(ActionEvent event) throws IOException {
         if (txtUserName.getText().equals("User") && txtPassword.getText().equals("pass")) {
@@ -45,18 +67,42 @@ public class LogInController extends AbstractController {
 
 
     //login  method that creates an object
-    public void login() {
 
-        if (passwordTF.getText().equals(DatabaseConnection.logInVerification(emailTF.getText()))){
 
-            RegularUser user = new RegularUser(emailTF.getText(), Integer.parseInt(DatabaseConnection.getID(emailTF.getText())), DatabaseConnection.getFavorites(DatabaseConnection.getID(emailTF.getText())));
-            main.setLoggedInUser(user);
 
-        }else {
-            lblStatus.setText("Wrong Password");
+
+    /*public void logOnto() {
+        for (int counter = 0; counter <= DatabaseConnection.getUsersSize() + 1; ++counter) {
+            if (txtUserName.getText().equals(DatabaseConnection.getUsername(counter))) {
+                if (txtPassword.getText().equals(DatabaseConnection.getPassword(counter))) {
+                    System.out.println("login success");
+
+                    //RegularUser user = new RegularUser(txtUserName.getText(), "w/e");
+
+
+                } else {
+                    System.out.println("failed");
+
+                }
+
+            }
         }
+    }*/
 
+    public void forgotPass(ActionEvent event) {
+
+        try {
+            changeScene(event, "/views/forgotPasswordView.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    public int[] favourites() {
+
+
+        int[] fav = {};
+        return fav;
 
 
 

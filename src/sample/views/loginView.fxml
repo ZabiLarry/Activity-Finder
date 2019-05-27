@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="226.0" prefWidth="246.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.LogInController">
+<AnchorPane prefHeight="226.0" prefWidth="246.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.LogInController">
    <children>
-      <Button layoutX="96.0" layoutY="177.0" mnemonicParsing="false" onAction="#login" text="Login">
+      <Button fx:id="txtLogin" layoutX="48.0" layoutY="177.0" mnemonicParsing="false" onAction="#login" text="Login">
          <font>
             <Font size="14.0" />
          </font>
@@ -29,5 +29,6 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <Button layoutX="108.0" layoutY="178.0" mnemonicParsing="false" onAction="#forgotPass" text="Forgot password?" />
    </children>
 </AnchorPane>

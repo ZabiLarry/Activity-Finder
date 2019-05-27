@@ -83,11 +83,13 @@ public class DatabaseConnection {
 
     }
 
+
     public static String logInVerification(String email) {
         String password = null;
         
         try {
             password = String.valueOf(statement.executeQuery("SELECT password FROM user WHERE email = '" + email + "';"));
+
 
         } catch (SQLException var2) {
             System.out.println("An error occurred on executing the query for loginVerification");
@@ -135,7 +137,7 @@ public class DatabaseConnection {
 
 
 
-}
+    }
 
     public static void updateEmail(String email){
         Main main = new Main();
@@ -146,16 +148,10 @@ public class DatabaseConnection {
         }
     }
 
-
-
     public static void addActivity(String name, String location, String contact, String type, boolean indoor, boolean outdoor) {
-        Main main = new Main();
         try {
             statement.executeUpdate("INSERT INTO activity (name, location, contact, type, indoor, outdoor) VALUES ('" + name + "','" + location + "','" + contact + "','" + type + "','"+ indoor + "','" + outdoor + "'");
             System.out.println("Book added.");
-            Activity activity = new Activity(name, location, contact, type, indoor, outdoor);
-            int id= statement.executeUpdate("select id from activity where name = ('" + name + "' AND type = '" + type + "')");
-            statement.executeUpdate("insert into commercialuser_has_activity (commercialUser_idcommercialUser, activity_idactivity) values ('" + main.getLoggedInUser().getId() + "','" + id + "')");
         } catch (SQLException var6) {
             System.out.println("An error occurred on executing the adding query for addActivity");
         }
@@ -193,7 +189,7 @@ public class DatabaseConnection {
             ResultSet rs = statement.executeQuery("SELECT location FROM activity WHERE name = " + name);
             Activity activity;
             while (rs.next()) {
-                activity = new Activity(rs.getString("name"), rs.getString("location"), rs.getString("contact"), rs.getString("type"), rs.getBoolean("indoor"), rs.getBoolean("outdoor"));
+                activity = new Activity(rs.getInt("id"), rs.getString("name"), rs.getString("location"), rs.getString("contact"), rs.getString("type"), rs.getBoolean("indoor"), rs.getBoolean("outdoor"));
                 activitiesList.add(activity);
             }
         } catch (SQLException var10) {
@@ -213,7 +209,7 @@ public class DatabaseConnection {
             String type = String.valueOf(statement.executeQuery("select type from activity where idactivity = " + id));
             Boolean indoor = 1 == Integer.parseInt(String.valueOf(statement.executeQuery("select indoor from activity where idactivity = " + id)));
             Boolean outdoor = 1 == Integer.parseInt(String.valueOf(statement.executeQuery("select outdoor from activity where idactivity = " + id)));
-            activity = new Activity(name, location, contact, type, indoor, outdoor);
+            activity = new Activity(id, name, location, contact, type, indoor, outdoor);
 
 
         } catch (SQLException var1) {
@@ -250,6 +246,7 @@ public class DatabaseConnection {
 
 
     }
+
 
     public static String getID(String email){
 
@@ -289,10 +286,5 @@ public class DatabaseConnection {
 
 
 
-
-
-
-
-    
 }
 

@@ -25,7 +25,7 @@ public class OutdoorController extends AbstractController implements Initializab
 
     @FXML
     private void toHome(ActionEvent event) throws IOException {
-       homePage(event);
+        homePage(event);
     }
     @FXML
     private void toKajak(ActionEvent event) throws IOException {
