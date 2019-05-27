@@ -12,6 +12,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import sample.Main;
+import sample.model.Activity;
+import sample.model.RegularUser;
+import sample.model.User;
 import sample.utils.DatabaseConnection;
 
 import java.io.IOException;
@@ -30,64 +34,58 @@ public class LogInController extends AbstractController {
     @FXML
     private PasswordField passwordTF;
 
+    Main main;
 
-    public void login() {
+    /*public void login() {
 
-        Main main = new Main();
+        main = new Main();
 
         if (passwordTF.getText().equals(DatabaseConnection.logInVerification(emailTF.getText()))) {
 
-            RegularUser user = new RegularUser(emailTF.getText(), Integer.parseInt(DatabaseConnection.getID(emailTF.getText())), DatabaseConnection.getFavorites(DatabaseConnection.getID(emailTF.getText())));
+            RegularUser user = new RegularUser(emailTF.getText(), DatabaseConnection.getID(emailTF.getText())*//*, DatabaseConnection.getFavorites(DatabaseConnection.getID(emailTF.getText()))*//*);
             main.setLoggedInUser(user);
 
         } else {
             lblStatus.setText("Wrong Password");
         }
 
-    }
-
-    /*public void login(ActionEvent event) throws IOException {
-        if (txtUserName.getText().equals("User") && txtPassword.getText().equals("pass")) {
-            lblStatus.setText("Login Success");
-            homePage(event);
-            //to add setLoggedInUser()
-        } else {
-            lblStatus.setText("Login Failed");
-
-            Alert alert = new Alert(Alert.AlertType.ERROR, "login failed", ButtonType.OK);
-            alert.showAndWait();
-
-        }
     }*/
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        main = new Main();
     }
 
 
     //login  method that creates an object
 
+  public void login(ActionEvent event) throws IOException {
 
 
-
-    /*public void logOnto() {
-        for (int counter = 0; counter <= DatabaseConnection.getUsersSize() + 1; ++counter) {
-            if (txtUserName.getText().equals(DatabaseConnection.getUsername(counter))) {
-                if (txtPassword.getText().equals(DatabaseConnection.getPassword(counter))) {
+        int counter;
+        for(counter =0; counter<= DatabaseConnection.getUsersSize() + 1; ++counter){
+            if(emailTF.getText().equals(DatabaseConnection.getEmail(counter))){
+                if(passwordTF.getText().equals(DatabaseConnection.getPassword(counter))) {
                     System.out.println("login success");
+                    RegularUser user = new RegularUser(DatabaseConnection.getEmail(counter), DatabaseConnection.getID(emailTF.getText()));
+                    main.setLoggedInUser(user);
+                    lblStatus.setText("Login Success");
+                    homePage(event);
+                }
 
-                    //RegularUser user = new RegularUser(txtUserName.getText(), "w/e");
 
 
                 } else {
                     System.out.println("failed");
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "login failed", ButtonType.OK);
+                    lblStatus.setText("Login Failed");
+
 
                 }
 
-            }
+
         }
-    }*/
+    }
 
     public void forgotPass(ActionEvent event) {
 
@@ -99,6 +97,7 @@ public class LogInController extends AbstractController {
     }
 
 }
+
 
 
 
