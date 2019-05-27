@@ -25,5 +25,6 @@
       <Button fx:id="thaiBoxing" layoutX="434.0" layoutY="111.0" mnemonicParsing="false" onAction="#toThaiBoxing" prefHeight="70.0" prefWidth="112.0" text="Thai Boxing" />
       <Button fx:id="boxercise" layoutX="434.0" layoutY="193.0" mnemonicParsing="false" onAction="#toBoxercise" prefHeight="70.0" prefWidth="112.0" text="Boxercise" />
       <Button fx:id="paddleBall" layoutX="434.0" layoutY="278.0" mnemonicParsing="false" onAction="#toPaddleball" prefHeight="70.0" prefWidth="112.0" text="Paddle Ball" />
+
    </children>
 </AnchorPane>

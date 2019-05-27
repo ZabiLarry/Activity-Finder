@@ -1,21 +1,23 @@
 package sample.controllers;
 
+
 import javafx.fxml.FXML;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import sample.Main;
+import sample.model.Activity;
 import sample.model.RegularUser;
 import sample.utils.DatabaseConnection;
 
-import javax.xml.crypto.Data;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import sample.utils.DatabaseConnection;
 
 import java.io.IOException;
+
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class LogInController extends AbstractController {
@@ -23,12 +25,28 @@ public class LogInController extends AbstractController {
     private Label lblStatus;//
 
     @FXML
-    private TextField txtUserName;
+    private TextField emailTF;
 
     @FXML
-    private TextField txtPassword;
+    private PasswordField passwordTF;
 
-    public void login(ActionEvent event) throws IOException {
+
+    public void login() {
+
+        Main main = new Main();
+
+        if (passwordTF.getText().equals(DatabaseConnection.logInVerification(emailTF.getText()))) {
+
+            RegularUser user = new RegularUser(emailTF.getText(), Integer.parseInt(DatabaseConnection.getID(emailTF.getText())), DatabaseConnection.getFavorites(DatabaseConnection.getID(emailTF.getText())));
+            main.setLoggedInUser(user);
+
+        } else {
+            lblStatus.setText("Wrong Password");
+        }
+
+    }
+
+    /*public void login(ActionEvent event) throws IOException {
         if (txtUserName.getText().equals("User") && txtPassword.getText().equals("pass")) {
             lblStatus.setText("Login Success");
             homePage(event);
@@ -40,7 +58,7 @@ public class LogInController extends AbstractController {
             alert.showAndWait();
 
         }
-    }
+    }*/
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,7 +67,11 @@ public class LogInController extends AbstractController {
 
 
     //login  method that creates an object
-    public void logOnto() {
+
+
+
+
+    /*public void logOnto() {
         for (int counter = 0; counter <= DatabaseConnection.getUsersSize() + 1; ++counter) {
             if (txtUserName.getText().equals(DatabaseConnection.getUsername(counter))) {
                 if (txtPassword.getText().equals(DatabaseConnection.getPassword(counter))) {
@@ -65,18 +87,19 @@ public class LogInController extends AbstractController {
 
             }
         }
+    }*/
+
+    public void forgotPass(ActionEvent event) {
+
+        try {
+            changeScene(event, "/views/forgotPasswordView.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
-    public int[] favourites() {
-
-
-        int[] fav = {};
-        return fav;
-
-    }
-
 
 }
+
 
 
 

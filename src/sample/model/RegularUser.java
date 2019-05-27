@@ -1,10 +1,11 @@
 package sample.model;
 
-import java.util.ArrayList;
+
+import java.util.*;
 
 public class RegularUser extends User {
 
-    ArrayList<Activity> favoritedActivities = new ArrayList<>();
+    private ArrayList<Activity> favoritedActivities;
 
     public RegularUser(String email, int id, ArrayList<Activity> favoritedActivities) {
         super(email, id);
