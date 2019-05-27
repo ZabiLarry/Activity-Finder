@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import sample.Main;
 import sample.model.Activity;
 import sample.model.RegularUser;
+import sample.utils.AuthenticationSingleton;
 import sample.utils.DatabaseConnection;
 
 import javafx.event.ActionEvent;
@@ -68,8 +69,10 @@ public class LogInController extends AbstractController {
                 if(passwordTF.getText().equals(DatabaseConnection.getPassword(counter))) {
                     System.out.println("login success");
                     RegularUser user = new RegularUser(DatabaseConnection.getEmail(counter), DatabaseConnection.getID(emailTF.getText()));
-                    main.setLoggedInUser(user);
                     lblStatus.setText("Login Success");
+
+                    AuthenticationSingleton.getInstance().setUser(user);
+
                     homePage(event);
                 }
 

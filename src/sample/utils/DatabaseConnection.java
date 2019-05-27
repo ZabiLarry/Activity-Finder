@@ -33,6 +33,7 @@ public class DatabaseConnection {
         setConnectionProperties();
         try {
             connection = DriverManager.getConnection(url, properties);
+            statement = connection.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Failed to connect to the server");

@@ -34,36 +34,36 @@ public class IndoorController extends AbstractController implements Initializabl
         backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/images.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
         boxing.setBackground(new Background(backgroundImage));
 
-        backgroundImage = new BackgroundImage(new Image(getClass().getResource("badminton-1120x388-e1498505007776.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
-        boxing.setBackground(new Background(backgroundImage));
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/badminton-1120x388-e1498505007776.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        badminton.setBackground(new Background(backgroundImage));
 
-        backgroundImage = new BackgroundImage(new Image(getClass().getResource("YTo2OntzOjI6ImlkIjtpOjE0MzgzNzE7czoxOiJ3IjtpOjEwMjA7czoxOiJoIjtpOjMyMDA7czoxOiJjIjtpOjA7czoxOiJzIjtpOjA7czoxOiJrIjtzOjQwOiJmMTY1NzkzMTNiMmY2OTRmZWEzYzMyMzQ1N2U1OTU0MzJhMDQ1ZDE4Ijt9.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
-        boxing.setBackground(new Background(backgroundImage));
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/YTo2OntzOjI6ImlkIjtpOjE0MzgzNzE7czoxOiJ3IjtpOjEwMjA7czoxOiJoIjtpOjMyMDA7czoxOiJjIjtpOjA7czoxOiJzIjtpOjA7czoxOiJrIjtzOjQwOiJmMTY1NzkzMTNiMmY2OTRmZWEzYzMyMzQ1N2U1OTU0MzJhMDQ1ZDE4Ijt9.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        thaiBoxing.setBackground(new Background(backgroundImage));
 
-        backgroundImage = new BackgroundImage(new Image(getClass().getResource("o4bcgtff7lkuic44pxu4.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
-        boxing.setBackground(new Background(backgroundImage));
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/o4bcgtff7lkuic44pxu4.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        climbing.setBackground(new Background(backgroundImage));
 
-        backgroundImage = new BackgroundImage(new Image(getClass().getResource("bs.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
-        boxing.setBackground(new Background(backgroundImage));
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/bs.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        juJitsu.setBackground(new Background(backgroundImage));
 
-        backgroundImage = new BackgroundImage(new Image(getClass().getResource("Basketball-Tryouts.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
-        boxing.setBackground(new Background(backgroundImage));
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/Basketball-Tryouts.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        basketball.setBackground(new Background(backgroundImage));
 
-        backgroundImage = new BackgroundImage(new Image(getClass().getResource("Boxercise-369x369.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
-        boxing.setBackground(new Background(backgroundImage));
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/Boxercise-369x369.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        boxercise.setBackground(new Background(backgroundImage));
 
-        backgroundImage = new BackgroundImage(new Image(getClass().getResource("soccer-ball-ss-img.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
-        boxing.setBackground(new Background(backgroundImage));
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/soccer-ball-ss-img.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        soccer.setBackground(new Background(backgroundImage));
 
         //swimming
         backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/images.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
-        boxing.setBackground(new Background(backgroundImage));
+        swimming.setBackground(new Background(backgroundImage));
 
-        backgroundImage = new BackgroundImage(new Image(getClass().getResource("123123124125r41243.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
-        boxing.setBackground(new Background(backgroundImage));
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/123123124125r41243.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        squash.setBackground(new Background(backgroundImage));
 
-        backgroundImage = new BackgroundImage(new Image(getClass().getResource("Paddles.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
-        boxing.setBackground(new Background(backgroundImage));
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/Paddles.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        paddleBall.setBackground(new Background(backgroundImage));
 
 
         //TODO etc etc change the resource (image) and the button you are applying the background to

@@ -16,6 +16,6 @@
          </font>
       </Label>
       <Button fx:id="btnSettings" layoutX="44.0" layoutY="245.0" mnemonicParsing="false" onAction="#toSettings" prefHeight="131.0" prefWidth="237.0" text="User Settings" />
-      <Button layoutX="31.0" layoutY="33.0" mnemonicParsing="false" onAction="#logOut" prefHeight="42.0" prefWidth="59.0" text="Log Out" />
+      <Button fx:id="authenticationButton" layoutX="31.0" layoutY="33.0" mnemonicParsing="false" onAction="#logOut" prefHeight="42.0" prefWidth="59.0" text="Log Out" />
    </children>
 </AnchorPane>

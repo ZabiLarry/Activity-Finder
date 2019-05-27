@@ -13,6 +13,7 @@ import sample.model.User;
 
 import sample.model.Activity;
 
+import sample.utils.AuthenticationSingleton;
 import sample.utils.DatabaseConnection;
 import sample.utils.MailSender;
 import sample.utils.PdfFormatter;
@@ -37,6 +38,7 @@ public class Main extends Application {
 
 
 
+
         /*ArrayList<Activity> activities = new ArrayList();
         do {
             activities.add(new Activity());
@@ -52,6 +54,7 @@ public class Main extends Application {
         launch(args);
 
     }
+
 
     private User loggedInUser;
 
