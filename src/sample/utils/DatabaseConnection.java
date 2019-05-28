@@ -105,9 +105,54 @@ public class DatabaseConnection {
 
     //changed to just fetching username since we don't know the ID before the user has given us their login
 
-    public static String getEmail(int counter) {
+    public static String getEmailCommercial(int counter) {
+        try {
+            ResultSet rs = statement.executeQuery("SELECT email FROM commercialuser WHERE idcommercialUser =" + counter);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+
+                return returnValue;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching commercial email query");
+        }
+
+        return "";
+    }
+
+    public static String getEmailRegular(int counter) {
         try {
             ResultSet rs = statement.executeQuery("SELECT email FROM user WHERE iduser =" + counter);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+
+                return returnValue;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching regular email query");
+        }
+
+        return "";
+    }
+
+    public static String getPhone(int counter) {
+        try {
+            ResultSet rs = statement.executeQuery("SELECT phoneNumber FROM user WHERE iduser =" + counter);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+
+                return returnValue;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching email query");
+        }
+
+        return "";
+    }
+
+    public static String getAddress(int counter) {
+        try {
+            ResultSet rs = statement.executeQuery("SELECT address FROM user WHERE iduser =" + counter);
             if (rs.next()) {
                 returnValue = rs.getString(1);
 
@@ -330,7 +375,7 @@ public class DatabaseConnection {
         return "";
     }*/
 
-    public static int getID(String email) {
+    public static int getIDRegular(String email) {
 
         try {
             ResultSet rs = statement.executeQuery("SELECT iduser FROM user WHERE email = " + email);
@@ -345,6 +390,39 @@ public class DatabaseConnection {
         }
 
         return 0;
+    }
+    public static int getIDCommercial(String email) {
+
+        try {
+            ResultSet rs = statement.executeQuery("SELECT idcommercialUser FROM commercialuser WHERE email = " + email);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+                return returnValueInt;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching ID query");
+
+
+        }
+
+        return 0;
+    }
+
+    public static String getName(String email) {
+
+        try {
+            ResultSet rs = statement.executeQuery("SELECT name FROM commercialuser WHERE email = " + email);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+                return returnValue;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching ID query");
+
+
+        }
+
+        return "";
     }
 
     public static ObservableList<Activity> getFavorites(String iduser){

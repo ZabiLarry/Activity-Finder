@@ -10,7 +10,7 @@ public class CommercialUser extends User {
     private ObservableList<Activity> favoritedActivities = FXCollections.observableArrayList();
 
 
-    public CommercialUser(String email, int id, int rating, String name, String phoneNumber, String address) {
+    public CommercialUser(String email, int id, String name, String phoneNumber, String address) {
         super(email, id);
         this.name = name;
         this.phoneNumber = phoneNumber;

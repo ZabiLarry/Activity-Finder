@@ -5,8 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import sample.Main;
-import sample.model.Activity;
-import sample.model.RegularUser;
+import sample.model.*;
 import sample.utils.AuthenticationSingleton;
 import sample.utils.DatabaseConnection;
 
@@ -15,9 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import sample.Main;
-import sample.model.Activity;
 import sample.model.RegularUser;
-import sample.model.User;
 import sample.utils.DatabaseConnection;
 
 import java.io.IOException;
@@ -38,16 +35,18 @@ public class LogInController extends AbstractController {
 
     Main main;
 
+    String email;
+
     /*public void login() {
 
         main = new Main();
 
-        if (passwordTF.getText().equals(DatabaseConnection.logInVerification(emailTF.getText()))) {
+        if (passwordTF.getText().equals(DatabaseConnection.logInVerification(email))) {
 
 <<<<<<< HEAD
-            RegularUser user = new RegularUser(emailTF.getText(), Integer.parseInt(DatabaseConnection.getID(emailTF.getText())), (ArrayList<Activity>) DatabaseConnection.getFavorites(DatabaseConnection.getID(emailTF.getText())));
+            RegularUser user = new RegularUser(email, Integer.parseInt(DatabaseConnection.getID(email)), (ArrayList<Activity>) DatabaseConnection.getFavorites(DatabaseConnection.getID(email)));
 =======
-            RegularUser user = new RegularUser(emailTF.getText(), DatabaseConnection.getID(emailTF.getText())*//*, DatabaseConnection.getFavorites(DatabaseConnection.getID(emailTF.getText()))*//*);
+            RegularUser user = new RegularUser(email, DatabaseConnection.getID(email)*//*, DatabaseConnection.getFavorites(DatabaseConnection.getID(email))*//*);
 >>>>>>> master
             main.setLoggedInUser(user);
 
@@ -65,15 +64,15 @@ public class LogInController extends AbstractController {
 
     //login  method that creates an object
 
-  public void login(ActionEvent event) throws IOException {
+  public void loginRegular(ActionEvent event) throws IOException {
 
-
+        email = emailTF.getText();
         int counter;
         for(counter =0; counter<= DatabaseConnection.getUsersSize() + 1; ++counter){
-            if(emailTF.getText().equals(DatabaseConnection.getEmail(counter))){
+            if(email.equals(DatabaseConnection.getEmailRegular(counter))){
                 if(passwordTF.getText().equals(DatabaseConnection.getPassword(counter))) {
-                    System.out.println("login success");
-                    RegularUser user = new RegularUser(DatabaseConnection.getEmail(counter), DatabaseConnection.getID(emailTF.getText()));
+                    System.out.println("loginRegular success");
+                    RegularUser user = new RegularUser(DatabaseConnection.getEmailRegular(counter), DatabaseConnection.getIDRegular(email));
                     lblStatus.setText("Login Success");
 
                     AuthenticationSingleton.getInstance().setUser(user);
@@ -85,11 +84,38 @@ public class LogInController extends AbstractController {
 
                 } else {
                     System.out.println("failed");
-                    Alert alert = new Alert(Alert.AlertType.ERROR, "login failed", ButtonType.OK);
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "loginRegular failed", ButtonType.OK);
                     lblStatus.setText("Login Failed");
 
 
                 }
+
+
+        }
+    }
+
+    public void loginCommercial(ActionEvent event) throws IOException {
+
+        email = emailTF.getText();
+        int counter;
+        for(counter =0; counter<= DatabaseConnection.getUsersSize() + 1; ++counter){
+            
+            if(email.equals(DatabaseConnection.getEmailCommercial(counter))){
+                if(passwordTF.getText().equals(DatabaseConnection.getPassword(counter))) {
+                    System.out.println("loginCommercial success");
+                    CommercialUser user = new CommercialUser(DatabaseConnection.getEmailCommercial(counter), DatabaseConnection.getIDCommercial(email), DatabaseConnection.getName(email), DatabaseConnection.getPhone(counter), DatabaseConnection.getAddress(counter));
+                    lblStatus.setText("Login Success");
+                    AuthenticationSingleton.getInstance().setUser(user);
+                    homePage(event);
+                }
+
+            } else {
+                System.out.println("failed");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "loginCommercial failed", ButtonType.OK);
+                lblStatus.setText("Login Failed");
+
+
+            }
 
 
         }
