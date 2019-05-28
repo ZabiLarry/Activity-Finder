@@ -182,12 +182,13 @@ public class DatabaseConnection {
         }
     }
 
-    public ObservableList<Activity> selectActivities(String name) {
+    public ObservableList<Activity> selectActivities(String ActivityName) {
+
 
         ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT  `name`, `location`, `contact`, `type`, `indoor`, `outdoor` FROM activity WHERE name = " + name + ";");
+            ResultSet rs = statement.executeQuery("SELECT name, location, contact, type, indoor, outdoor FROM activity WHERE name = '" + ActivityName + "'"+";");
             String rsName;
             String rsLocation;
             String rsContact;
@@ -204,6 +205,7 @@ public class DatabaseConnection {
                 activitiesList.add(new Activity(rsName, rsLocation, rsContact,rsType, rsIndoor, rsOutdoor));
             }
         } catch (SQLException var10) {
+            System.out.println(var10.getMessage());
             System.out.println("An error occurred on executing select query for selectActivities");
         }
 
@@ -306,8 +308,8 @@ public class DatabaseConnection {
         return "";
     }
 
-    public static ArrayList<Activity> getFavorites(String iduser){
-        ArrayList<Activity> list = new ArrayList<>();
+    public static ObservableList<Activity> getFavorites(String iduser){
+        ObservableList<Activity> list = FXCollections.observableArrayList();
 
         try
         {
@@ -367,17 +369,18 @@ public class DatabaseConnection {
             String location = String.valueOf(statement.executeQuery("select location from activity where idactivity = " + id));
             String contact = String.valueOf(statement.executeQuery("select contact from activity where idactivity = " + id));
             String type = String.valueOf(statement.executeQuery("select type from activity where idactivity = " + id));
-            Boolean indoor = 1 == Integer.parseInt(String.valueOf(statement.executeQuery("select indoor from activity where idactivity = " + id)));
-            Boolean outdoor = 1 == Integer.parseInt(String.valueOf(statement.executeQuery("select outdoor from activity where idactivity = " + id)));
+            ResultSet rsIndoor = statement.executeQuery("select indoor from activity where idactivity = " + id);
+            ResultSet rsOutdoor = statement.executeQuery("select outdoor from activity where idactivity = " + id);
+            byte indoor = rsIndoor.getByte("indoor");
+            byte outdoor = rsOutdoor.getByte("outdoor");
+
+
             activity = new Activity(name, location, contact, type, indoor, outdoor);
 
 
         } catch (SQLException var1) {
             System.out.println("An error occurred on executing the query for selectActivity");
         }
-
-
-
         return activity;
     }
 
