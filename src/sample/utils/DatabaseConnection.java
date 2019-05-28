@@ -181,7 +181,7 @@ public class DatabaseConnection {
         return 0;
     }
 
-    public static String getPassword(int counter) {
+    public static String getPasswordRegular(int counter) {
         try {
             ResultSet rs = statement.executeQuery("SELECT password FROM user WHERE iduser = " + counter);
             if (rs.next()) {
@@ -195,21 +195,27 @@ public class DatabaseConnection {
         return "";
     }
 
-    static void addRegistration(String name, String address, String email, String username, String password) {
+    public static String getPasswordCommercial(int counter) {
         try {
-            statement.executeUpdate("INSERT INTO user (email, username, password)VALUES (  '" + email + "','" + username + "','" + password + "')");
-        } catch (SQLException var7) {
-            System.out.println("An error occurred on executing the registration query.");
+            ResultSet rs = statement.executeQuery("SELECT password FROM commercialuser WHERE idcommercialuser = " + counter);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+                return returnValue;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching password query.");
         }
 
-
+        return "";
     }
+
+
 
 
     public static void updateEmail(String email){
         Main main = new Main();
         try {
-            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE username = " + main.getLoggedInUser());
+            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE id = " + main.getLoggedInUser().getId());
         } catch (SQLException var7) {
             System.out.println("An error occurred on executing the registration query for updateEmail");
         }
