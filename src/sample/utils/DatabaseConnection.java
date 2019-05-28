@@ -7,6 +7,7 @@ import org.w3c.dom.Text;
 import sample.model.Activity;
 
 import sample.Main;
+import sample.model.CommercialUser;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -372,12 +373,12 @@ public class DatabaseConnection {
 
 
 
-    public ObservableList<Activity> sortByRating() {
+    public ObservableList<Activity> sortByRFavorite(int userId) {
 
         ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT  `name`, `location`, `contact`, `type`, `indoor`, `outdoor` FROM activity ORDER BY location ASC");
+            ResultSet rs = statement.executeQuery("SELECT  `name`, `location`, `contact`, `type`, `indoor`, `outdoor` FROM activity WHERE  = '" + userId + "'" + " ORDER BY ASC");
             String rsName;
             String rsLocation;
             String rsContact;
@@ -394,7 +395,7 @@ public class DatabaseConnection {
                 activitiesList.add(new Activity(rsName, rsLocation, rsContact,rsType, rsIndoor, rsOutdoor));
             }
         } catch (SQLException var10) {
-            System.out.println("An error occurred on executing select query.");
+            System.out.println("An error occurred on executing query.");
         }
 
         return activitiesList;
@@ -447,10 +448,38 @@ public class DatabaseConnection {
         else{
             System.out.println("works");
         }
-
-
-
     }
+
+    public ObservableList<Activity> sortByRating() {
+
+        ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
+        try {
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT  `name`, `location`, `contact`, `type`, `indoor`, `outdoor` FROM activity ORDER BY type ASC");
+            String rsName;
+            String rsLocation;
+            String rsContact;
+            String rsType;
+            byte rsIndoor;
+            byte rsOutdoor;
+            while (rs.next()) {
+                rsName = rs.getString("name");
+                rsLocation = rs.getString("location");
+                rsContact = rs.getString("contact");
+                rsType = rs.getString("type");
+                rsIndoor = rs.getByte("indoor");
+                rsOutdoor = rs.getByte("outdoor");
+                activitiesList.add(new Activity(rsName, rsLocation, rsContact,rsType, rsIndoor, rsOutdoor));
+            }
+        } catch (SQLException var10) {
+            System.out.println("An error occurred on executing select query.");
+        }
+
+        return activitiesList;
+    }
+
+
+
 
 }
 

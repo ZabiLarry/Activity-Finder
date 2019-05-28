@@ -29,6 +29,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -61,24 +63,29 @@ public class BrowseController extends AbstractController implements Initializabl
     }
 
     @FXML
-    private void typeButt(ActionEvent event) throws IOException {
+    private void typeButt(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
         listForDisplay = dbconnect.sortByType();
         displayTable.setItems(listForDisplay);
     }
     @FXML
-    private void ratingButt(ActionEvent event) throws IOException {
-
-
-    }
-    @FXML
-    private void favoriteButt(ActionEvent event) throws IOException {
+    private void ratingButt(ActionEvent event) {
+        ObservableList<Activity> listForShuffle;
         DatabaseConnection dbconnect = new DatabaseConnection();
-        listForDisplay = dbconnect.getFavorites("s");
+        listForShuffle = dbconnect.sortByRating();
+        listForDisplay = shuffleList(listForShuffle);
         displayTable.setItems(listForDisplay);
+
     }
     @FXML
-    private void locationButt(ActionEvent event) throws IOException {
+    private void favoriteButt(ActionEvent event) {
+        DatabaseConnection dbconnect = new DatabaseConnection();
+        listForDisplay = dbconnect.sortByRFavorite(1);
+        displayTable.setItems(listForDisplay);
+
+    }
+    @FXML
+    private void locationButt(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
         listForDisplay = dbconnect.sortByLocation();
         displayTable.setItems(listForDisplay);
@@ -100,6 +107,17 @@ public class BrowseController extends AbstractController implements Initializabl
         indoorDis.setCellValueFactory(new PropertyValueFactory<>("indoor"));
         outdoorDis.setCellValueFactory(new PropertyValueFactory<>("outdoor"));
         displayTable.setItems(listForDisplay);
+    }
+    public ObservableList<Activity> shuffleList(ObservableList<Activity> activityList) {
+
+        ObservableList<Activity> list = FXCollections.observableArrayList();
+
+        for (Activity i : activityList) {
+            list.add(i);
+        }
+        Collections.shuffle(list);
+        activityList = list;
+      return activityList;
     }
 }
 

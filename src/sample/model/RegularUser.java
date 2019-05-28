@@ -1,11 +1,14 @@
 package sample.model;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.*;
 
 public class RegularUser extends User {
 
-    private ArrayList<Activity> favoritedActivities;
+    private ObservableList<Activity> favoritedActivities = FXCollections.observableArrayList();
 
     public RegularUser(String email, int id) {
         super(email, id);
@@ -19,7 +22,7 @@ public class RegularUser extends User {
         this.favoritedActivities = favoritedActivities;
     }*/
 
-    public ArrayList<Activity> getFavoritedActivities() {
+    public ObservableList<Activity> getFavoritedActivities() {
         return favoritedActivities;
     }
 
