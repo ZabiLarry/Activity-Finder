@@ -9,10 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sample.model.Activity;
@@ -20,6 +17,7 @@ import sample.model.Activity;
 
 import sample.*;
 import sample.model.User;
+import sample.utils.AuthenticationSingleton;
 import sample.utils.DatabaseConnection;
 
 
@@ -54,6 +52,9 @@ public class BrowseController extends AbstractController implements Initializabl
     @FXML
     private TableColumn<Activity, Byte> outdoorDis;
 
+    @FXML
+    public Button saveEventBtn;
+
     ObservableList<Activity> listForDisplay = FXCollections.observableArrayList();
 
 
@@ -61,6 +62,12 @@ public class BrowseController extends AbstractController implements Initializabl
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+   @FXML
+   private void favorite(ActionEvent event){
+
+
+   }
 
     @FXML
     private void typeButt(ActionEvent event) {
@@ -118,6 +125,21 @@ public class BrowseController extends AbstractController implements Initializabl
         Collections.shuffle(list);
         activityList = list;
       return activityList;
+    }
+
+    public void createFavoriteList(){
+        if(AuthenticationSingleton.getInstance().getUser() == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR, "loginRegular failed", ButtonType.OK);
+        }
+        else if(AuthenticationSingleton.getInstance().getUser().getFavoritedActivities()!=null){
+            AuthenticationSingleton.getInstance().getUser().getFavoritedActivities();
+
+
+        }
+    }
+
+    public void addFavorite(){
+
     }
 }
 
