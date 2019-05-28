@@ -20,11 +20,13 @@ public class IndoorController extends AbstractController implements Initializabl
     @FXML
     private Button vollyball, boxing, badminton, thaiBoxing, climbing, juJitsu, basketball, boxercise, soccer, swimming, squash, paddleBall;
 
+    DatabaseConnection dbconnect = new DatabaseConnection();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // size for the subsequent buttons
         BackgroundSize bs = new BackgroundSize(112, 70, false, false, true, false);
+
 
         BackgroundImage backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/vollyball.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
         vollyball.setBackground(new Background(backgroundImage));
@@ -53,7 +55,12 @@ public class IndoorController extends AbstractController implements Initializabl
         backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/soccer-ball-ss-img.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
         soccer.setBackground(new Background(backgroundImage));
 
+
         backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/swimming.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+
+        //swimming
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/images.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+
         swimming.setBackground(new Background(backgroundImage));
 
         backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/123123124125r41243.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
@@ -74,54 +81,189 @@ public class IndoorController extends AbstractController implements Initializabl
 
     @FXML
     private void toBadminton(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../views/browseView.fxml"));
         try {
-
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+        Parent root = (Parent) loader.load();
         BrowseController browseController = loader.getController();
-        browseController.recieveFunction(DatabaseConnection.selectActivities("badminton"));
-        Parent root = loader.getRoot();
+        browseController.recieveFunction(dbconnect.selectActivities("badminton"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
-
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
-    private void toVolleyball(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("volleyball");
+    private void toVollyball(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("volleyball"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
     @FXML
     private void toSoccer(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("soccer");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("soccer"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
     @FXML
     private void toBoxing(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("boxing");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("boxing"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+    @FXML
+    private void toBoxercise(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("boxercise"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
     @FXML
-    private void toFitness(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
+    private void toThaiBoxing(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("thaiBoxing"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+    @FXML
+    private void toBasketball(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("basketball"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+    @FXML
+    private void toJuJitsui(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("ju jitsu"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+    @FXML
+    private void toClimbing(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("climbing"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+    @FXML
+    private void toPaddleball(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("paddle Ball"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+    @FXML
+    private void toSwimming(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("Swimming"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
 
     }
 
     @FXML
     private void toSquash(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("squash");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("squash"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
+
 
 
 }

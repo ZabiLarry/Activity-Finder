@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class PdfFormatter {
 
-    private void createPDF(String path, String content) throws DocumentException, IOException {
+    public static void createPDF(String path, String content) throws DocumentException, IOException {
         Document document= new Document();
         PdfWriter.getInstance(document,new FileOutputStream(path));
         document.open();

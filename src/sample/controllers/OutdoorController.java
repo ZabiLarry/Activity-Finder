@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class OutdoorController extends AbstractController implements Initializable {
 
-
+    DatabaseConnection dbconnect = new DatabaseConnection();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -30,33 +30,77 @@ public class OutdoorController extends AbstractController implements Initializab
     }
     @FXML
     private void toKajak(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("kajak");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("kayaking"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
     @FXML
     private void toClimbing(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("climbing");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("climbing"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
     @FXML
     private void toSwimming(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("swimming");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("swimming"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
     @FXML
     private void toFishing(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
-        //DatabaseConnection.showActivity("fishing");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("fishing"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
     @FXML
     private void toAdventure(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("adventure");
-    }
-    @FXML
-    private void toSomething(ActionEvent event) throws IOException {
-        changeScene(event, "../views/browseView.fxml");
-        DatabaseConnection.showActivity("Something");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
+            Parent root = (Parent) loader.load();
+            BrowseController browseController = loader.getController();
+            browseController.recieveFunction(dbconnect.selectActivities("zipline"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
 }

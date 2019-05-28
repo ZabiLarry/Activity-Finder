@@ -52,7 +52,7 @@ public class SettingsController extends AbstractController{
     @FXML
     private void addActivity(){
 
-        DatabaseConnection.addActivity(nameTF.getText(), locTF.getText(), main.getLoggedInUser().getEmail(), typeTF.getText(), inCheck.isShowing(), outCheck.isShowing());
+      //  DatabaseConnection.addActivity(nameTF.getText(), locTF.getText(), main.getLoggedInUser().getEmail(), typeTF.getText(), inCheck.isShowing(), outCheck.isShowing());
     }
 
     @FXML
