@@ -19,9 +19,9 @@ public class HomePageController extends AbstractController implements Initializa
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        BackgroundImage backgroundImage = new BackgroundImage( new Image( getClass().getResource("../resources/vollyball.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        /*BackgroundImage backgroundImage = new BackgroundImage( new Image( getClass().getResource("../resources/vollyball.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Background vollyBall = new Background(backgroundImage);
-        indoorButton.setBackground(vollyBall);
+        indoorButton.setBackground(vollyBall);*/
     }
 
     @FXML

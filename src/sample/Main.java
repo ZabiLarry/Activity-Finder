@@ -40,7 +40,7 @@ public class Main extends Application {
         db.closeConnection();
 
         // pdf test
-        PdfFormatter.createPDF("myPDF.pdf", "I really like this application");
+        //PdfFormatter.createPDF("myPDF.pdf", "I really like this application");
 
 
 

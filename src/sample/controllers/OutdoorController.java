@@ -20,6 +20,7 @@ public class OutdoorController extends AbstractController implements Initializab
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
     }
 
 
