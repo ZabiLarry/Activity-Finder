@@ -2,6 +2,8 @@ package sample.utils;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TextField;
+import org.w3c.dom.Text;
 import sample.model.Activity;
 
 import sample.Main;
@@ -31,6 +33,7 @@ public class DatabaseConnection {
         setConnectionProperties();
         try {
             connection = DriverManager.getConnection(url, properties);
+            statement = connection.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Failed to connect to the server");
@@ -84,9 +87,10 @@ public class DatabaseConnection {
     }
 
 
+
     public static String logInVerification(String email) {
         String password = null;
-        
+
         try {
             password = String.valueOf(statement.executeQuery("SELECT password FROM user WHERE email = '" + email + "';"));
 
@@ -94,21 +98,38 @@ public class DatabaseConnection {
         } catch (SQLException var2) {
             System.out.println("An error occurred on executing the query for loginVerification");
         }
-
         return password;
     }
 
+
+    //changed to just fetching username since we don't know the ID before the user has given us their login
+
+    public static String getEmail(int counter) {
+        try {
+            ResultSet rs = statement.executeQuery("SELECT email FROM user WHERE iduser =" + counter);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+
+                return returnValue;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching email query");
+        }
+
+        return "";
+    }
+
     public static int getUsersSize() {
-        DB_Connection();
+
 
         try {
-            ResultSet rs = statement.executeQuery("SELECT COUNT(userid) FROM users");
+            ResultSet rs = statement.executeQuery("SELECT COUNT(iduser) FROM user");
             if (rs.next()) {
                 returnValueInt = rs.getInt(1);
                 return returnValueInt;
             }
         } catch (SQLException var1) {
-            System.out.println("An error occurred on executing the query.");
+            System.out.println("An error occurred on fetching user size");
         }
 
         return 0;
@@ -116,13 +137,13 @@ public class DatabaseConnection {
 
     public static String getPassword(int counter) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT password FROM users WHERE id = " + counter);
+            ResultSet rs = statement.executeQuery("SELECT password FROM user WHERE iduser = " + counter);
             if (rs.next()) {
                 returnValue = rs.getString(1);
                 return returnValue;
             }
         } catch (SQLException var2) {
-            System.out.println("An error occurred on executing the query.");
+            System.out.println("An error occurred on fetching password query.");
         }
 
         return "";
@@ -148,7 +169,7 @@ public class DatabaseConnection {
         }
     }
 
-    static void addActivity(String name, String location, String contact, String type, byte indoor, byte outdoor) {
+    public static void addActivity(String name, String location, String contact, String type, boolean indoor, boolean outdoor) {
         try {
             statement.executeUpdate("INSERT INTO activity (name, location, contact, type, indoor, outdoor) VALUES ('" + name + "','" + location + "','" + contact + "','" + type + "','" + indoor + "','" + outdoor + "'");
             System.out.println("Book added.");
@@ -158,10 +179,10 @@ public class DatabaseConnection {
     }
 
 
-    static void addRating(String userid, String activityid, int rating) {
+    static void addRating(int userid, String activityid, int rating) {
 
         try {
-            statement.executeQuery("INSERT INTO rating (userid, activityid, rating)VALUES ('" + userid + "','" + activityid + "',''" + rating + "'");
+            statement.executeQuery("INSERT INTO rating (userid, activityid, rating)VALUES WHERE userid=userid ('" + userid + "','" + activityid + "',''" + rating + "'");
             System.out.println("rating added");
         } catch (SQLException var7) {
             System.out.println("");
@@ -296,7 +317,7 @@ public class DatabaseConnection {
         return activitiesList;
     }
 
-    public static String getID(String email){
+    /*public static String getID(String email){
 
         try {
             return String.valueOf((statement.executeQuery("SELECT id from user WHERE email = '" + email + "')")));
@@ -306,6 +327,23 @@ public class DatabaseConnection {
         }
 
         return "";
+    }*/
+
+    public static int getID(String email) {
+
+        try {
+            ResultSet rs = statement.executeQuery("SELECT iduser FROM user WHERE email = " + email);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+                return returnValueInt;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching ID query");
+
+
+        }
+
+        return 0;
     }
 
     public static ObservableList<Activity> getFavorites(String iduser){
@@ -328,10 +366,12 @@ public class DatabaseConnection {
         } catch (SQLException var1) {
             System.out.println("An error occurred on executing the query for getFavorites");
         }
+                return list;
 
-        return list;
+            }
 
-    }
+
+
     public ObservableList<Activity> sortByRating() {
 
         ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
@@ -377,7 +417,6 @@ public class DatabaseConnection {
 
             activity = new Activity(name, location, contact, type, indoor, outdoor);
 
-
         } catch (SQLException var1) {
             System.out.println("An error occurred on executing the query for selectActivity");
         }
@@ -385,5 +424,35 @@ public class DatabaseConnection {
     }
 
 
+    public boolean isInt(TextField input){
+
+        try{
+            int test = Integer.parseInt(input.getText());
+            System.out.println("works");
+            return true;
+
+
+        }catch(NumberFormatException e){
+            System.out.println("fails");
+            return false;
+
+        }
+    }
+
+    public void isString(TextField input){
+
+        if(!input.getText().matches("[a-zA-Z]+")){
+            System.out.println("only letters");
+        }
+        else{
+            System.out.println("works");
+        }
+
+
+
+    }
+
 }
+
+
 

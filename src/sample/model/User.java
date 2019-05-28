@@ -19,6 +19,16 @@ public abstract class User {
         this.email = email;
     }
 
+
+
+
+
+
+
+
+
+
+
     public int getId() {
         return id;
     }

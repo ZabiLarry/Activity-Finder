@@ -8,10 +8,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import sample.controllers.LogInController;
 import sample.model.User;
 
 import sample.model.Activity;
 
+import sample.utils.AuthenticationSingleton;
 import sample.utils.DatabaseConnection;
 import sample.utils.MailSender;
 import sample.utils.PdfFormatter;
@@ -31,16 +33,9 @@ public class Main extends Application {
         // to connect to databse initialize DatabseConnection object and then call methods to fetch data and close the
         // connection after last query/method was executed.
         DatabaseConnection db = new DatabaseConnection();
-
-        // ...
-
-
-        //...
-
-
-
         // pdf test
         PdfFormatter.createPDF("myPDF.pdf", "I really like this application");
+
 
 
 
@@ -59,6 +54,7 @@ public class Main extends Application {
         launch(args);
 
     }
+
 
     private User loggedInUser;
 
