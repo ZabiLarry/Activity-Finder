@@ -19,6 +19,7 @@ import sample.model.Activity;
 
 
 import sample.*;
+import sample.model.User;
 import sample.utils.DatabaseConnection;
 
 
@@ -68,9 +69,13 @@ public class BrowseController extends AbstractController implements Initializabl
     @FXML
     private void ratingButt(ActionEvent event) throws IOException {
 
+
     }
     @FXML
     private void favoriteButt(ActionEvent event) throws IOException {
+        DatabaseConnection dbconnect = new DatabaseConnection();
+        listForDisplay = dbconnect.getFavorites("s");
+        displayTable.setItems(listForDisplay);
     }
     @FXML
     private void locationButt(ActionEvent event) throws IOException {

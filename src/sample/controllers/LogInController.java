@@ -1,6 +1,7 @@
 package sample.controllers;
 
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import sample.Main;
@@ -43,7 +44,11 @@ public class LogInController extends AbstractController {
 
         if (passwordTF.getText().equals(DatabaseConnection.logInVerification(emailTF.getText()))) {
 
+<<<<<<< HEAD
+            RegularUser user = new RegularUser(emailTF.getText(), Integer.parseInt(DatabaseConnection.getID(emailTF.getText())), (ArrayList<Activity>) DatabaseConnection.getFavorites(DatabaseConnection.getID(emailTF.getText())));
+=======
             RegularUser user = new RegularUser(emailTF.getText(), DatabaseConnection.getID(emailTF.getText())*//*, DatabaseConnection.getFavorites(DatabaseConnection.getID(emailTF.getText()))*//*);
+>>>>>>> master
             main.setLoggedInUser(user);
 
         } else {
