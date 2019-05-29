@@ -68,7 +68,6 @@ public class HomePageController extends AbstractController implements Initializa
             window.setScene(homeScene);
             window.show();
 
-            changeScene(event, "../views/settingsView.fxml");
         }else{
             Alert alert = new Alert(Alert.AlertType.WARNING,"Please log in first!");
             alert.show();

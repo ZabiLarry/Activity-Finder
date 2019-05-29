@@ -1,8 +1,11 @@
 package sample.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import sample.model.Activity;
 import sample.utils.DatabaseConnection;
 
@@ -32,9 +35,11 @@ public class ActivityEditController extends AbstractController{
     @FXML
     TableColumn<Activity, String> typeDis;
 
+    ObservableList<Activity> list = FXCollections.observableArrayList();
+
     @FXML
     private void initialize() {
-        //set table
+        fillTable();
     }
 
     @FXML
@@ -91,6 +96,14 @@ public class ActivityEditController extends AbstractController{
 
     }
 
+    public void fillTable(){
+
+        table.setItems(null);
+        nameDis.setCellValueFactory(new PropertyValueFactory<>("name"));
+        typeDis.setCellValueFactory(new PropertyValueFactory<>("type"));
+        table.setItems(list);
+    }
+
     @FXML
     private void toHome(ActionEvent event) throws IOException {
         homePage(event);
@@ -101,6 +114,7 @@ public class ActivityEditController extends AbstractController{
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
 
 
 }
