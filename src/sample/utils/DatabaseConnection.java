@@ -1,13 +1,12 @@
 package sample.utils;
 
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
 import org.w3c.dom.Text;
 import sample.model.Activity;
 
-import sample.Main;
-import sample.model.CommercialUser;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -26,7 +25,7 @@ public class DatabaseConnection {
     private Connection connection;
     PreparedStatement prepstate = null;
 
-    Main main = new Main();
+
 
 
     public DatabaseConnection() {
@@ -100,6 +99,17 @@ public class DatabaseConnection {
             System.out.println("An error occurred on executing the query for loginVerification");
         }
         return password;
+    }
+
+    public static int getActivityID(StringProperty name, StringProperty type){
+
+        try {
+            return Integer.parseInt(String.valueOf(statement.executeQuery("SELECT idactivity FROM activity WHERE name = '" + name + "' AND type = '" + type + "';")));
+
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on executing the query for getActivityID");
+        }
+        return 0;
     }
 
 
@@ -213,11 +223,28 @@ public class DatabaseConnection {
 
 
     public static void updateEmail(String email){
-        Main main = new Main();
+
         try {
-            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE id = " + main.getLoggedInUser().getId());
+            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE id = " + AuthenticationSingleton.getInstance().getUser().getId());
         } catch (SQLException var7) {
             System.out.println("An error occurred on executing the registration query for updateEmail");
+        }
+    }
+
+    public static void updateActivity(int idactivity){
+        try {
+            statement.executeUpdate("UPDATE user SET email = '" +  "' WHERE id = " );
+        } catch (SQLException var7) {
+            System.out.println("An error occurred on executing the registration query for updateActivity");
+        }
+    }
+
+    public static void deleteActivity(int idactivity){
+
+        try {
+            statement.executeUpdate("DELETE FROM activity WHERE idactivity = '" + idactivity + "'");
+        } catch (SQLException var7) {
+            System.out.println("An error occurred on executing the registration query for deleteEmail");
         }
     }
 

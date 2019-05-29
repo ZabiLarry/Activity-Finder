@@ -49,11 +49,9 @@ public class SettingsController extends AbstractController{
 
     }
 
-    @FXML
-    private void addActivity(){
+    
 
-      //  DatabaseConnection.addActivity(nameTF.getText(), locTF.getText(), main.getLoggedInUser().getEmail(), typeTF.getText(), inCheck.isShowing(), outCheck.isShowing());
-    }
+
 
     @FXML
     private void toHome(ActionEvent event) throws IOException {
@@ -61,9 +59,17 @@ public class SettingsController extends AbstractController{
     }
 
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+    }
+
+
+    @FXML
+    private void toEditActivities(ActionEvent event) throws IOException {
+        changeScene(event, "../views/activityEditView.fxml");
     }
 
 
