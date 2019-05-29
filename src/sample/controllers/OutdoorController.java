@@ -34,6 +34,7 @@ public class OutdoorController extends AbstractController implements Initializab
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("kayaking"));
+            browseController.showText("kayaking");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -49,6 +50,7 @@ public class OutdoorController extends AbstractController implements Initializab
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("climbing"));
+            browseController.showText("climbing");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -64,6 +66,7 @@ public class OutdoorController extends AbstractController implements Initializab
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("swimming"));
+            browseController.showText("swimming");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -79,6 +82,7 @@ public class OutdoorController extends AbstractController implements Initializab
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("fishing"));
+            browseController.showText("fishing");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -94,6 +98,7 @@ public class OutdoorController extends AbstractController implements Initializab
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("zipline"));
+            browseController.showText("zipline");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();

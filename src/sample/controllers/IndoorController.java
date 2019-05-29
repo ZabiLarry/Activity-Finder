@@ -82,6 +82,7 @@ public class IndoorController extends AbstractController implements Initializabl
         Parent root = (Parent) loader.load();
         BrowseController browseController = loader.getController();
         browseController.recieveFunction(dbconnect.selectActivities("badminton"));
+        browseController.showText("badminton");
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
@@ -97,6 +98,7 @@ public class IndoorController extends AbstractController implements Initializabl
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("volleyball"));
+            browseController.showText("volleyball");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -113,6 +115,7 @@ public class IndoorController extends AbstractController implements Initializabl
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("soccer"));
+            browseController.showText("soccer");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -129,6 +132,7 @@ public class IndoorController extends AbstractController implements Initializabl
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("boxing"));
+            browseController.showText("boxing");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -144,6 +148,7 @@ public class IndoorController extends AbstractController implements Initializabl
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("boxercise"));
+            browseController.showText("boxercise");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -160,6 +165,7 @@ public class IndoorController extends AbstractController implements Initializabl
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("thaiBoxing"));
+            browseController.showText("thaiBoxing");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -175,6 +181,7 @@ public class IndoorController extends AbstractController implements Initializabl
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("basketball"));
+            browseController.showText("basketball");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -189,7 +196,8 @@ public class IndoorController extends AbstractController implements Initializabl
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("ju jitsu"));
+            browseController.recieveFunction(dbconnect.selectActivities("jujitsu"));
+            browseController.showText("jujitsu");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -205,6 +213,7 @@ public class IndoorController extends AbstractController implements Initializabl
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("climbing"));
+            browseController.showText("climbing");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -220,6 +229,7 @@ public class IndoorController extends AbstractController implements Initializabl
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("paddle Ball"));
+            browseController.showText("paddle Ball");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -235,6 +245,7 @@ public class IndoorController extends AbstractController implements Initializabl
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("Swimming"));
+            browseController.showText("Swimming");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -251,6 +262,7 @@ public class IndoorController extends AbstractController implements Initializabl
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.recieveFunction(dbconnect.selectActivities("squash"));
+            browseController.showText("squash");
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();

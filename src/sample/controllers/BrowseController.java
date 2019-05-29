@@ -9,10 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sample.model.Activity;
@@ -54,6 +51,9 @@ public class BrowseController extends AbstractController implements Initializabl
 
     ObservableList<Activity> listForDisplay = FXCollections.observableArrayList();
 
+    @FXML
+    private TextField tfSearch;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -67,14 +67,15 @@ public class BrowseController extends AbstractController implements Initializabl
         displayTable.setItems(listForDisplay);
     }
     @FXML
-    private void ratingButt(ActionEvent event) throws IOException {
-
-
+    private void indoorButt(ActionEvent event) throws IOException {
+        DatabaseConnection dbconnect = new DatabaseConnection();
+        listForDisplay = dbconnect.sortByIndoor();
+        displayTable.setItems(listForDisplay);
     }
     @FXML
-    private void favoriteButt(ActionEvent event) throws IOException {
+    private void outdoorButt(ActionEvent event) throws IOException {
         DatabaseConnection dbconnect = new DatabaseConnection();
-        listForDisplay = dbconnect.getFavorites("s");
+        listForDisplay = dbconnect.sortByOutdoor();
         displayTable.setItems(listForDisplay);
     }
     @FXML
@@ -97,10 +98,13 @@ public class BrowseController extends AbstractController implements Initializabl
         locationDis.setCellValueFactory(new PropertyValueFactory<>("location"));
         contactDis.setCellValueFactory(new PropertyValueFactory<>("contact"));
         typeDis.setCellValueFactory(new PropertyValueFactory<>("type"));
-        indoorDis.setCellValueFactory(new PropertyValueFactory<>("indoor"));
-        outdoorDis.setCellValueFactory(new PropertyValueFactory<>("outdoor"));
         displayTable.setItems(listForDisplay);
     }
+
+    public void showText(String text){
+        this.tfSearch.setText(text);
+    }
+
 }
 
 
