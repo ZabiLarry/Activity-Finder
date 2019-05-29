@@ -1,10 +1,13 @@
 package sample.model;
 
+import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import sample.utils.DatabaseConnection;
 
-public class Activity {
-    private int id;
+public class Activity extends StringProperty {
     private StringProperty name;
     private StringProperty location;
     private StringProperty contact;
@@ -12,8 +15,7 @@ public class Activity {
     private Byte indoor;
     private Byte outdoor;
 
-    public Activity(int id ,String name, String location, String contact, String type, byte indoor, byte outdoor){
-        this.id = id;
+    public Activity(String name, String location, String contact, String type, byte indoor, byte outdoor){
         this.name= new SimpleStringProperty(name);
         this.location= new SimpleStringProperty(location);
         this.contact= new SimpleStringProperty(contact);
@@ -22,16 +24,17 @@ public class Activity {
         this.outdoor=outdoor;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    @Override
+    public Object getBean() {
+        return null;
     }
 
     public String getName() {
         return name.get();
+    }
+
+    public int getID() {
+        return DatabaseConnection.getActivityID(name, type);
     }
 
     public void setName(String value) {
@@ -85,15 +88,48 @@ public class Activity {
     public StringProperty typeProperty(){return type;}
 
     @Override
-    public String toString() {
-        return "Activity{" +
-                "name=" + name +
-                ", location=" + location +
-                ", contact=" + contact +
-                ", type=" + type +
-                ", indoor=" + indoor +
-                ", outdoor=" + outdoor +
-                '}';
+    public void bind(ObservableValue<? extends String> observable) {
+
+    }
+
+    @Override
+    public void unbind() {
+
+    }
+
+    @Override
+    public boolean isBound() {
+        return false;
+    }
+
+    @Override
+    public String get() {
+        return null;
+    }
+
+    @Override
+    public void set(String value) {
+
+    }
+
+    @Override
+    public void addListener(ChangeListener<? super String> listener) {
+
+    }
+
+    @Override
+    public void removeListener(ChangeListener<? super String> listener) {
+
+    }
+
+    @Override
+    public void addListener(InvalidationListener listener) {
+
+    }
+
+    @Override
+    public void removeListener(InvalidationListener listener) {
+
     }
 }
 

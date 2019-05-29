@@ -17,6 +17,7 @@ import sample.model.Activity;
 
 import sample.*;
 import sample.model.User;
+import sample.utils.AuthenticationSingleton;
 import sample.utils.DatabaseConnection;
 
 
@@ -26,16 +27,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
-
 
 
 public class BrowseController extends AbstractController implements Initializable {
 
 
     @FXML
+    public Button saveEventBtn;
+    ObservableList<Activity> listForDisplay = FXCollections.observableArrayList();
+    @FXML
     private TableView<Activity> displayTable;
-
     @FXML
     private TableColumn<Activity, String> activityDis;
     @FXML
@@ -49,37 +53,44 @@ public class BrowseController extends AbstractController implements Initializabl
     @FXML
     private TableColumn<Activity, Byte> outdoorDis;
 
-    ObservableList<Activity> listForDisplay = FXCollections.observableArrayList();
-
-    @FXML
-    private TextField tfSearch;
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
     @FXML
-    private void typeButt(ActionEvent event) throws IOException {
+    private void favorite(ActionEvent event) {
+
+
+    }
+
+    @FXML
+    private void typeButt(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
         listForDisplay = dbconnect.sortByType();
         displayTable.setItems(listForDisplay);
     }
+
     @FXML
-    private void indoorButt(ActionEvent event) throws IOException {
+    private void ratingButt(ActionEvent event) {
+        ObservableList<Activity> listForShuffle;
         DatabaseConnection dbconnect = new DatabaseConnection();
-        listForDisplay = dbconnect.sortByIndoor();
+        listForShuffle = dbconnect.sortByRating();
+        listForDisplay = shuffleList(listForShuffle);
         displayTable.setItems(listForDisplay);
+
     }
+
     @FXML
-    private void outdoorButt(ActionEvent event) throws IOException {
+    private void favoriteButt(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
-        listForDisplay = dbconnect.sortByOutdoor();
+        listForDisplay = dbconnect.sortByRFavorite(1);
         displayTable.setItems(listForDisplay);
+
     }
+
     @FXML
-    private void locationButt(ActionEvent event) throws IOException {
+    private void locationButt(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
         listForDisplay = dbconnect.sortByLocation();
         displayTable.setItems(listForDisplay);
@@ -87,25 +98,72 @@ public class BrowseController extends AbstractController implements Initializabl
 
     @FXML
     private void toHome(ActionEvent event) throws IOException {
-       homePage(event);
+        homePage(event);
     }
 
-    public void recieveFunction(ObservableList<Activity> list){
+    public void receiveFunction(ObservableList<Activity> list) {
 
         listForDisplay = list;
-        displayTable.setItems(null);
         activityDis.setCellValueFactory(new PropertyValueFactory<>("name"));
         locationDis.setCellValueFactory(new PropertyValueFactory<>("location"));
         contactDis.setCellValueFactory(new PropertyValueFactory<>("contact"));
         typeDis.setCellValueFactory(new PropertyValueFactory<>("type"));
+        indoorDis.setCellValueFactory(new PropertyValueFactory<>("indoor"));
+        outdoorDis.setCellValueFactory(new PropertyValueFactory<>("outdoor"));
         displayTable.setItems(listForDisplay);
     }
 
-    public void showText(String text){
-        this.tfSearch.setText(text);
+    public ObservableList<Activity> shuffleList(ObservableList<Activity> activityList) {
+
+        ObservableList<Activity> list = FXCollections.observableArrayList();
+
+        for (Activity i : activityList) {
+            list.add(i);
+        }
+        Collections.shuffle(list);
+        activityList = list;
+        return activityList;
     }
 
+
+    public void addFavorite() {
+
+        TablePosition position = displayTable.getSelectionModel().getSelectedCells().get(0);
+        int row = position.getRow();
+
+        Activity activity = displayTable.getItems().get(row);
+        TableColumn col = position.getTableColumn();
+        String data = (String) col.getCellObservableValue(activity).getValue();
+
+        System.out.println(data);
+
+
+        if (AuthenticationSingleton.getInstance().getUser() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "loginRegular failed", ButtonType.OK);
+            System.out.println("no user");
+        } else {
+
+            AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().add(activity);
+
+            for (int x = 0; x < AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().size(); x++) {
+
+
+                System.out.println(AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getName());
+
+                DatabaseConnection dbconnect = new DatabaseConnection();
+                
+
+                /*dbconnect.addFavorite(AuthenticationSingleton.getInstance().getUser().getId(),
+                        AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getActivityID());*/
+
+            }
+
+
+        }
+
+    }
 }
+
 
 
 
