@@ -2,6 +2,7 @@ package sample.model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import sample.utils.DatabaseConnection;
 
 public class Activity {
     private StringProperty name;
@@ -22,6 +23,10 @@ public class Activity {
 
     public String getName() {
         return name.get();
+    }
+
+    public int getID() {
+        return DatabaseConnection.getActivityID(name, type);
     }
 
     public void setName(String value) {
