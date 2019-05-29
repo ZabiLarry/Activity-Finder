@@ -55,12 +55,7 @@ public class IndoorController extends AbstractController implements Initializabl
         backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/soccer-ball-ss-img.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
         soccer.setBackground(new Background(backgroundImage));
 
-
         backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/swimming.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
-
-        //swimming
-        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/images.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
-
         swimming.setBackground(new Background(backgroundImage));
 
         backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/123123124125r41243.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);

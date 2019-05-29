@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.OutdoorController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.OutdoorController">
    <children>
       <Label layoutX="210.0" layoutY="42.0" text="Outdoor">
          <font>
@@ -13,10 +13,13 @@
          </font>
       </Label>
       <Button layoutX="32.0" layoutY="28.0" mnemonicParsing="false" onAction="#toHome" prefHeight="41.0" prefWidth="53.0" text="Home" />
-      <Button fx:id="b3" layoutX="417.0" layoutY="157.0" mnemonicParsing="false" onAction="#toSwimming" prefHeight="70.0" prefWidth="112.0" text="Swimming" />
-      <Button fx:id="b5" layoutX="244.0" layoutY="256.0" mnemonicParsing="false" onAction="#toAdventure" prefHeight="70.0" prefWidth="112.0" text="Adventure" />
-      <Button fx:id="b4" layoutX="73.0" layoutY="256.0" mnemonicParsing="false" onAction="#toFishing" prefHeight="70.0" prefWidth="112.0" text="Fishing" />
-      <Button fx:id="b2" layoutX="244.0" layoutY="157.0" mnemonicParsing="false" onAction="#toClimbing" prefHeight="70.0" prefWidth="112.0" text="Climbing" />
-      <Button fx:id="b1" layoutX="73.0" layoutY="157.0" mnemonicParsing="false" onAction="#toKajak" prefHeight="70.0" prefWidth="112.0" text="Kajak" />
+      <Button fx:id="outSwimming" layoutX="319.0" layoutY="157.0" mnemonicParsing="false" onAction="#toSwimming" prefHeight="70.0" prefWidth="112.0" text="Swimming" />
+      <Button fx:id="adventure" layoutX="162.0" layoutY="256.0" mnemonicParsing="false" onAction="#toAdventure" prefHeight="70.0" prefWidth="112.0" text="Adventure" />
+      <Button fx:id="fishing" layoutX="17.0" layoutY="256.0" mnemonicParsing="false" onAction="#toFishing" prefHeight="70.0" prefWidth="112.0" text="Fishing" />
+      <Button fx:id="outClimbing" layoutX="162.0" layoutY="157.0" mnemonicParsing="false" onAction="#toClimbing" prefHeight="70.0" prefWidth="112.0" text="Climbing" />
+      <Button fx:id="kajak" layoutX="17.0" layoutY="157.0" mnemonicParsing="false" onAction="#toKajak" prefHeight="70.0" prefWidth="112.0" text="Kajak" />
+      <Button fx:id="golf" layoutX="319.0" layoutY="253.0" mnemonicParsing="false" onAction="#toGolf" prefHeight="77.0" prefWidth="112.0" text="Golf" />
+      <Button fx:id="hiking" layoutX="462.0" layoutY="157.0" mnemonicParsing="false" onAction="#toHiking" prefHeight="70.0" prefWidth="112.0" text="Hiking" />
+      <Button fx:id="paintball" layoutX="464.0" layoutY="255.0" mnemonicParsing="false" onAction="#toPaintball" prefHeight="70.0" prefWidth="112.0" text="Paintball" />
    </children>
 </AnchorPane>
