@@ -41,5 +41,6 @@
             <TableColumn fx:id="outdoorDis" prefWidth="65.0" text="Outdoor" />
         </columns>
       </TableView>
+      <Button fx:id="saveEventBtn" layoutX="100.0" layoutY="402.0" mnemonicParsing="false" onAction="#addFavorite" text="Save Event" />
    </children>
 </AnchorPane>

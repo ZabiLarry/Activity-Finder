@@ -271,9 +271,10 @@ public class DatabaseConnection {
     }
 
 
-    static void addFavorite(String userid, String favouriteid, String eventid) {
+    public static void addFavorite(int userid, int favouriteid) {
+
         try {
-            statement.executeQuery("INSERT INTO favourites (userid, activityid, rating)VALUES ('" + userid + "','" + favouriteid + "',''" + eventid + "'");
+            statement.executeQuery("INSERT INTO user_has_activity VALUES (" + userid + "," + favouriteid + ",null,null)");
             System.out.println("favorite added");
         } catch (SQLException var7) {
             System.out.println("");
@@ -588,6 +589,11 @@ public class DatabaseConnection {
 
         return activitiesList;
     }
+
+
+
+
+
 
 
 
