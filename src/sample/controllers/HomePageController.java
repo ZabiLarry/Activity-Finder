@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 import sample.utils.AuthenticationSingleton;
 import sample.utils.DatabaseConnection;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -86,7 +85,7 @@ public class HomePageController extends AbstractController implements Initializa
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(db.browseController());
+            browseController.receiveFunction(db.browseController());
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();

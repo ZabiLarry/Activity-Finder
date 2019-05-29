@@ -1,10 +1,13 @@
 package sample.model;
 
+import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import sample.utils.DatabaseConnection;
 
-public class Activity {
+public class Activity extends StringProperty {
     private StringProperty name;
     private StringProperty location;
     private StringProperty contact;
@@ -19,6 +22,11 @@ public class Activity {
         this.type= new SimpleStringProperty(type);
         this.indoor=indoor;
         this.outdoor=outdoor;
+    }
+
+    @Override
+    public Object getBean() {
+        return null;
     }
 
     public String getName() {
@@ -79,5 +87,49 @@ public class Activity {
     public StringProperty contactProperty(){return contact;}
     public StringProperty typeProperty(){return type;}
 
+    @Override
+    public void bind(ObservableValue<? extends String> observable) {
+
+    }
+
+    @Override
+    public void unbind() {
+
+    }
+
+    @Override
+    public boolean isBound() {
+        return false;
+    }
+
+    @Override
+    public String get() {
+        return null;
+    }
+
+    @Override
+    public void set(String value) {
+
+    }
+
+    @Override
+    public void addListener(ChangeListener<? super String> listener) {
+
+    }
+
+    @Override
+    public void removeListener(ChangeListener<? super String> listener) {
+
+    }
+
+    @Override
+    public void addListener(InvalidationListener listener) {
+
+    }
+
+    @Override
+    public void removeListener(InvalidationListener listener) {
+
+    }
 }
 

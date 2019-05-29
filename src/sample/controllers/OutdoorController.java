@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -33,7 +32,7 @@ public class OutdoorController extends AbstractController implements Initializab
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("kayaking"));
+            browseController.receiveFunction(dbconnect.selectActivities("kayaking"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -48,7 +47,7 @@ public class OutdoorController extends AbstractController implements Initializab
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("climbing"));
+            browseController.receiveFunction(dbconnect.selectActivities("climbing"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -63,7 +62,7 @@ public class OutdoorController extends AbstractController implements Initializab
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("swimming"));
+            browseController.receiveFunction(dbconnect.selectActivities("swimming"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -78,7 +77,7 @@ public class OutdoorController extends AbstractController implements Initializab
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("fishing"));
+            browseController.receiveFunction(dbconnect.selectActivities("fishing"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -93,7 +92,7 @@ public class OutdoorController extends AbstractController implements Initializab
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("zipline"));
+            browseController.receiveFunction(dbconnect.selectActivities("zipline"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
