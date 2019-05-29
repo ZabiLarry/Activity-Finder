@@ -1,13 +1,12 @@
 package sample.utils;
 
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
 import org.w3c.dom.Text;
 import sample.model.Activity;
 
-import sample.Main;
-import sample.model.CommercialUser;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -26,7 +25,7 @@ public class DatabaseConnection {
     private Connection connection;
     PreparedStatement prepstate = null;
 
-    Main main = new Main();
+
 
 
     public DatabaseConnection() {
@@ -102,12 +101,68 @@ public class DatabaseConnection {
         return password;
     }
 
+    public static int getActivityID(StringProperty name, StringProperty type){
+
+        try {
+            return Integer.parseInt(String.valueOf(statement.executeQuery("SELECT idactivity FROM activity WHERE name = '" + name + "' AND type = '" + type + "';")));
+
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on executing the query for getActivityID");
+        }
+        return 0;
+    }
+
 
     //changed to just fetching username since we don't know the ID before the user has given us their login
 
-    public static String getEmail(int counter) {
+    public static String getEmailCommercial(int counter) {
+        try {
+            ResultSet rs = statement.executeQuery("SELECT email FROM commercialuser WHERE idcommercialUser =" + counter);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+
+                return returnValue;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching commercial email query");
+        }
+
+        return "";
+    }
+
+    public static String getEmailRegular(int counter) {
         try {
             ResultSet rs = statement.executeQuery("SELECT email FROM user WHERE iduser =" + counter);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+
+                return returnValue;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching regular email query");
+        }
+
+        return "";
+    }
+
+    public static String getPhone(int counter) {
+        try {
+            ResultSet rs = statement.executeQuery("SELECT phoneNumber FROM user WHERE iduser =" + counter);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+
+                return returnValue;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching email query");
+        }
+
+        return "";
+    }
+
+    public static String getAddress(int counter) {
+        try {
+            ResultSet rs = statement.executeQuery("SELECT address FROM user WHERE iduser =" + counter);
             if (rs.next()) {
                 returnValue = rs.getString(1);
 
@@ -136,7 +191,7 @@ public class DatabaseConnection {
         return 0;
     }
 
-    public static String getPassword(int counter) {
+    public static String getPasswordRegular(int counter) {
         try {
             ResultSet rs = statement.executeQuery("SELECT password FROM user WHERE iduser = " + counter);
             if (rs.next()) {
@@ -150,23 +205,46 @@ public class DatabaseConnection {
         return "";
     }
 
-    static void addRegistration(String name, String address, String email, String username, String password) {
+    public static String getPasswordCommercial(int counter) {
         try {
-            statement.executeUpdate("INSERT INTO user (email, username, password)VALUES (  '" + email + "','" + username + "','" + password + "')");
-        } catch (SQLException var7) {
-            System.out.println("An error occurred on executing the registration query.");
+            ResultSet rs = statement.executeQuery("SELECT password FROM commercialuser WHERE idcommercialuser = " + counter);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+                return returnValue;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching password query.");
         }
 
-
+        return "";
     }
 
 
+
+
     public static void updateEmail(String email){
-        Main main = new Main();
+
         try {
-            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE username = " + main.getLoggedInUser());
+            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE id = " + AuthenticationSingleton.getInstance().getUser().getId());
         } catch (SQLException var7) {
             System.out.println("An error occurred on executing the registration query for updateEmail");
+        }
+    }
+
+    public static void updateActivity(int idactivity){
+        try {
+            statement.executeUpdate("UPDATE user SET email = '" +  "' WHERE id = " );
+        } catch (SQLException var7) {
+            System.out.println("An error occurred on executing the registration query for updateActivity");
+        }
+    }
+
+    public static void deleteActivity(int idactivity){
+
+        try {
+            statement.executeUpdate("DELETE FROM activity WHERE idactivity = '" + idactivity + "'");
+        } catch (SQLException var7) {
+            System.out.println("An error occurred on executing the registration query for deleteEmail");
         }
     }
 
@@ -193,9 +271,10 @@ public class DatabaseConnection {
     }
 
 
-    static void addFavorite(String userid, String favouriteid, String eventid) {
+    public static void addFavorite(int userid, int favouriteid) {
+
         try {
-            statement.executeQuery("INSERT INTO favourites (userid, activityid, rating)VALUES ('" + userid + "','" + favouriteid + "',''" + eventid + "'");
+            statement.executeQuery("INSERT INTO user_has_activity VALUES (" + userid + "," + favouriteid + ",null,null)");
             System.out.println("favorite added");
         } catch (SQLException var7) {
             System.out.println("");
@@ -330,7 +409,7 @@ public class DatabaseConnection {
         return "";
     }*/
 
-    public static int getID(String email) {
+    public static int getIDRegular(String email) {
 
         try {
             ResultSet rs = statement.executeQuery("SELECT iduser FROM user WHERE email = " + email);
@@ -345,6 +424,39 @@ public class DatabaseConnection {
         }
 
         return 0;
+    }
+    public static int getIDCommercial(String email) {
+
+        try {
+            ResultSet rs = statement.executeQuery("SELECT idcommercialUser FROM commercialuser WHERE email = " + email);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+                return returnValueInt;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching ID query");
+
+
+        }
+
+        return 0;
+    }
+
+    public static String getName(String email) {
+
+        try {
+            ResultSet rs = statement.executeQuery("SELECT name FROM commercialuser WHERE email = " + email);
+            if (rs.next()) {
+                returnValue = rs.getString(1);
+                return returnValue;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching ID query");
+
+
+        }
+
+        return "";
     }
 
     public static ObservableList<Activity> getFavorites(String iduser){
@@ -477,6 +589,11 @@ public class DatabaseConnection {
 
         return activitiesList;
     }
+
+
+
+
+
 
 
 

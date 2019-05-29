@@ -26,21 +26,10 @@ public class SettingsController extends AbstractController{
     TextField emailTF;
 
     @FXML
-    TextField nameTF;
+    TextField phoneTF;
 
     @FXML
-    TextField locTF;
-
-    @FXML
-    TextField typeTF;
-
-    @FXML
-    ChoiceBox inCheck;
-
-    @FXML
-    ChoiceBox outCheck;
-
-    Main main = new Main();
+    TextField addressTF;
 
     @FXML
     private void changeEmail(){
@@ -49,11 +38,9 @@ public class SettingsController extends AbstractController{
 
     }
 
-    @FXML
-    private void addActivity(){
+    
 
-      //  DatabaseConnection.addActivity(nameTF.getText(), locTF.getText(), main.getLoggedInUser().getEmail(), typeTF.getText(), inCheck.isShowing(), outCheck.isShowing());
-    }
+
 
     @FXML
     private void toHome(ActionEvent event) throws IOException {
@@ -61,9 +48,17 @@ public class SettingsController extends AbstractController{
     }
 
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+    }
+
+
+    @FXML
+    private void toEditActivities(ActionEvent event) throws IOException {
+        changeScene(event, "../views/activityEditView.fxml");
     }
 
 
