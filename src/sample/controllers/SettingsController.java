@@ -26,21 +26,10 @@ public class SettingsController extends AbstractController{
     TextField emailTF;
 
     @FXML
-    TextField nameTF;
+    TextField phoneTF;
 
     @FXML
-    TextField locTF;
-
-    @FXML
-    TextField typeTF;
-
-    @FXML
-    ChoiceBox inCheck;
-
-    @FXML
-    ChoiceBox outCheck;
-
-    Main main = new Main();
+    TextField addressTF;
 
     @FXML
     private void changeEmail(){
