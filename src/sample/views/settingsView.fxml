@@ -17,10 +17,10 @@
       <Label layoutX="40.0" layoutY="174.0" text="E-mail:" />
       <TextField fx:id="emailTF" layoutX="39.0" layoutY="210.0" />
       <Label layoutX="236.0" layoutY="174.0" text="Phone:" />
-      <TextField fx:id="emailTF1" layoutX="236.0" layoutY="210.0" />
+      <TextField fx:id="phoneTF" layoutX="236.0" layoutY="210.0" />
       <Button layoutX="131.0" layoutY="277.0" mnemonicParsing="false" onAction="#changeEmail" text="Change" />
       <Label layoutX="423.0" layoutY="174.0" text="Address:" />
-      <TextField fx:id="emailTF11" layoutX="423.0" layoutY="210.0" />
+      <TextField fx:id="addressTF" layoutX="423.0" layoutY="210.0" />
       <Button layoutX="355.0" layoutY="277.0" mnemonicParsing="false" onAction="#toEditActivities" text="Go to Edit Activities" />
    </children>
 </AnchorPane>
