@@ -17,6 +17,7 @@ public abstract class AbstractController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
         Parent root = loader.load();
         stage.setScene(new Scene(root));
+        stage.show();
     }
 
     void homePage(ActionEvent event) throws IOException {
@@ -24,5 +25,6 @@ public abstract class AbstractController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/homePageview.fxml"));
         Parent root = loader.load();
         stage.setScene(new Scene(root));
+        stage.show();
     }
 }

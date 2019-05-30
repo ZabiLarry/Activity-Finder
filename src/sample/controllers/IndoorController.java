@@ -14,6 +14,7 @@ import sample.utils.DatabaseConnection;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 
 public class IndoorController extends AbstractController implements Initializable {
@@ -55,8 +56,7 @@ public class IndoorController extends AbstractController implements Initializabl
         backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/soccer-ball-ss-img.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
         soccer.setBackground(new Background(backgroundImage));
 
-        //swimming
-        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/images.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/swimming.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
         swimming.setBackground(new Background(backgroundImage));
 
         backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/123123124125r41243.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
@@ -121,6 +121,8 @@ public class IndoorController extends AbstractController implements Initializabl
         }
 
     }
+
+
 
     @FXML
     private void toBoxing(ActionEvent event) throws IOException {
