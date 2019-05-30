@@ -101,7 +101,7 @@ public class DatabaseConnection {
         return password;
     }
 
-    public static int getActivityID(StringProperty name, StringProperty type){
+    public static int getActivityID(String name, String type){
 
         try {
             return Integer.parseInt(String.valueOf(statement.executeQuery("SELECT idactivity FROM activity WHERE name = '" + name + "' AND type = '" + type + "';")));
@@ -274,10 +274,10 @@ public class DatabaseConnection {
     public static void addFavorite(int userid, int favouriteid) {
 
         try {
-            statement.executeQuery("INSERT INTO user_has_activity VALUES (" + userid + "," + favouriteid + ",null,null)");
+            statement.executeQuery("INSERT INTO user_has_activity VALUES (" + userid + "," + favouriteid + "," +1 +","+null+")");
             System.out.println("favorite added");
         } catch (SQLException var7) {
-            System.out.println("");
+            System.out.println("error with adding favorites");
 
 
         }
