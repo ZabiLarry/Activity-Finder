@@ -89,8 +89,8 @@ public class ActivityEditController extends AbstractController {
         System.out.println(table.getSelectionModel().getSelectedCells().get(0).toString());
         System.out.println(table.getItems().get(0));
         System.out.println(table.getItems().get(1));
-        StringProperty name = table.getItems().get(0);
-        StringProperty type = table.getItems().get(1);
+        StringProperty name = table.getItems().get(0).nameProperty();
+        StringProperty type = table.getItems().get(1).typeProperty();
         DatabaseConnection.deleteActivity(DatabaseConnection.getActivityID(name, type));
         fillTable();
     }
@@ -135,8 +135,8 @@ public class ActivityEditController extends AbstractController {
         TableColumn col = position.getTableColumn();
         //String data = (String) col.getCellObservableValue(activity).getValue();
         //System.out.println(data);
-        StringProperty name = table.getItems().get(0);
-        StringProperty type = table.getItems().get(1);
+        StringProperty name = table.getItems().get(0).nameProperty();
+        StringProperty type = table.getItems().get(1).typeProperty();
         int activityid = DatabaseConnection.getActivityID(name, type);
         nameTF.setText(DatabaseConnection.selectActivity(activityid).getName());
         locTF.setText(DatabaseConnection.selectActivity(activityid).getLocation());
