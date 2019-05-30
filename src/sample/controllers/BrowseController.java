@@ -92,9 +92,12 @@ public class BrowseController extends AbstractController implements Initializabl
         DatabaseConnection dbconnect = new DatabaseConnection();
         listForDisplay = dbconnect.sortByRFavorite(1);
         StringBuilder vel = new StringBuilder();
+        int c = 1;
         for (Activity a: listForDisplay){
+            vel.append("[" + c +"]");
             vel.append(a.toString());
-            vel.append("\n");
+            vel.append("\n\n");
+            c++;
         }
         displayTable.setItems(listForDisplay);
         savePDF.setVisible(true);
@@ -179,6 +182,8 @@ public class BrowseController extends AbstractController implements Initializabl
         }
 
     }
+
+
 }
 
 

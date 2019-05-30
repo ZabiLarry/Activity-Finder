@@ -120,14 +120,13 @@ public class OutdoorController extends AbstractController implements Initializab
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("golf"));
+            browseController.receiveFunction(dbconnect.selectActivities("golf"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
         }catch (IOException e){
             e.printStackTrace();
         }
-
     }
     @FXML
     private void toHiking(ActionEvent event) throws IOException {
@@ -135,14 +134,13 @@ public class OutdoorController extends AbstractController implements Initializab
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("hiking"));
+            browseController.receiveFunction(dbconnect.selectActivities("hiking"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
         }catch (IOException e){
             e.printStackTrace();
         }
-
     }
     @FXML
     private void toPaintball(ActionEvent event) throws IOException {
@@ -150,14 +148,13 @@ public class OutdoorController extends AbstractController implements Initializab
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("paintball"));
+            browseController.receiveFunction(dbconnect.selectActivities("zipline"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
         }catch (IOException e){
             e.printStackTrace();
         }
-
     }
 
 }

@@ -21,10 +21,6 @@ public class Activity {
         this.outdoor = outdoor;
     }
 
-    public Object getBean() {
-        return null;
-    }
-
     public String getName() {
         return name.get();
     }
@@ -36,6 +32,8 @@ public class Activity {
     public void setName(String value) {
         name.set(value);
     }
+
+
 
 
     public String getLocation() {
@@ -58,8 +56,8 @@ public class Activity {
         return type.get();
     }
 
-    public void setType(String value) {
-        type.set(value);
+    public void setType(String type) {
+        this.type.set(type);
     }
 
     public Byte getIndoor() {
@@ -94,18 +92,20 @@ public class Activity {
         return type;
     }
 
+    private String getActivityPlace(){
+        if(indoor==1){
+            return "indoor";
+        }
+        return "outdoor";
+    }
 
     @Override
     public String toString() {
-        return "Activity{" +
-                "name=" + name +
-                ", location=" + location +
-                ", contact=" + contact +
-                ", type=" + type +
-                ", indoor=" + indoor +
-                ", outdoor=" + outdoor +
-                '}';
-
+        return "Activity Name " + getName() + "\n" +
+                "Location: " + getLocation() + "\n" +
+                "Contact: " + getContact() + "\n" +
+                "Type: "  + getType() + "\n" +
+            "Indoor/outdoor: " + getActivityPlace();
     }
 }
 
