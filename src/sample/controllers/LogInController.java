@@ -98,16 +98,11 @@ public class LogInController extends AbstractController {
                 } else {
                     System.out.println("failed password retrieve");
                 }
-
             } else {
                 System.out.println("failed to get email");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "loginCommercial failed", ButtonType.OK);
                 lblStatus.setText("Login Failed");
-
-
             }
-
-
         }
     }
 
