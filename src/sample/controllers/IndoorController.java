@@ -80,7 +80,7 @@ public class IndoorController extends AbstractController implements Initializabl
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
         Parent root = (Parent) loader.load();
         BrowseController browseController = loader.getController();
-        browseController.recieveFunction(dbconnect.selectActivities("badminton"));
+        browseController.receiveFunction(dbconnect.selectActivities("badminton"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
@@ -95,7 +95,7 @@ public class IndoorController extends AbstractController implements Initializabl
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("volleyball"));
+            browseController.receiveFunction(dbconnect.selectActivities("volleyball"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -111,7 +111,7 @@ public class IndoorController extends AbstractController implements Initializabl
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("soccer"));
+            browseController.receiveFunction(dbconnect.selectActivities("soccer"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -127,7 +127,7 @@ public class IndoorController extends AbstractController implements Initializabl
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("boxing"));
+            browseController.receiveFunction(dbconnect.selectActivities("boxing"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -142,7 +142,7 @@ public class IndoorController extends AbstractController implements Initializabl
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("boxercise"));
+            browseController.receiveFunction(dbconnect.selectActivities("boxercise"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -158,7 +158,7 @@ public class IndoorController extends AbstractController implements Initializabl
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("thaiBoxing"));
+            browseController.receiveFunction(dbconnect.selectActivities("thaiBoxing"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -173,7 +173,7 @@ public class IndoorController extends AbstractController implements Initializabl
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("basketball"));
+            browseController.receiveFunction(dbconnect.selectActivities("basketball"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -188,7 +188,7 @@ public class IndoorController extends AbstractController implements Initializabl
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("ju jitsu"));
+            browseController.receiveFunction(dbconnect.selectActivities("ju jitsu"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -203,7 +203,7 @@ public class IndoorController extends AbstractController implements Initializabl
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("climbing"));
+            browseController.receiveFunction(dbconnect.selectActivities("climbing"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -218,7 +218,7 @@ public class IndoorController extends AbstractController implements Initializabl
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("paddle Ball"));
+            browseController.receiveFunction(dbconnect.selectActivities("paddle Ball"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -233,7 +233,7 @@ public class IndoorController extends AbstractController implements Initializabl
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("Swimming"));
+            browseController.receiveFunction(dbconnect.selectActivities("Swimming"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -249,7 +249,7 @@ public class IndoorController extends AbstractController implements Initializabl
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(dbconnect.selectActivities("squash"));
+            browseController.receiveFunction(dbconnect.selectActivities("squash"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();

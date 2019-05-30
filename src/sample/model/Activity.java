@@ -12,13 +12,17 @@ public class Activity {
     private Byte indoor;
     private Byte outdoor;
 
-    public Activity(String name, String location, String contact, String type, byte indoor, byte outdoor){
-        this.name= new SimpleStringProperty(name);
-        this.location= new SimpleStringProperty(location);
-        this.contact= new SimpleStringProperty(contact);
-        this.type= new SimpleStringProperty(type);
-        this.indoor=indoor;
-        this.outdoor=outdoor;
+    public Activity(String name, String location, String contact, String type, byte indoor, byte outdoor) {
+        this.name = new SimpleStringProperty(name);
+        this.location = new SimpleStringProperty(location);
+        this.contact = new SimpleStringProperty(contact);
+        this.type = new SimpleStringProperty(type);
+        this.indoor = indoor;
+        this.outdoor = outdoor;
+    }
+
+    public Object getBean() {
+        return null;
     }
 
     public String getName() {
@@ -74,10 +78,21 @@ public class Activity {
         this.outdoor = outdoor;
     }
 
-    public StringProperty nameProperty(){return name;}
-    public StringProperty locationProperty(){return location;}
-    public StringProperty contactProperty(){return contact;}
-    public StringProperty typeProperty(){return type;}
+    public StringProperty nameProperty() {
+        return name;
+    }
+
+    public StringProperty locationProperty() {
+        return location;
+    }
+
+    public StringProperty contactProperty() {
+        return contact;
+    }
+
+    public StringProperty typeProperty() {
+        return type;
+    }
 
 
     @Override
@@ -90,6 +105,7 @@ public class Activity {
                 ", indoor=" + indoor +
                 ", outdoor=" + outdoor +
                 '}';
+
     }
 }
 

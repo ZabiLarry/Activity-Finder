@@ -118,10 +118,9 @@ public class BrowseController extends AbstractController implements Initializabl
         homePage(event);
     }
 
-    public void recieveFunction(ObservableList<Activity> list) {
+    public void receiveFunction(ObservableList<Activity> list) {
 
         listForDisplay = list;
-        displayTable.setItems(null);
         activityDis.setCellValueFactory(new PropertyValueFactory<>("name"));
         locationDis.setCellValueFactory(new PropertyValueFactory<>("location"));
         contactDis.setCellValueFactory(new PropertyValueFactory<>("contact"));
