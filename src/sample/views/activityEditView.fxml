@@ -25,10 +25,10 @@
       <Button layoutX="41.0" layoutY="340.0" mnemonicParsing="false" onAction="#addActivity" text="Add" />
       <Button layoutX="128.0" layoutY="340.0" mnemonicParsing="false" onAction="#updateActivity" text="Update" />
       <Button layoutX="411.0" layoutY="340.0" mnemonicParsing="false" onAction="#deleteActivity" text="Delete" />
-      <TableView fx:id="table" layoutX="319.0" layoutY="49.0" prefHeight="265.0" prefWidth="234.0">
+      <TableView fx:id="table" layoutX="319.0" layoutY="49.0" onMouseClicked="#fillFields" prefHeight="265.0" prefWidth="234.0">
         <columns>
-          <TableColumn prefWidth="138.4000244140625" text="name" />
-            <TableColumn prefWidth="94.39990234375" text="type" />
+          <TableColumn fx:id="nameDis" prefWidth="138.4000244140625" text="name" />
+            <TableColumn fx:id="typeDis" prefWidth="94.39990234375" text="type" />
         </columns>
       </TableView>
       <Label layoutX="36.0" layoutY="211.0" text="Contact:" />
