@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="1368.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.BrowseController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="1368.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.BrowseController">
    <children>
       <Label layoutX="145.0" layoutY="30.0" text="Browse">
          <font>
@@ -41,6 +41,7 @@
             <TableColumn fx:id="outdoorDis" prefWidth="65.0" text="Outdoor" />
         </columns>
       </TableView>
-      <Button fx:id="saveEventBtn" layoutX="100.0" layoutY="402.0" mnemonicParsing="false" onAction="#addFavorite" text="Save Event" />
+      <Button fx:id="saveEventBtn" layoutX="132.0" layoutY="402.0" mnemonicParsing="false" onAction="#addFavorite" text="Save Event" />
+      <Button fx:id="savePDF" layoutX="34.0" layoutY="402.0" mnemonicParsing="false" text="Save PDF" visible="false" />
    </children>
 </AnchorPane>

@@ -490,7 +490,8 @@ public class DatabaseConnection {
         ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT  `name`, `location`, `contact`, `type`, `indoor`, `outdoor` FROM activity WHERE  = '" + userId + "'" + " ORDER BY ASC");
+            ResultSet rs = statement.executeQuery("SELECT * FROM activity INNERJOIN user_has_activity ON user_has_activity.activity_idactivity=activity.idactivity WHERE" +
+                    " user_has_activity.user_iduser=" + userId + ";");
             String rsName;
             String rsLocation;
             String rsContact;
@@ -508,6 +509,7 @@ public class DatabaseConnection {
             }
         } catch (SQLException var10) {
             System.out.println("An error occurred on executing query.");
+            var10.printStackTrace();
         }
 
         return activitiesList;

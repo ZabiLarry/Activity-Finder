@@ -112,9 +112,8 @@ public class LogInController extends AbstractController {
     }
 
     public void forgotPass(ActionEvent event) {
-
         try {
-            changeScene(event, "/views/forgotPasswordView.fxml");
+            changeScene(event, "../views/forgotPasswordView.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }

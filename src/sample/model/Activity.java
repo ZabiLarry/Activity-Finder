@@ -79,5 +79,17 @@ public class Activity {
     public StringProperty contactProperty(){return contact;}
     public StringProperty typeProperty(){return type;}
 
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "name=" + name +
+                ", location=" + location +
+                ", contact=" + contact +
+                ", type=" + type +
+                ", indoor=" + indoor +
+                ", outdoor=" + outdoor +
+                '}';
+    }
 }
 

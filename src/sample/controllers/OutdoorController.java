@@ -7,6 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import sample.utils.DatabaseConnection;
 
@@ -18,10 +21,18 @@ public class OutdoorController extends AbstractController implements Initializab
 
     DatabaseConnection dbconnect = new DatabaseConnection();
 
+    @FXML
+    private Button kajak, climbing, swimming, hiking, fishing, adventure, golf, paintball;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        BackgroundSize bs = new BackgroundSize(112, 70, false, false, true, false);
+
+
+        BackgroundImage backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/vollyball.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        kajak.setBackground(new Background(backgroundImage));
 
     }
 
