@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 import sample.utils.AuthenticationSingleton;
 import sample.utils.DatabaseConnection;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,6 +28,7 @@ public class HomePageController extends AbstractController implements Initializa
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        /*BackgroundImage backgroundImage = new BackgroundImage( new Image( getClass().getResource("../resources/vollyball.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
         if(AuthenticationSingleton.getInstance().getUser() != null){
             authenticationButton.setText("Log out");
@@ -54,8 +54,9 @@ public class HomePageController extends AbstractController implements Initializa
 
 
         BackgroundImage backgroundImage = new BackgroundImage( new Image( getClass().getResource("../resources/vollyball.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+>>>>>>> b561afc6ad0c361baf0c3bd6446eddfbba247739
         Background vollyBall = new Background(backgroundImage);
-        indoorButton.setBackground(vollyBall);
+        indoorButton.setBackground(vollyBall);*/
     }
 
     @FXML
@@ -68,7 +69,6 @@ public class HomePageController extends AbstractController implements Initializa
             window.setScene(homeScene);
             window.show();
 
-            changeScene(event, "../views/settingsView.fxml");
         }else{
             Alert alert = new Alert(Alert.AlertType.WARNING,"Please log in first!");
             alert.show();
@@ -87,7 +87,7 @@ public class HomePageController extends AbstractController implements Initializa
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.recieveFunction(db.browseController());
+            browseController.receiveFunction(db.browseController());
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();

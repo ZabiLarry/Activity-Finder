@@ -6,16 +6,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.model.CommercialUser;
+import sample.model.RegularUser;
+import sample.utils.AuthenticationSingleton;
 import sample.utils.DatabaseConnection;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SettingsController extends AbstractController{
@@ -26,21 +30,17 @@ public class SettingsController extends AbstractController{
     TextField emailTF;
 
     @FXML
-    TextField nameTF;
+    TextField phoneTF;
 
     @FXML
-    TextField locTF;
+    TextField addressTF;
 
     @FXML
-    TextField typeTF;
+    PasswordField passwordTF;
 
     @FXML
-    ChoiceBox inCheck;
+    Button goToEditBTN;
 
-    @FXML
-    ChoiceBox outCheck;
-
-    Main main = new Main();
 
     @FXML
     private void changeEmail(){
@@ -48,12 +48,7 @@ public class SettingsController extends AbstractController{
         DatabaseConnection.updateEmail(emailTF.getText());
 
     }
-
-    @FXML
-    private void addActivity(){
-
-      //  DatabaseConnection.addActivity(nameTF.getText(), locTF.getText(), main.getLoggedInUser().getEmail(), typeTF.getText(), inCheck.isShowing(), outCheck.isShowing());
-    }
+    
 
     @FXML
     private void toHome(ActionEvent event) throws IOException {
@@ -63,7 +58,21 @@ public class SettingsController extends AbstractController{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (Objects.equals(String.valueOf(AuthenticationSingleton.getInstance().getUser().getClass()), "class sample.model.CommercialUser")){
+            System.out.println("is commercial");
+            phoneTF.setDisable(false);
+            addressTF.setDisable(false);
+            goToEditBTN.setDisable(false);
+        }else{
+            System.out.println("is not commercial" );
+        }
 
+    }
+
+
+    @FXML
+    private void toEditActivities(ActionEvent event) throws IOException {
+        changeScene(event, "../views/activityEditView.fxml");
     }
 
 

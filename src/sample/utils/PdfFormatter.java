@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class PdfFormatter {
 
-    public static void createPDF(String path, String content) throws DocumentException, IOException {
+    private static void createPDF(String path, String content) throws DocumentException, IOException {
         Document document= new Document();
         PdfWriter.getInstance(document,new FileOutputStream(path));
         document.open();
@@ -25,7 +25,7 @@ public class PdfFormatter {
         document.close();
     }
 
-    public void openPDFRecipeSaver(ActionEvent event, String contnt) {
+    public static void openPDFRecipeSaver(ActionEvent event, String contnt) {
         Node source = (Node) event.getSource();
         Window theStage = source.getScene().getWindow();
 

@@ -1,14 +1,23 @@
 package sample.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public abstract class User {
     private String email;
     private int id;
+    private ObservableList<Activity> favoritedActivities = FXCollections.observableArrayList();
 
 
     public User(String email, int id) {
         this.email = email;
         this.id = id;
 
+
+    }
+
+    public ObservableList<Activity> getFavoritedActivities() {
+        return favoritedActivities;
     }
 
     public String getEmail() {
@@ -20,15 +29,6 @@ public abstract class User {
     }
 
 
-
-
-
-
-
-
-
-
-
     public int getId() {
         return id;
     }
@@ -36,4 +36,7 @@ public abstract class User {
     public void setId(int id) {
         this.id = id;
     }
+
+
+
 }
