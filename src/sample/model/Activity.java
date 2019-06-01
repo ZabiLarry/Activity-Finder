@@ -5,6 +5,7 @@ import javafx.beans.property.StringProperty;
 import sample.utils.DatabaseConnection;
 
 public class Activity {
+    private int id;
     private StringProperty name;
     private StringProperty location;
     private StringProperty contact;
@@ -12,13 +13,22 @@ public class Activity {
     private Byte indoor;
     private Byte outdoor;
 
-    public Activity(String name, String location, String contact, String type, byte indoor, byte outdoor) {
+    public Activity(int id,String name, String location, String contact, String type, byte indoor, byte outdoor) {
+        this.id = id;
         this.name = new SimpleStringProperty(name);
         this.location = new SimpleStringProperty(location);
         this.contact = new SimpleStringProperty(contact);
         this.type = new SimpleStringProperty(type);
         this.indoor = indoor;
         this.outdoor = outdoor;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

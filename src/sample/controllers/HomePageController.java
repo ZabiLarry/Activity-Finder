@@ -128,7 +128,6 @@ public class HomePageController extends AbstractController implements Initializa
 
     @FXML
     private void logIn(ActionEvent event) throws IOException {
-
         changeScene(event, "../views/loginView.fxml");
 
     }

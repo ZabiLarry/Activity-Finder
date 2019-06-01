@@ -37,15 +37,10 @@ public class ActivityEditController extends AbstractController {
     @FXML
     TableColumn<Activity, String> typeDis;
 
-    ObservableList<Activity> list = FXCollections.observableArrayList();
+    private ObservableList<Activity> list = FXCollections.observableArrayList();
 
     private byte i;
     private byte o;
-
-    @FXML
-    private void initialize() {
-        fillTable();
-    }
 
     @FXML
     private void addActivity() {
@@ -109,7 +104,8 @@ public class ActivityEditController extends AbstractController {
 
 
     private void fillTable() {
-        ObservableList<Activity> list = DatabaseConnection.getOwnedActivities();
+        DatabaseConnection db = new DatabaseConnection();
+        list = db.getOwnedActivities();
         nameDis.setCellValueFactory(new PropertyValueFactory<>("name"));
         typeDis.setCellValueFactory(new PropertyValueFactory<>("type"));
         table.setItems(list);
@@ -123,6 +119,7 @@ public class ActivityEditController extends AbstractController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        fillTable();
 
     }
 

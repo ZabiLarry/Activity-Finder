@@ -75,22 +75,26 @@ public class BrowseController extends AbstractController implements Initializabl
         displayTable.setItems(listForDisplay);
         savePDF.setVisible(false);
     }
-
     @FXML
-    private void ratingButt(ActionEvent event) {
-        ObservableList<Activity> listForShuffle;
+    private void indoorButt(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
-        listForShuffle = dbconnect.sortByRating();
-        listForDisplay = shuffleList(listForShuffle);
+        listForDisplay = dbconnect.sortByIndoor();
         displayTable.setItems(listForDisplay);
         savePDF.setVisible(false);
-
+    }
+    @FXML
+    private void outdoorButt(ActionEvent event) {
+        DatabaseConnection dbconnect = new DatabaseConnection();
+        listForDisplay = dbconnect.sortByOutdoor();
+        displayTable.setItems(listForDisplay);
+        savePDF.setVisible(false);
     }
 
-    @FXML
+
+   @FXML
     private void favoriteButt(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
-        listForDisplay = dbconnect.sortByRFavorite(1);
+        //   listForDisplay = dbconnect.sortByRFavorite(1);
         StringBuilder vel = new StringBuilder();
         int c = 1;
         for (Activity a: listForDisplay){
@@ -104,9 +108,7 @@ public class BrowseController extends AbstractController implements Initializabl
         savePDF.setOnMouseClicked(event1 -> {
             PdfFormatter.openPDFRecipeSaver(event,vel.toString());
         });
-
     }
-
     @FXML
     private void locationButt(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
@@ -128,8 +130,6 @@ public class BrowseController extends AbstractController implements Initializabl
         locationDis.setCellValueFactory(new PropertyValueFactory<>("location"));
         contactDis.setCellValueFactory(new PropertyValueFactory<>("contact"));
         typeDis.setCellValueFactory(new PropertyValueFactory<>("type"));
-        indoorDis.setCellValueFactory(new PropertyValueFactory<>("indoor"));
-        outdoorDis.setCellValueFactory(new PropertyValueFactory<>("outdoor"));
         displayTable.setItems(listForDisplay);
     }
 
