@@ -12,13 +12,13 @@ public class Activity {
     private Byte indoor;
     private Byte outdoor;
 
-    public Activity(String name, String location, String contact, String type, byte indoor, byte outdoor){
-        this.name= new SimpleStringProperty(name);
-        this.location= new SimpleStringProperty(location);
-        this.contact= new SimpleStringProperty(contact);
-        this.type= new SimpleStringProperty(type);
-        this.indoor=indoor;
-        this.outdoor=outdoor;
+    public Activity(String name, String location, String contact, String type, byte indoor, byte outdoor) {
+        this.name = new SimpleStringProperty(name);
+        this.location = new SimpleStringProperty(location);
+        this.contact = new SimpleStringProperty(contact);
+        this.type = new SimpleStringProperty(type);
+        this.indoor = indoor;
+        this.outdoor = outdoor;
     }
 
     public String getName() {
@@ -32,6 +32,8 @@ public class Activity {
     public void setName(String value) {
         name.set(value);
     }
+
+
 
 
     public String getLocation() {
@@ -54,8 +56,8 @@ public class Activity {
         return type.get();
     }
 
-    public void setType(String value) {
-        type.set(value);
+    public void setType(String type) {
+        this.type.set(type);
     }
 
     public Byte getIndoor() {
@@ -74,10 +76,36 @@ public class Activity {
         this.outdoor = outdoor;
     }
 
-    public StringProperty nameProperty(){return name;}
-    public StringProperty locationProperty(){return location;}
-    public StringProperty contactProperty(){return contact;}
-    public StringProperty typeProperty(){return type;}
+    public StringProperty nameProperty() {
+        return name;
+    }
 
+    public StringProperty locationProperty() {
+        return location;
+    }
+
+    public StringProperty contactProperty() {
+        return contact;
+    }
+
+    public StringProperty typeProperty() {
+        return type;
+    }
+
+    private String getActivityPlace(){
+        if(indoor==1){
+            return "indoor";
+        }
+        return "outdoor";
+    }
+
+    @Override
+    public String toString() {
+        return "Activity Name " + getName() + "\n" +
+                "Location: " + getLocation() + "\n" +
+                "Contact: " + getContact() + "\n" +
+                "Type: "  + getType() + "\n" +
+            "Indoor/outdoor: " + getActivityPlace();
+    }
 }
 

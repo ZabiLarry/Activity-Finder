@@ -19,6 +19,7 @@ import sample.*;
 import sample.model.User;
 import sample.utils.AuthenticationSingleton;
 import sample.utils.DatabaseConnection;
+import sample.utils.PdfFormatter;
 
 
 import java.io.IOException;
@@ -34,6 +35,9 @@ import java.util.ResourceBundle;
 
 public class BrowseController extends AbstractController implements Initializable {
 
+
+    @FXML
+    private  Button savePDF;
 
     @FXML
     public Button saveEventBtn;
@@ -69,6 +73,7 @@ public class BrowseController extends AbstractController implements Initializabl
         DatabaseConnection dbconnect = new DatabaseConnection();
         listForDisplay = dbconnect.sortByType();
         displayTable.setItems(listForDisplay);
+        savePDF.setVisible(false);
     }
 
     @FXML
@@ -78,6 +83,7 @@ public class BrowseController extends AbstractController implements Initializabl
         listForShuffle = dbconnect.sortByRating();
         listForDisplay = shuffleList(listForShuffle);
         displayTable.setItems(listForDisplay);
+        savePDF.setVisible(false);
 
     }
 
@@ -85,7 +91,19 @@ public class BrowseController extends AbstractController implements Initializabl
     private void favoriteButt(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
         listForDisplay = dbconnect.sortByRFavorite(1);
+        StringBuilder vel = new StringBuilder();
+        int c = 1;
+        for (Activity a: listForDisplay){
+            vel.append("[" + c +"]");
+            vel.append(a.toString());
+            vel.append("\n\n");
+            c++;
+        }
         displayTable.setItems(listForDisplay);
+        savePDF.setVisible(true);
+        savePDF.setOnMouseClicked(event1 -> {
+            PdfFormatter.openPDFRecipeSaver(event,vel.toString());
+        });
 
     }
 
@@ -94,6 +112,8 @@ public class BrowseController extends AbstractController implements Initializabl
         DatabaseConnection dbconnect = new DatabaseConnection();
         listForDisplay = dbconnect.sortByLocation();
         displayTable.setItems(listForDisplay);
+        savePDF.setVisible(false);
+
     }
 
     @FXML
@@ -101,10 +121,9 @@ public class BrowseController extends AbstractController implements Initializabl
         homePage(event);
     }
 
-    public void recieveFunction(ObservableList<Activity> list) {
+    public void receiveFunction(ObservableList<Activity> list) {
 
         listForDisplay = list;
-        displayTable.setItems(null);
         activityDis.setCellValueFactory(new PropertyValueFactory<>("name"));
         locationDis.setCellValueFactory(new PropertyValueFactory<>("location"));
         contactDis.setCellValueFactory(new PropertyValueFactory<>("contact"));
@@ -163,6 +182,8 @@ public class BrowseController extends AbstractController implements Initializabl
         }
 
     }
+
+
 }
 
 
