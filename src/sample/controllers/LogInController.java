@@ -62,13 +62,14 @@ public class LogInController extends AbstractController {
 
     public void loginRegular(ActionEvent event) throws IOException {
 
+        DatabaseConnection db = new DatabaseConnection();
         email = emailTF.getText();
         int counter;
-        for (counter = 1; counter <= DatabaseConnection.getUsersSize() + 1; ++counter) {
-            if (email.equals(DatabaseConnection.getEmailRegular(counter))) {
-                if (passwordTF.getText().equals(DatabaseConnection.getPasswordRegular(counter))) {
+        for (counter = 1; counter <= db.getUsersSize() + 1; ++counter) {
+            if (email.equals(db.getEmailRegular(counter))) {
+                if (passwordTF.getText().equals(db.getPasswordRegular(counter))) {
                     System.out.println("loginRegular success");
-                    RegularUser user = new RegularUser(DatabaseConnection.getEmailRegular(counter), DatabaseConnection.getIDRegular(email));
+                    RegularUser user = new RegularUser(db.getEmailRegular(counter), db.getIDRegular(email));
                     lblStatus.setText("Login Success");
 
                     AuthenticationSingleton.getInstance().setUser(user);
@@ -84,17 +85,20 @@ public class LogInController extends AbstractController {
 
     public void loginCommercial(ActionEvent event) throws IOException {
 
+        int one = 1;
+        DatabaseConnection db = new DatabaseConnection();
         email = emailTF.getText();
         int counter;
-        for (counter = 1; counter <= DatabaseConnection.getUsersSize() + 1; ++counter) {
+        for (counter = 1; counter <= db.getUsersSize() + 1; counter++) {
 
-            if (Objects.equals(email, DatabaseConnection.getEmailCommercial(counter))) {
-                if (Objects.equals(passwordTF.getText(), DatabaseConnection.getPasswordCommercial(counter))) {
+            if (Objects.equals(email, db.getEmailCommercial(counter))) {
+                if (Objects.equals(passwordTF.getText(), db.getPasswordCommercial(counter))) {
                     System.out.println("loginCommercial success");
-                    CommercialUser user = new CommercialUser(DatabaseConnection.getEmailCommercial(counter), DatabaseConnection.getIDCommercial(email), DatabaseConnection.getName(email), DatabaseConnection.getPhone(counter), DatabaseConnection.getAddress(counter));
+                    CommercialUser user = new CommercialUser(db.getEmailCommercial(counter),db.getIDCommercial(email), db.getName(email), db.getPhoneCommer(one), db.getAddressCommer(one));
                     lblStatus.setText("Login Success");
                     AuthenticationSingleton.getInstance().setUser(user);
                     homePage(event);
+                    break;
                 } else {
                     System.out.println("failed password retrieve");
                 }

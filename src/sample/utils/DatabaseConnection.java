@@ -131,47 +131,51 @@ public class DatabaseConnection {
 
     //changed to just fetching username since we don't know the ID before the user has given us their login
 
-    public static String getEmailCommercial(int counter) {
+    public String getEmailCommercial(int counter) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT email FROM commercialuser WHERE idcommercialUser =" + counter);
-            if (rs.next()) {
-                returnValue = rs.getString(1);
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT email FROM commercialuser WHERE idcommercialUser = '" + counter + "'"+";");
+            while (rs.next()) {
+                returnValue = rs.getString("email");
 
-                return returnValue;
             }
         } catch (SQLException var2) {
             System.out.println("An error occurred on fetching commercial email query");
         }
 
-        return "";
+        return returnValue;
     }
 
     public  ObservableList<Activity> getOwnedActivities() {
 
         ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
-
+        int recieveId;
+        int rsID;
+        String rsName;
+        String rsLocation;
+        String rsContact;
+        String rsType;
+        byte rsIndoor;
+        byte rsOutdoor;
+        int test = 1;
         try {
-            ResultSet rs = statement.executeQuery("SELECT activity_idactivity from commercialuser_has_activity WHERE commercialUser_idcommercialUser = '" + AuthenticationSingleton.getInstance().getUser().getId() + "'");
-
-            int rsID;
-            String rsName;
-            String rsLocation;
-            String rsContact;
-            String rsType;
-            byte rsIndoor;
-            byte rsOutdoor;
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT activity_idactivity from commercialuser_has_activity WHERE commercialUser_idcommercialUser = '" + AuthenticationSingleton.getInstance().getUser().getId() + "'"+";");
             while (rs.next()) {
-                rsID = rs.getInt("id");
-                try {
-                    ResultSet rs2 = statement.executeQuery("SELECT  `name`, `location`, `contact`, `type`, `indoor`, `outdoor` FROM activity WHERE idactivity = " + rsID);
-                    rsName = rs2.getString("name");
-                    rsLocation = rs2.getString("location");
-                    rsContact = rs2.getString("contact");
-                    rsType = rs2.getString("type");
-                    rsIndoor = rs2.getByte("indoor");
-                    rsOutdoor = rs2.getByte("outdoor");
-                    activitiesList.add(new Activity(rsID,rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
+                recieveId = rs.getInt("activity_idactivity");
 
+                try {
+                    ResultSet rs2 = statement.executeQuery("SELECT  * FROM activity WHERE idactivity = '" + recieveId + "'"+";");
+                    while (rs2.next()) {
+                        rsID = rs2.getInt("idactivity");
+                        rsName = rs2.getString("name");
+                        rsLocation = rs2.getString("location");
+                        rsContact = rs2.getString("contact");
+                        rsType = rs2.getString("type");
+                        rsIndoor = rs2.getByte("indoor");
+                        rsOutdoor = rs2.getByte("outdoor");
+                        activitiesList.add(new Activity(rsID, rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
+                    }
                 } catch (SQLException var10) {
                     System.out.println("An error occurred on executing getOwnedActivities query.");
                 }
@@ -183,11 +187,12 @@ public class DatabaseConnection {
         return activitiesList;
     }
 
-    public static String getEmailRegular(int counter) {
+    public String getEmailRegular(int counter) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT email FROM user WHERE iduser =" + counter);
-            if (rs.next()) {
-                returnValue = rs.getString(1);
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT email FROM user WHERE iduser = '" + counter + "'"+";");
+            while (rs.next()) {
+                returnValue = rs.getString("email");
 
                 return returnValue;
             }
@@ -198,56 +203,53 @@ public class DatabaseConnection {
         return "";
     }
 
-    public static String getPhone(int counter) {
+    public String getPhoneCommer(int counter) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT phoneNumber FROM user WHERE iduser =" + counter);
-            if (rs.next()) {
-                returnValue = rs.getString(1);
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT phoneNumber FROM commercialuser WHERE idcommercialUser = '" + counter + "'"+";");
+            while (rs.next()) {
+                returnValue = rs.getString("phoneNumber");
 
-                return returnValue;
             }
         } catch (SQLException var2) {
-            System.out.println("An error occurred on fetching email query");
+            System.out.println("An error occurred on fetching phone query");
         }
 
-        return "";
+        return returnValue;
     }
 
-    public static String getAddress(int counter) {
+    public String getAddressCommer(int counter) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT address FROM user WHERE iduser =" + counter);
-            if (rs.next()) {
-                returnValue = rs.getString(1);
-
-                return returnValue;
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT address FROM commercialuser WHERE idcommercialUser = '" + counter + "'"+";");
+            while (rs.next()) {
+                returnValue = rs.getString("address");
             }
         } catch (SQLException var2) {
-            System.out.println("An error occurred on fetching email query");
+            System.out.println("An error occurred on fetching address query");
         }
 
-        return "";
+        return returnValue;
     }
 
-    public static int getUsersSize() {
-
-
+    public int getUsersSize() {
         try {
+            statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT COUNT(iduser) FROM user");
-            if (rs.next()) {
+            while (rs.next()) {
                 returnValueInt = rs.getInt(1);
-                return returnValueInt;
             }
         } catch (SQLException var1) {
             System.out.println("An error occurred on fetching user size");
         }
 
-        return 0;
+        return returnValueInt;
     }
 
-    public static String getPasswordRegular(int counter) {
+    public String getPasswordRegular(int counter) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT password FROM user WHERE iduser = " + counter);
-            if (rs.next()) {
+            ResultSet rs = statement.executeQuery("SELECT password FROM user WHERE iduser = '" + counter + "'"+";");
+            while (rs.next()) {
                 returnValue = rs.getString(1);
                 return returnValue;
             }
@@ -258,18 +260,18 @@ public class DatabaseConnection {
         return "";
     }
 
-    public static String getPasswordCommercial(int counter) {
+    public String getPasswordCommercial(int counter) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT password FROM commercialuser WHERE idcommercialuser = " + counter);
+            ResultSet rs = statement.executeQuery("SELECT password FROM commercialuser WHERE idcommercialuser = '" + counter + "'"+";");
             if (rs.next()) {
-                returnValue = rs.getString(1);
+                returnValue = rs.getString("password");
                 return returnValue;
             }
         } catch (SQLException var2) {
             System.out.println("An error occurred on fetching password query.");
         }
 
-        return "";
+        return returnValue;
     }
 
 
@@ -299,7 +301,7 @@ public class DatabaseConnection {
         }
     }
 
-    public static void addActivity(String name, String location, String contact, String type, byte indoor, byte outdoor) {
+    public void addActivity(String name, String location, String contact, String type, byte indoor, byte outdoor) {
         try {
             statement.executeUpdate("INSERT INTO activity (name, location, contact, type, indoor, outdoor) VALUES ('" + name + "','" + location + "','" + contact + "','" + type + "','" + indoor + "','" + outdoor + "')");
             System.out.println("Book added.");
@@ -465,10 +467,27 @@ public class DatabaseConnection {
         return "";
     }*/
 
-    public static int getIDRegular(String email) {
+    public int getIDRegular(String email) {
 
         try {
-            ResultSet rs = statement.executeQuery("SELECT iduser FROM user WHERE email = " + email);
+            ResultSet rs = statement.executeQuery("SELECT iduser FROM user WHERE email = '" + email + "'"+";");
+            if (rs.next()) {
+                returnValue = rs.getString("iduser");
+                return returnValueInt;
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching ID query");
+
+
+        }
+
+        return returnValueInt;
+    }
+
+    public int getIDCommercial(String email) {
+
+        try {
+            ResultSet rs = statement.executeQuery("SELECT idcommercialUser FROM commercialuser WHERE email = '" + email + "'"+";");
             if (rs.next()) {
                 returnValue = rs.getString(1);
                 return returnValueInt;
@@ -482,27 +501,10 @@ public class DatabaseConnection {
         return 0;
     }
 
-    public static int getIDCommercial(String email) {
+    public String getName(String email) {
 
         try {
-            ResultSet rs = statement.executeQuery("SELECT idcommercialUser FROM commercialuser WHERE email = " + email);
-            if (rs.next()) {
-                returnValue = rs.getString(1);
-                return returnValueInt;
-            }
-        } catch (SQLException var2) {
-            System.out.println("An error occurred on fetching ID query");
-
-
-        }
-
-        return 0;
-    }
-
-    public static String getName(String email) {
-
-        try {
-            ResultSet rs = statement.executeQuery("SELECT name FROM commercialuser WHERE email = " + email);
+            ResultSet rs = statement.executeQuery("SELECT name FROM commercialuser WHERE email = '" + email + "'"+";");
             if (rs.next()) {
                 returnValue = rs.getString(1);
                 return returnValue;
