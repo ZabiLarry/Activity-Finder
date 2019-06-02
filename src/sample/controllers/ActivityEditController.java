@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import sample.model.Activity;
 import sample.utils.DatabaseConnection;
 
+import javax.mail.FetchProfile;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,18 +38,21 @@ public class ActivityEditController extends AbstractController {
     @FXML
     TableColumn<Activity, String> typeDis;
 
-    ObservableList<Activity> list = FXCollections.observableArrayList();
-
+    private ObservableList<Activity> list = FXCollections.observableArrayList();
     private byte i;
     private byte o;
 
     @FXML
-    private void initialize() {
-        fillTable();
+    private void reload(ActionEvent event){
+        DatabaseConnection db = new DatabaseConnection();
+        list = db.getOwnedActivities();
+        fillTable(list);
     }
 
     @FXML
     private void addActivity() {
+        ObservableList<Activity> addActivityList = FXCollections.observableArrayList();
+        DatabaseConnection db = new DatabaseConnection();
 
         if (noBlanks()) {
 
@@ -64,11 +68,25 @@ public class ActivityEditController extends AbstractController {
                 o = 0;
             }
 
-            DatabaseConnection.addActivity(nameTF.getText(), locTF.getText(), contactTF.getText(), typeTF.getText(), i, o);
+            db.addActivity(nameTF.getText(), locTF.getText(), contactTF.getText(), typeTF.getText(), i, o);
+            int id = 0;
+            String name;
+            String location;
+            String contact;
+            String type;
+            byte in;
+            byte out;
+            name = nameTF.getText();
+            location = locTF.getText();
+            contact = contactTF.getText();
+            type = typeTF.getText();
+            in = i;
+            out = o;
+            addActivityList.add(new Activity(id,name,location,contact,type,in,out));
         }else {
             System.out.println("blanks");
         }
-        fillTable();
+        fillTable(addActivityList);
     }
 
     @FXML
@@ -79,12 +97,16 @@ public class ActivityEditController extends AbstractController {
             int row = position.getRow();
             Activity activity = table.getItems().get(row);
             DatabaseConnection.updateActivity(activity);
+            list.add(activity);
         }
-        fillTable();
+        fillTable(list);
     }
 
     @FXML
     private void deleteActivity() {
+
+        DatabaseConnection db = new DatabaseConnection();
+        ObservableList<Activity> deleteActivityList;
         //TablePosition position = table.getSelectionModel().getSelectedCells().get(0);
         System.out.println(table.getSelectionModel().getSelectedCells().get(0).toString());
         System.out.println(table.getItems().get(0));
@@ -92,7 +114,9 @@ public class ActivityEditController extends AbstractController {
         StringProperty name = table.getItems().get(0).nameProperty();
         StringProperty type = table.getItems().get(1).typeProperty();
         DatabaseConnection.deleteActivity(DatabaseConnection.getActivityID(name, type));
-        fillTable();
+        deleteActivityList = db.getOwnedActivities();
+
+        fillTable(deleteActivityList);
     }
 
     private boolean noBlanks() {
@@ -107,13 +131,13 @@ public class ActivityEditController extends AbstractController {
         }
     }
 
-
-    private void fillTable() {
-        ObservableList<Activity> list = DatabaseConnection.getOwnedActivities();
+    public void fillTable(ObservableList<Activity> listToDisplay) {
+        list = listToDisplay;
         nameDis.setCellValueFactory(new PropertyValueFactory<>("name"));
         typeDis.setCellValueFactory(new PropertyValueFactory<>("type"));
         table.setItems(list);
     }
+
 
     @FXML
     private void toHome(ActionEvent event) throws IOException {
@@ -123,7 +147,6 @@ public class ActivityEditController extends AbstractController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 
 
