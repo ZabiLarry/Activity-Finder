@@ -49,7 +49,7 @@ public class Activity {
     }
 
     public int getID() {
-        return DatabaseConnection.getActivityID(actName, actType);
+        return DatabaseConnection.getActivityID(name, type);
     }
 
     public void setName(String value) {

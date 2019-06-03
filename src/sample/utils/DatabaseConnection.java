@@ -473,7 +473,9 @@ public class DatabaseConnection {
             ResultSet rs = statement.executeQuery("SELECT iduser FROM user WHERE email = '" + email + "'"+";");
             if (rs.next()) {
                 returnValue = rs.getString("iduser");
+                System.out.println("success on fetching id");
                 return returnValueInt;
+
             }
         } catch (SQLException var2) {
             System.out.println("An error occurred on fetching ID query");
