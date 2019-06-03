@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ChangeListManager">
 <<<<<<< HEAD
     <list default="true" id="5163ed2f-0952-4f36-81a8-b2391f1c440c" name="Default Changelist" comment="" />
@@ -276,10 +277,11 @@
       </list>
     </option>
   </component>
+=======
+>>>>>>> 851151060a2d50bf1009f7e382c4238c381d0b23
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="593" />
-    <option name="y" value="24" />
-    <option name="width" value="1386" />
+    <option name="x" value="-8" />
+    <option name="width" value="868" />
     <option name="height" value="788" />
 =======
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -296,6 +298,7 @@
     <option name="height" value="790" />
 >>>>>>> supha
   </component>
+<<<<<<< HEAD
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -729,4 +732,6 @@
       </provider>
     </entry>
   </component>
+=======
+>>>>>>> 851151060a2d50bf1009f7e382c4238c381d0b23
 </project>
