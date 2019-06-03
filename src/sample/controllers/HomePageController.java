@@ -88,7 +88,7 @@ public class HomePageController extends AbstractController implements Initializa
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.receiveFunction(db.browseController());
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
 

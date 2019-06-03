@@ -61,26 +61,11 @@ public class BrowseController extends AbstractController implements Initializabl
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
-    @FXML
-    private void favorite(ActionEvent event) {
-
-
-    }
-
-    @FXML
-    private void typeButt(ActionEvent event) {
-        DatabaseConnection dbconnect = new DatabaseConnection();
-        listForDisplay = dbconnect.sortByType();
-        displayTable.setItems(listForDisplay);
-        savePDF.setVisible(false);
-    }
     @FXML
     private void indoorButt(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
         listForDisplay = dbconnect.sortByIndoor();
         displayTable.setItems(listForDisplay);
-        savePDF.setVisible(false);
     }
     @FXML
     private void outdoorButt(ActionEvent event) {
@@ -91,9 +76,9 @@ public class BrowseController extends AbstractController implements Initializabl
 
 
    @FXML
-    private void favoriteButt(ActionEvent event) {
+    private void bringFavorite(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
-        //   listForDisplay = dbconnect.sortByRFavorite(1);
+        listForDisplay = dbconnect.sortByRFavorite(1);
         StringBuilder vel = new StringBuilder();
         int c = 1;
         for (Activity a: listForDisplay){
@@ -108,12 +93,13 @@ public class BrowseController extends AbstractController implements Initializabl
             PdfFormatter.openPDFRecipeSaver(event,vel.toString());
         });
     }
+
     @FXML
-    private void locationButt(ActionEvent event) {
-        DatabaseConnection dbconnect = new DatabaseConnection();
-        listForDisplay = dbconnect.sortByLocation();
-        displayTable.setItems(listForDisplay);
-        savePDF.setVisible(false);
+    private void addToFavorite(ActionEvent event) {
+    }
+
+    @FXML
+    private void rateButt(ActionEvent event) {
 
     }
 
