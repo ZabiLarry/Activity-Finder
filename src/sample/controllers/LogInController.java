@@ -33,7 +33,6 @@ public class LogInController extends AbstractController {
 
     String email;
 
-
     /*public void login() {
 
         main = new Main();
@@ -77,11 +76,10 @@ public class LogInController extends AbstractController {
                     homePage(event);
                 }
             } else {
-
+                System.out.println("failed");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "loginRegular failed", ButtonType.OK);
                 lblStatus.setText("Login Failed");
             }
-
         }
     }
 

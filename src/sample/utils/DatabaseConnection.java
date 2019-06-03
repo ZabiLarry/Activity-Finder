@@ -11,6 +11,7 @@ import sample.model.Activity;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Properties;
 
 public class DatabaseConnection {
@@ -327,11 +328,10 @@ public class DatabaseConnection {
     public static void addFavorite(int userid, int favouriteid) {
 
         try {
-            System.out.println(userid);
-            statement.executeUpdate("INSERT INTO user_has_activity VALUES (" + userid + "," + favouriteid + ",null,null)");
+            statement.executeQuery("INSERT INTO user_has_activity VALUES (" + userid + "," + favouriteid + ",null,null)");
             System.out.println("favorite added");
         } catch (SQLException var7) {
-            var7.printStackTrace();
+            System.out.println();
         }
     }
 
@@ -397,12 +397,12 @@ public class DatabaseConnection {
         return listForDisplay;
     }
 
-    public ObservableList<Activity> sortByType() {
+    public ObservableList<Activity> searchFunctionType(String text) {
 
         ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM activity ORDER BY type ASC");
+            ResultSet rs = statement.executeQuery("SELECT * FROM activity WHERE type LIKE '%" + text + "%'" + " OR '%" + text + "'" + " OR '" + text + "%'" + ";");
             int rsId;
             String rsName;
             String rsLocation;
@@ -426,12 +426,12 @@ public class DatabaseConnection {
         return activitiesList;
     }
 
-    public ObservableList<Activity> sortByLocation() {
+    public ObservableList<Activity> searchFunctionLocation(String text) {
 
         ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM activity ORDER BY location ASC");
+            ResultSet rs = statement.executeQuery("SELECT * FROM activity WHERE location LIKE '%" + text + "%'" + " OR '%" + text + "'" + " OR '" + text + "%'" + ";");
             int rsId;
             String rsName;
             String rsLocation;
@@ -469,13 +469,12 @@ public class DatabaseConnection {
     }*/
 
     public int getIDRegular(String email) {
-        int val = 0;
+
         try {
             ResultSet rs = statement.executeQuery("SELECT iduser FROM user WHERE email = '" + email + "'"+";");
             if (rs.next()) {
-                 val = rs.getInt("iduser");
-                System.out.println(returnValue);
-                return val;
+                returnValue = rs.getString("iduser");
+                return returnValueInt;
             }
         } catch (SQLException var2) {
             System.out.println("An error occurred on fetching ID query");
@@ -483,7 +482,7 @@ public class DatabaseConnection {
 
         }
 
-        return val;
+        return returnValueInt;
     }
 
     public int getIDCommercial(String email) {
@@ -638,8 +637,38 @@ public class DatabaseConnection {
         ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM activity INNER JOIN user_has_activity ON user_has_activity.activity_idactivity=activity.idactivity WHERE" +
-                    " user_has_activity.user_iduser=" + userId + ";");
+            ResultSet rs = statement.executeQuery("SELECT * FROM activity INNER JOIN user_has_activity ON user_has_activity.activity_idactivity=activity.idactivity WHERE" + " user_has_activity.user_iduser=" + userId + ";");
+            int rsId;
+            String rsName;
+            String rsLocation;
+            String rsContact;
+            String rsType;
+            byte rsIndoor;
+            byte rsOutdoor;
+            while (rs.next()) {
+                rsId = rs.getInt("idaactivity");
+                rsName = rs.getString("name");
+                rsLocation = rs.getString("location");
+                rsContact = rs.getString("contact");
+                rsType = rs.getString("type");
+                rsIndoor = rs.getByte("indoor");
+                rsOutdoor = rs.getByte("outdoor");
+                activitiesList.add(new Activity(rsId,rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
+            }
+        } catch (SQLException var10) {
+            System.out.println("An error occurred on executing query.");
+            var10.printStackTrace();
+        }
+
+        return activitiesList;
+    }
+
+    public ObservableList<Activity> searchFunctionName(String text) {
+
+        ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
+        try {
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM activity WHERE name LIKE '%" + text + "%'" + " OR '%" + text + "'" + " OR '" + text + "%'" + ";");
             int rsId;
             String rsName;
             String rsLocation;
@@ -658,11 +687,26 @@ public class DatabaseConnection {
                 activitiesList.add(new Activity(rsId,rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
             }
         } catch (SQLException var10) {
-            System.out.println("An error occurred on executing query.");
-            var10.printStackTrace();
+            System.out.println("An error occurred on executing search query.");
         }
 
         return activitiesList;
     }
 
+    public ObservableList<Activity> shuffleList(ObservableList<Activity> activityList) {
+
+        ObservableList<Activity> list = FXCollections.observableArrayList();
+
+        for (Activity i : activityList) {
+            list.add(i);
+        }
+        Collections.shuffle(list);
+        activityList = list;
+        return activityList;
+    }
+
+
 }
+
+
+
