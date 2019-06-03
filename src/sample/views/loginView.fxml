@@ -24,13 +24,18 @@
             <Font size="14.0" />
          </font>
       </PasswordField>
-      <Label fx:id="lblStatus" layoutX="19.0" layoutY="14.0" prefHeight="27.0" prefWidth="150.0" text="Sign In">
+      <Label fx:id="lblStatus" layoutX="20.0" layoutY="9.0" prefHeight="38.0" prefWidth="150.0" text="Sign In">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <Button layoutX="67.0" layoutY="198.0" mnemonicParsing="false" onAction="#forgotPass" text="Forgot password?" />
       <Button fx:id="txtLogin1" layoutX="20.0" layoutY="154.0" mnemonicParsing="false" onAction="#loginRegular" prefHeight="30.0" prefWidth="94.0" text="Regular">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="txtLogin1" layoutX="156.0" layoutY="13.0" mnemonicParsing="false" onAction="#signUp" prefHeight="30.0" prefWidth="68.0" text="Sign up">
          <font>
             <Font size="14.0" />
          </font>

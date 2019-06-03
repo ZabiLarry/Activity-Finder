@@ -35,6 +35,7 @@ import java.util.ResourceBundle;
 
 public class BrowseController extends AbstractController implements Initializable {
 
+    private String text;
 
     @FXML
     private  Button savePDF;
@@ -53,9 +54,7 @@ public class BrowseController extends AbstractController implements Initializabl
     @FXML
     private TableColumn<Activity, String> typeDis;
     @FXML
-    private TableColumn<Activity, Byte> indoorDis;
-    @FXML
-    private TableColumn<Activity, Byte> outdoorDis;
+    private TextField searchText;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -78,7 +77,7 @@ public class BrowseController extends AbstractController implements Initializabl
    @FXML
     private void bringFavorite(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
-        listForDisplay = dbconnect.sortByRFavorite(AuthenticationSingleton.getInstance().getUser().getId());
+        listForDisplay = dbconnect.sortByRFavorite(1);
         StringBuilder vel = new StringBuilder();
         int c = 1;
         for (Activity a: listForDisplay){
@@ -104,8 +103,49 @@ public class BrowseController extends AbstractController implements Initializabl
     }
 
     @FXML
+    private void searchButt(ActionEvent event) {
+
+        ObservableList<Activity> listForDisplayName;
+        ObservableList<Activity> listForDisplayLocation;
+        ObservableList<Activity> listForDisplayType;
+
+        if(searchText.getText().isEmpty()){
+            System.out.println("Please do not press the button if there's no input");
+        }
+        else if(!searchText.getText().isEmpty())
+        {
+            text = searchText.getText();
+            DatabaseConnection db = new DatabaseConnection();
+            listForDisplayName = db.searchFunctionName(text);
+            listForDisplayLocation = db.searchFunctionLocation(text);
+            listForDisplayType = db.searchFunctionType(text);
+            listForDisplay = combinedList(listForDisplayName,listForDisplayLocation,listForDisplayType);
+            if(!listForDisplay.isEmpty()) {
+                displayTable.setItems(listForDisplay);
+                searchText.setText(null);
+            }
+            else{
+                displayTable.setItems(null);
+                searchText.setText(null);
+                System.out.println("Not found");
+            }
+        }
+        else {
+            System.out.println("What else?");
+        }
+    }
+
+    @FXML
     private void toHome(ActionEvent event) throws IOException {
         homePage(event);
+    }
+
+    public ObservableList<Activity> combinedList(ObservableList<Activity> listOne,ObservableList<Activity> listTwo,ObservableList<Activity> listThree){
+        ObservableList<Activity> returnList = FXCollections.observableArrayList();
+        returnList.addAll(listOne);
+        returnList.addAll(listTwo);
+        returnList.addAll(listThree);
+        return returnList;
     }
 
     public void receiveFunction(ObservableList<Activity> list) {
@@ -118,25 +158,8 @@ public class BrowseController extends AbstractController implements Initializabl
         displayTable.setItems(listForDisplay);
     }
 
-    public ObservableList<Activity> shuffleList(ObservableList<Activity> activityList) {
+    public void addFavorite() {
 
-        ObservableList<Activity> list = FXCollections.observableArrayList();
-
-        for (Activity i : activityList) {
-            list.add(i);
-        }
-        Collections.shuffle(list);
-        activityList = list;
-        return activityList;
-    }
-
-
-    public void addFavorite(ActionEvent event) {
-
-        if(displayTable.getSelectionModel().getSelectedCells().size()==0){
-            System.out.println("No row selected");
-            return;
-        }
         TablePosition position = displayTable.getSelectionModel().getSelectedCells().get(0);
         int row = position.getRow();
 
@@ -149,7 +172,6 @@ public class BrowseController extends AbstractController implements Initializabl
 
         if (AuthenticationSingleton.getInstance().getUser() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "loginRegular failed", ButtonType.OK);
-            alert.showAndWait();
             System.out.println("no user");
         } else {
 
@@ -161,20 +183,10 @@ public class BrowseController extends AbstractController implements Initializabl
                 System.out.println(AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getName());
 
                 DatabaseConnection dbconnect = new DatabaseConnection();
+                
 
-                AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).setActivityID(AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getActivityID());
-
-
-
-
-
-
-                dbconnect.addFavorite(AuthenticationSingleton.getInstance().getUser().getId(),
-                        AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getActivityID());
-
-
-                dbconnect.addFavorite(AuthenticationSingleton.getInstance().getUser().getId(),
-                        AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getId());
+                /*dbconnect.addFavorite(AuthenticationSingleton.getInstance().getUser().getId(),
+                        AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getActivityID());*/
 
             }
 
@@ -182,7 +194,6 @@ public class BrowseController extends AbstractController implements Initializabl
         }
 
     }
-
 
 }
 
