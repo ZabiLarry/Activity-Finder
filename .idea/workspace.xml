@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c0d8044-67e4-4bef-bdea-e7e05a9f8edf" name="Default Changelist" comment="Redesign browse page">
+    <list default="true" id="5c0d8044-67e4-4bef-bdea-e7e05a9f8edf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controllers/BrowseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/BrowseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controllers/HomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/HomePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controllers/IndoorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/IndoorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controllers/OutdoorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/OutdoorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/utils/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/utils/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/views/browseView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/views/browseView.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,7 +15,7 @@
     <session id="1626850749">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="1" />
@@ -249,7 +243,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559570022651" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559570024385" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -308,12 +302,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559427955182</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Redesign browse page">
+      <created>1559570035740</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1559570035740</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2677761" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
