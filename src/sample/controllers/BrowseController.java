@@ -161,7 +161,17 @@ public class BrowseController extends AbstractController implements Initializabl
                 System.out.println(AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getName());
 
                 DatabaseConnection dbconnect = new DatabaseConnection();
-                
+
+                AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).setActivityID(AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getActivityID());
+
+
+
+
+
+
+                dbconnect.addFavorite(AuthenticationSingleton.getInstance().getUser().getId(),
+                        AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getActivityID());
+
 
                 dbconnect.addFavorite(AuthenticationSingleton.getInstance().getUser().getId(),
                         AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getId());

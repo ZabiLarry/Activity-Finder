@@ -666,6 +666,3 @@ public class DatabaseConnection {
     }
 
 }
-
-
-

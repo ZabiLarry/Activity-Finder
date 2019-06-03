@@ -12,6 +12,9 @@ public class Activity {
     private StringProperty type;
     private Byte indoor;
     private Byte outdoor;
+    private int activityID;
+    private String actName;
+    private String actType;
 
     public Activity(int id,String name, String location, String contact, String type, byte indoor, byte outdoor) {
         this.id = id;
@@ -23,12 +26,22 @@ public class Activity {
         this.outdoor = outdoor;
     }
 
+
+    public int getActivityID() {
+        return activityID;
+    }
+
+    public void setActivityID(int activityID) {
+        this.activityID = activityID;
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+
     }
 
     public String getName() {
