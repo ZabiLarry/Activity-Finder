@@ -22,6 +22,6 @@
       </Label>
       <Button fx:id="registerOK" layoutX="76.0" layoutY="239.0" mnemonicParsing="false" text="OK" />
       <Button fx:id="registerCancel" layoutX="166.0" layoutY="239.0" mnemonicParsing="false" text="Cancel" />
-      <PasswordField fx:id="passReggie" layoutX="78.0" layoutY="175.0" promptText="Enter your password" />
+      <PasswordField fx:id="pwordField" layoutX="78.0" layoutY="175.0" promptText="Enter your password" />
    </children>
 </AnchorPane>

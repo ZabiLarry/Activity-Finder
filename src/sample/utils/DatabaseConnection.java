@@ -665,4 +665,9 @@ public class DatabaseConnection {
         return activitiesList;
     }
 
+    public void addUser(String password, String email){
+
+
+    }
+
 }
