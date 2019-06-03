@@ -98,6 +98,18 @@ public class DatabaseConnection {
         return password;
     }
 
+    public static void addUser(String password, String email){
+
+        try {
+            statement.executeUpdate("INSERT INTO users (password, email)VALUES (  '" + password + "','" + email + "')");
+        } catch (SQLException var7) {
+            System.out.println("An error occurred on executing the registration query.");
+        }
+
+
+
+    }
+
     public static int getActivityID(StringProperty name, StringProperty type) {
 
         try {
@@ -665,9 +677,6 @@ public class DatabaseConnection {
         return activitiesList;
     }
 
-    public void addUser(String password, String email){
 
-
-    }
 
 }
