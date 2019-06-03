@@ -31,8 +31,10 @@ public class OutdoorController extends AbstractController implements Initializab
         BackgroundSize bs = new BackgroundSize(112, 70, false, false, true, false);
 
 
-        BackgroundImage backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/vollyball.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        BackgroundImage backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/Scenic-River-Canoe.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
         kajak.setBackground(new Background(backgroundImage));
+
+
 
     }
 
