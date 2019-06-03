@@ -11,6 +11,7 @@ import sample.model.Activity;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Properties;
 
 public class DatabaseConnection {
@@ -396,12 +397,12 @@ public class DatabaseConnection {
         return listForDisplay;
     }
 
-    public ObservableList<Activity> sortByType() {
+    public ObservableList<Activity> searchFunctionType(String text) {
 
         ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM activity ORDER BY type ASC");
+            ResultSet rs = statement.executeQuery("SELECT * FROM activity WHERE type LIKE '%" + text + "%'" + " OR '%" + text + "'" + " OR '" + text + "%'" + ";");
             int rsId;
             String rsName;
             String rsLocation;
@@ -425,12 +426,12 @@ public class DatabaseConnection {
         return activitiesList;
     }
 
-    public ObservableList<Activity> sortByLocation() {
+    public ObservableList<Activity> searchFunctionLocation(String text) {
 
         ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM activity ORDER BY location ASC");
+            ResultSet rs = statement.executeQuery("SELECT * FROM activity WHERE location LIKE '%" + text + "%'" + " OR '%" + text + "'" + " OR '" + text + "%'" + ";");
             int rsId;
             String rsName;
             String rsLocation;
@@ -636,8 +637,7 @@ public class DatabaseConnection {
         ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM activity INNER JOIN user_has_activity ON user_has_activity.activity_idactivity=activity.idactivity WHERE" +
-                    " user_has_activity.user_iduser=" + userId + ";");
+            ResultSet rs = statement.executeQuery("SELECT * FROM activity INNER JOIN user_has_activity ON user_has_activity.activity_idactivity=activity.idactivity WHERE" + " user_has_activity.user_iduser=" + userId + ";");
             int rsId;
             String rsName;
             String rsLocation;
@@ -662,6 +662,49 @@ public class DatabaseConnection {
 
         return activitiesList;
     }
+
+    public ObservableList<Activity> searchFunctionName(String text) {
+
+        ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
+        try {
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM activity WHERE name LIKE '%" + text + "%'" + " OR '%" + text + "'" + " OR '" + text + "%'" + ";");
+            int rsId;
+            String rsName;
+            String rsLocation;
+            String rsContact;
+            String rsType;
+            byte rsIndoor;
+            byte rsOutdoor;
+            while (rs.next()) {
+                rsId = rs.getInt("idactivity");
+                rsName = rs.getString("name");
+                rsLocation = rs.getString("location");
+                rsContact = rs.getString("contact");
+                rsType = rs.getString("type");
+                rsIndoor = rs.getByte("indoor");
+                rsOutdoor = rs.getByte("outdoor");
+                activitiesList.add(new Activity(rsId,rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
+            }
+        } catch (SQLException var10) {
+            System.out.println("An error occurred on executing search query.");
+        }
+
+        return activitiesList;
+    }
+
+    public ObservableList<Activity> shuffleList(ObservableList<Activity> activityList) {
+
+        ObservableList<Activity> list = FXCollections.observableArrayList();
+
+        for (Activity i : activityList) {
+            list.add(i);
+        }
+        Collections.shuffle(list);
+        activityList = list;
+        return activityList;
+    }
+
 
 }
 
