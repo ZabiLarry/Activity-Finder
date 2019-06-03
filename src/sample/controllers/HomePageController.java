@@ -112,6 +112,11 @@ public class HomePageController extends AbstractController implements Initializa
     }
 
     @FXML
+    private void toHelp(ActionEvent event) throws IOException {
+        changeScene(event, "../views/helpView.fxml");
+    }
+
+    @FXML
     private void logOut(ActionEvent event) throws IOException {
 
         AuthenticationSingleton.getInstance().setUser(null);
