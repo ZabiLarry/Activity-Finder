@@ -118,6 +118,13 @@ public class LogInController extends AbstractController {
         }
     }
 
+    public void signUp(ActionEvent event) {
+        try {
+            changeScene(event, "../views/signUp.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 
