@@ -32,7 +32,6 @@ public class Main extends Application {
 
         // to connect to databse initialize DatabseConnection object and then call methods to fetch data and close the
         // connection after last query/method was executed.
-        DatabaseConnection db = new DatabaseConnection();
         // pdf test
         //PdfFormatter.createPDF("myPDF.pdf", "I really like this application");
 
@@ -52,7 +51,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-
     }
 
 
