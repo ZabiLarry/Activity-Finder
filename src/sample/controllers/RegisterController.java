@@ -40,6 +40,9 @@ public class RegisterController extends AbstractController implements Initializa
 
     public void registerOK(){
 
+        DatabaseConnection.addUser(passReggie.getText(), emailRegField.getText());
+
+        System.out.println("register not functional");
 
 
 

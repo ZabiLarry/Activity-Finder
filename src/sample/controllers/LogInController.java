@@ -29,9 +29,13 @@ public class LogInController extends AbstractController {
     @FXML
     private PasswordField passwordTF;
 
+
+
     Main main;
 
     String email;
+
+
 
 
     /*public void login() {
@@ -119,6 +123,10 @@ public class LogInController extends AbstractController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void toRegistration(ActionEvent event) throws IOException {
+        changeScene(event, "../views/registerView.fxml");
     }
 
 }
