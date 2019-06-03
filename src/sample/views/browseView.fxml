@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="1419.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.BrowseController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="1419.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.BrowseController">
         <children>
             <Label layoutX="145.0" layoutY="30.0" text="Browse">
                 <font>
@@ -46,5 +46,6 @@
             </Label>
             <Button fx:id="rateButt" layoutX="32.0" layoutY="492.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Rate activity" />
             <Button fx:id="favoriteButt" layoutX="195.0" layoutY="492.0" mnemonicParsing="false" onAction="#favoriteButt" prefHeight="70.0" prefWidth="112.0" text="Favorite" />
+      <Button fx:id="savePDF" layoutX="242.0" layoutY="573.0" mnemonicParsing="false" text="Save PDF" visible="false" />
         </children>
     </AnchorPane>

@@ -21,7 +21,8 @@ public class OutdoorController extends AbstractController implements Initializab
     DatabaseConnection dbconnect = new DatabaseConnection();
 
     @FXML
-    private Button kajak, climbing, swimming, hiking, fishing, adventure, golf, paintball;
+    private Button kajak,
+            outClimbing, outSwimming, hiking, fishing, adventure, golf, paintball;
 
 
     @Override
@@ -30,8 +31,30 @@ public class OutdoorController extends AbstractController implements Initializab
         BackgroundSize bs = new BackgroundSize(112, 70, false, false, true, false);
 
 
-        BackgroundImage backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/vollyball.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        BackgroundImage backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/canoe.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
         kajak.setBackground(new Background(backgroundImage));
+
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/friends-climbing-boulder--buttermilk-boulders--bishop--california--usa-692733837-5afda7cd642dca00376c4b1a.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        outClimbing.setBackground(new Background(backgroundImage));
+
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/kam-000560-sprung-in-den-badesee-fotograf-kurt-tropper.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        outSwimming.setBackground(new Background(backgroundImage));
+
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/AC05-fishing-replace.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        fishing.setBackground(new Background(backgroundImage));
+
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/bear-creek-zipline-04-660x348.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        adventure.setBackground(new Background(backgroundImage));
+
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/golf.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        golf.setBackground(new Background(backgroundImage));
+
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/paintball.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        paintball.setBackground(new Background(backgroundImage));
+
+        backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/o6eenzusfmv1cy4ytg6t.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        hiking.setBackground(new Background(backgroundImage));
+        
 
     }
 
