@@ -72,6 +72,8 @@ public class LogInController extends AbstractController {
                     RegularUser user = new RegularUser(db.getEmailRegular(counter), db.getIDRegular(email));
                     lblStatus.setText("Login Success");
 
+                    System.out.println(user.getEmail());
+                    System.out.println("Users id " + user.getId());
                     AuthenticationSingleton.getInstance().setUser(user);
                     homePage(event);
                 }

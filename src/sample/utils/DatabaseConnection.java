@@ -327,10 +327,11 @@ public class DatabaseConnection {
     public static void addFavorite(int userid, int favouriteid) {
 
         try {
-            statement.executeQuery("INSERT INTO user_has_activity VALUES (" + userid + "," + favouriteid + ",null,null)");
+            System.out.println(userid);
+            statement.executeUpdate("INSERT INTO user_has_activity VALUES (" + userid + "," + favouriteid + ",null,null)");
             System.out.println("favorite added");
         } catch (SQLException var7) {
-            System.out.println();
+            var7.printStackTrace();
         }
     }
 
@@ -468,12 +469,13 @@ public class DatabaseConnection {
     }*/
 
     public int getIDRegular(String email) {
-
+        int val = 0;
         try {
             ResultSet rs = statement.executeQuery("SELECT iduser FROM user WHERE email = '" + email + "'"+";");
             if (rs.next()) {
-                returnValue = rs.getString("iduser");
-                return returnValueInt;
+                 val = rs.getInt("iduser");
+                System.out.println(returnValue);
+                return val;
             }
         } catch (SQLException var2) {
             System.out.println("An error occurred on fetching ID query");
@@ -481,7 +483,7 @@ public class DatabaseConnection {
 
         }
 
-        return returnValueInt;
+        return val;
     }
 
     public int getIDCommercial(String email) {
@@ -646,7 +648,7 @@ public class DatabaseConnection {
             byte rsIndoor;
             byte rsOutdoor;
             while (rs.next()) {
-                rsId = rs.getInt("idaactivity");
+                rsId = rs.getInt("idactivity");
                 rsName = rs.getString("name");
                 rsLocation = rs.getString("location");
                 rsContact = rs.getString("contact");
