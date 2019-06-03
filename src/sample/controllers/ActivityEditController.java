@@ -39,14 +39,20 @@ public class ActivityEditController extends AbstractController {
     TableColumn<Activity, String> typeDis;
 
     private ObservableList<Activity> list = FXCollections.observableArrayList();
-
     private byte i;
     private byte o;
 
+    @FXML
+    private void reload(ActionEvent event){
+        DatabaseConnection db = new DatabaseConnection();
+        list = db.getOwnedActivities();
+        fillTable(list);
+    }
 
     @FXML
     private void addActivity() {
         ObservableList<Activity> addActivityList = FXCollections.observableArrayList();
+        DatabaseConnection db = new DatabaseConnection();
 
         if (noBlanks()) {
 
@@ -62,7 +68,7 @@ public class ActivityEditController extends AbstractController {
                 o = 0;
             }
 
-            DatabaseConnection.addActivity(nameTF.getText(), locTF.getText(), contactTF.getText(), typeTF.getText(), i, o);
+            db.addActivity(nameTF.getText(), locTF.getText(), contactTF.getText(), typeTF.getText(), i, o);
             int id = 0;
             String name;
             String location;
@@ -125,7 +131,7 @@ public class ActivityEditController extends AbstractController {
         }
     }
 
-    private void fillTable(ObservableList<Activity> listToDisplay) {
+    public void fillTable(ObservableList<Activity> listToDisplay) {
         list = listToDisplay;
         nameDis.setCellValueFactory(new PropertyValueFactory<>("name"));
         typeDis.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -141,10 +147,6 @@ public class ActivityEditController extends AbstractController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        DatabaseConnection db = new DatabaseConnection();
-        list = db.getOwnedActivities();
-        fillTable(list);
-
     }
 
 

@@ -24,7 +24,7 @@
       <Label layoutX="36.0" layoutY="155.0" text="Type:" />
       <Button layoutX="41.0" layoutY="340.0" mnemonicParsing="false" onAction="#addActivity" text="Add" />
       <Button layoutX="128.0" layoutY="340.0" mnemonicParsing="false" onAction="#updateActivity" text="Update" />
-      <Button layoutX="411.0" layoutY="340.0" mnemonicParsing="false" onAction="#deleteActivity" text="Delete" />
+      <Button layoutX="235.0" layoutY="340.0" mnemonicParsing="false" onAction="#deleteActivity" text="Delete" />
       <TableView fx:id="table" layoutX="319.0" layoutY="49.0" onMouseClicked="#fillFields" prefHeight="265.0" prefWidth="234.0">
         <columns>
           <TableColumn fx:id="nameDis" prefWidth="138.4000244140625" text="name" />
@@ -34,7 +34,8 @@
       <Label layoutX="36.0" layoutY="211.0" text="Contact:" />
       <TextField fx:id="contactTF" layoutX="34.0" layoutY="229.0" prefHeight="26.0" prefWidth="234.0" />
       <CheckBox fx:id="indoorCB" layoutX="206.0" layoutY="120.0" mnemonicParsing="false" text="Indoor" />
-      <CheckBox fx:id="outdoorCB1" layoutX="206.0" layoutY="178.0" mnemonicParsing="false" text="Outdoor" />
+      <CheckBox fx:id="outdoorCB" layoutX="206.0" layoutY="178.0" mnemonicParsing="false" text="Outdoor" />
       <Button layoutX="41.0" layoutY="38.0" mnemonicParsing="false" onAction="#toHome" prefHeight="41.0" prefWidth="54.0" text="Home" />
+      <Button fx:id="reloadButt" layoutX="493.0" layoutY="340.0" mnemonicParsing="false" onAction="#reload" text="Reload" />
    </children>
 </AnchorPane>
