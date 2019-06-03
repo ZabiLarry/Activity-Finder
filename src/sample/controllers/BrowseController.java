@@ -158,7 +158,7 @@ public class BrowseController extends AbstractController implements Initializabl
         displayTable.setItems(listForDisplay);
     }
 
-    public void addFavorite() {
+    public void addToFavorite() {
 
         TablePosition position = displayTable.getSelectionModel().getSelectedCells().get(0);
         int row = position.getRow();
@@ -183,7 +183,6 @@ public class BrowseController extends AbstractController implements Initializabl
                 System.out.println(AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getName());
 
                 DatabaseConnection dbconnect = new DatabaseConnection();
-                
 
                 /*dbconnect.addFavorite(AuthenticationSingleton.getInstance().getUser().getId(),
                         AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getActivityID());*/

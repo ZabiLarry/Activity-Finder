@@ -35,7 +35,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="txtLogin1" layoutX="156.0" layoutY="13.0" mnemonicParsing="false" onAction="#signUp" prefHeight="30.0" prefWidth="68.0" text="Sign up">
+      <Button fx:id="signUp" layoutX="156.0" layoutY="13.0" mnemonicParsing="false" onAction="#signUp" prefHeight="30.0" prefWidth="68.0" text="Sign up">
          <font>
             <Font size="14.0" />
          </font>
