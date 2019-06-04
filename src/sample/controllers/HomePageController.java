@@ -28,6 +28,13 @@ public class HomePageController extends AbstractController implements Initializa
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        try {
+            System.out.println(AuthenticationSingleton.getInstance().getUser().getId());
+        }catch (Exception e){
+            System.out.println("no logged in user");
+        }
+
         /*BackgroundImage backgroundImage = new BackgroundImage( new Image( getClass().getResource("../resources/vollyball.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
         if(AuthenticationSingleton.getInstance().getUser() != null){
@@ -73,10 +80,6 @@ public class HomePageController extends AbstractController implements Initializa
             Alert alert = new Alert(Alert.AlertType.WARNING,"Please log in first!");
             alert.show();
         }
-
-
-
-
     }
 
     @FXML

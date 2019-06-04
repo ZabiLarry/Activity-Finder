@@ -12,6 +12,7 @@ import sample.model.Activity;
 import sample.utils.DatabaseConnection;
 
 import javax.mail.FetchProfile;
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -42,17 +43,19 @@ public class ActivityEditController extends AbstractController {
     private byte i;
     private byte o;
 
+    DatabaseConnection db = new DatabaseConnection();
+
     @FXML
     private void reload(ActionEvent event){
-        DatabaseConnection db = new DatabaseConnection();
+
         list = db.getOwnedActivities();
-        fillTable(list);
+        fillTable();
     }
 
     @FXML
     private void addActivity() {
         ObservableList<Activity> addActivityList = FXCollections.observableArrayList();
-        DatabaseConnection db = new DatabaseConnection();
+
 
         if (noBlanks()) {
 
@@ -83,10 +86,11 @@ public class ActivityEditController extends AbstractController {
             in = i;
             out = o;
             addActivityList.add(new Activity(id,name,location,contact,type,in,out));
+
         }else {
             System.out.println("blanks");
         }
-        fillTable(addActivityList);
+        fillTable();
     }
 
     @FXML
@@ -96,27 +100,41 @@ public class ActivityEditController extends AbstractController {
             TablePosition position = table.getSelectionModel().getSelectedCells().get(0);
             int row = position.getRow();
             Activity activity = table.getItems().get(row);
-            DatabaseConnection.updateActivity(activity);
-            list.add(activity);
+            int id = 0;
+            String name;
+            String location;
+            String contact;
+            String type;
+            byte in;
+            byte out;
+            name = nameTF.getText();
+            location = locTF.getText();
+            contact = contactTF.getText();
+            type = typeTF.getText();
+            in = i;
+            out = o;
+            Activity newActivity = new Activity(id,name,location,contact,type,in,out);
+            DatabaseConnection.updateActivity(newActivity, activity.getID());
+            //list.add(activity);
         }
-        fillTable(list);
+        fillTable();
     }
 
     @FXML
     private void deleteActivity() {
 
-        DatabaseConnection db = new DatabaseConnection();
         ObservableList<Activity> deleteActivityList;
         //TablePosition position = table.getSelectionModel().getSelectedCells().get(0);
         System.out.println(table.getSelectionModel().getSelectedCells().get(0).toString());
         System.out.println(table.getItems().get(0));
         System.out.println(table.getItems().get(1));
-        StringProperty name = table.getItems().get(0).nameProperty();
-        StringProperty type = table.getItems().get(1).typeProperty();
+        String name = table.getItems().get(0).nameProperty();
+        String type = table.getItems().get(1).typeProperty();
         DatabaseConnection.deleteActivity(DatabaseConnection.getActivityID(name, type));
         deleteActivityList = db.getOwnedActivities();
 
-        fillTable(deleteActivityList);
+        fillTable();
+        //fillTable(deleteActivityList);
     }
 
     private boolean noBlanks() {
@@ -131,8 +149,7 @@ public class ActivityEditController extends AbstractController {
         }
     }
 
-    public void fillTable(ObservableList<Activity> listToDisplay) {
-        list = listToDisplay;
+    public void fillTable() {
         nameDis.setCellValueFactory(new PropertyValueFactory<>("name"));
         typeDis.setCellValueFactory(new PropertyValueFactory<>("type"));
         table.setItems(list);
@@ -147,10 +164,12 @@ public class ActivityEditController extends AbstractController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        list = db.getOwnedActivities();
+        fillTable();
     }
 
 
-    public void fillFields(MouseEvent mouseEvent) {
+    public void fillFields() {
         TablePosition position = table.getSelectionModel().getSelectedCells().get(0);
         System.out.println(position.toString());
 
@@ -158,8 +177,8 @@ public class ActivityEditController extends AbstractController {
         TableColumn col = position.getTableColumn();
         //String data = (String) col.getCellObservableValue(activity).getValue();
         //System.out.println(data);
-        StringProperty name = table.getItems().get(0).nameProperty();
-        StringProperty type = table.getItems().get(1).typeProperty();
+        String name = table.getItems().get(0).nameProperty();
+        String type = table.getItems().get(1).typeProperty();
         int activityid = DatabaseConnection.getActivityID(name, type);
         nameTF.setText(DatabaseConnection.selectActivity(activityid).getName());
         locTF.setText(DatabaseConnection.selectActivity(activityid).getLocation());

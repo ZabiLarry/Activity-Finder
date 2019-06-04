@@ -36,7 +36,7 @@ public class Activity {
     }
 
     public int getID() {
-        return DatabaseConnection.getActivityID(name, type);
+        return DatabaseConnection.getActivityID(String.valueOf(name), String.valueOf(type));
     }
 
     public void setName(String value) {
@@ -86,8 +86,8 @@ public class Activity {
         this.outdoor = outdoor;
     }
 
-    public StringProperty nameProperty() {
-        return name;
+    public String nameProperty() {
+        return String.valueOf(name);
     }
 
     public StringProperty locationProperty() {
@@ -98,8 +98,8 @@ public class Activity {
         return contact;
     }
 
-    public StringProperty typeProperty() {
-        return type;
+    public String typeProperty() {
+        return String.valueOf(type);
     }
 
     private String getActivityPlace(){
@@ -115,7 +115,7 @@ public class Activity {
                 "Location: " + getLocation() + "\n" +
                 "Contact: " + getContact() + "\n" +
                 "Type: "  + getType() + "\n" +
-            "Indoor/outdoor: " + getActivityPlace();
+                "Indoor/outdoor: " + getActivityPlace();
     }
 }
 
