@@ -4,30 +4,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import sample.model.Activity;
-
-
-import sample.*;
-import sample.model.User;
 import sample.utils.AuthenticationSingleton;
 import sample.utils.DatabaseConnection;
 import sample.utils.PdfFormatter;
 
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDateTime;
+
 import java.util.*;
+
+import java.util.ResourceBundle;
+
 
 
 public class BrowseController extends AbstractController implements Initializable {
@@ -35,7 +26,7 @@ public class BrowseController extends AbstractController implements Initializabl
     private String text;
 
     @FXML
-    private  Button savePDF;
+    private Button savePDF;
 
     @FXML
     public Button saveEventBtn;
@@ -72,12 +63,14 @@ public class BrowseController extends AbstractController implements Initializabl
         }
 
     }
+
     @FXML
     private void indoorButt(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
         listForDisplay = dbconnect.sortByIndoor();
         displayTable.setItems(listForDisplay);
     }
+
     @FXML
     private void outdoorButt(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
@@ -86,14 +79,21 @@ public class BrowseController extends AbstractController implements Initializabl
     }
 
 
-   @FXML
+    @FXML
     private void bringFavorite(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
-       listForDisplay = dbconnect.sortByRFavorite(AuthenticationSingleton.getInstance().getUser().getId());
+
+        if(AuthenticationSingleton.getInstance().getUser()==null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Log in first", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+
+        listForDisplay = dbconnect.sortByRFavorite(AuthenticationSingleton.getInstance().getUser().getId());
         StringBuilder vel = new StringBuilder();
         int c = 1;
-        for (Activity a: listForDisplay){
-            vel.append("[" + c +"]");
+        for (Activity a : listForDisplay) {
+            vel.append("[" + c + "]");
             vel.append(a.toString());
             vel.append("\n\n");
             c++;
@@ -101,7 +101,7 @@ public class BrowseController extends AbstractController implements Initializabl
         displayTable.setItems(listForDisplay);
         savePDF.setVisible(true);
         savePDF.setOnMouseClicked(event1 -> {
-            PdfFormatter.openPDFRecipeSaver(event,vel.toString());
+            PdfFormatter.openPDFRecipeSaver(event, vel.toString());
         });
     }
 
@@ -117,28 +117,24 @@ public class BrowseController extends AbstractController implements Initializabl
         ObservableList<Activity> listForDisplayLocation;
         ObservableList<Activity> listForDisplayType;
 
-        if(searchText.getText().isEmpty()){
+        if (searchText.getText().isEmpty()) {
             System.out.println("Please do not press the button if there's no input");
-        }
-        else if(!searchText.getText().isEmpty())
-        {
+        } else if (!searchText.getText().isEmpty()) {
             text = searchText.getText();
             DatabaseConnection db = new DatabaseConnection();
             listForDisplayName = db.searchFunctionName(text);
             listForDisplayLocation = db.searchFunctionLocation(text);
             listForDisplayType = db.searchFunctionType(text);
-            listForDisplay = combinedList(listForDisplayName,listForDisplayLocation,listForDisplayType);
-            if(!listForDisplay.isEmpty()) {
+            listForDisplay = combinedList(listForDisplayName, listForDisplayLocation, listForDisplayType);
+            if (!listForDisplay.isEmpty()) {
                 displayTable.setItems(listForDisplay);
                 searchText.setText(null);
-            }
-            else{
+            } else {
                 displayTable.setItems(null);
                 searchText.setText(null);
                 System.out.println("Not found");
             }
-        }
-        else {
+        } else {
             System.out.println("What else?");
         }
     }
@@ -148,7 +144,7 @@ public class BrowseController extends AbstractController implements Initializabl
         homePage(event);
     }
 
-    public ObservableList<Activity> combinedList(ObservableList<Activity> listOne,ObservableList<Activity> listTwo,ObservableList<Activity> listThree){
+    public ObservableList<Activity> combinedList(ObservableList<Activity> listOne, ObservableList<Activity> listTwo, ObservableList<Activity> listThree) {
         ObservableList<Activity> returnList = FXCollections.observableArrayList();
         returnList.addAll(listOne);
         returnList.addAll(listTwo);
@@ -167,7 +163,7 @@ public class BrowseController extends AbstractController implements Initializabl
     }
 
     public void addToFavorite() {
-        if(displayTable.getSelectionModel().getSelectedCells().size()==0){
+        if (displayTable.getSelectionModel().getSelectedCells().size() == 0) {
             System.out.println("No row selected");
             return;
         }
