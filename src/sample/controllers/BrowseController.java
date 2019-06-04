@@ -14,6 +14,7 @@ import sample.utils.PdfFormatter;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -26,6 +27,12 @@ public class BrowseController extends AbstractController implements Initializabl
 
     @FXML
     public Button saveEventBtn;
+
+    @FXML
+    public Button addTofavoritesBtn;
+
+    @FXML
+    public Button favoritesBtn;
 
     ObservableList<Activity> listForDisplay = FXCollections.observableArrayList();
     @FXML
@@ -43,6 +50,15 @@ public class BrowseController extends AbstractController implements Initializabl
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        if (Objects.equals(String.valueOf(AuthenticationSingleton.getInstance().getUser().getClass()), "class sample.model.CommercialUser")){
+            System.out.println("is commercial");
+
+        }else{
+            System.out.println("is not commercial" );
+            favoritesBtn.setDisable(false);
+            addTofavoritesBtn.setDisable(false);
+        }
 
     }
 
