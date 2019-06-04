@@ -65,20 +65,21 @@ public class LogInController extends AbstractController {
         DatabaseConnection db = new DatabaseConnection();
         email = emailTF.getText();
         int counter;
-        for (counter = 1; counter <= db.getUsersSize() + 1; ++counter) {
+        for (counter = 1; counter <= db.getUsersSize() + 1; ++counter)
             if (email.equals(db.getEmailRegular(counter))) {
                 if (passwordTF.getText().equals(db.getPasswordRegular(counter))) {
                     System.out.println("loginRegular success");
                     RegularUser user = new RegularUser(db.getEmailRegular(counter), db.getIDRegular(email));
                     lblStatus.setText("Login Success");
                     AuthenticationSingleton.getInstance().setUser(user);
+
                     homePage(event);
+                    break;
                 }
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "loginRegular failed", ButtonType.OK);
                 lblStatus.setText("Login Failed");
             }
-        }
     }
 
     public void loginCommercial(ActionEvent event) throws IOException {
@@ -101,7 +102,6 @@ public class LogInController extends AbstractController {
                     System.out.println("failed password retrieve");
                 }
             } else {
-                System.out.println("failed to get email");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "loginCommercial failed", ButtonType.OK);
                 lblStatus.setText("Login Failed");
             }

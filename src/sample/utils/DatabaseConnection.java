@@ -260,7 +260,7 @@ public class DatabaseConnection {
 
     public String getPasswordCommercial(int counter) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT password FROM commercialuser WHERE idcommercialuser = '" + counter + "'"+";");
+            ResultSet rs = statement.executeQuery("SELECT password FROM commercialuser WHERE idcommercialUser = '" + counter + "'"+";");
             if (rs.next()) {
                 returnValue = rs.getString("password");
                 return returnValue;
@@ -273,10 +273,10 @@ public class DatabaseConnection {
     }
 
 
-    public static void updateEmail(String email) {
+    public void updateComemerEmail(String email) {
 
         try {
-            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE id = " + AuthenticationSingleton.getInstance().getUser().getId());
+            statement.executeUpdate("UPDATE commercialuser SET email = '" + email + "' WHERE idcommercialUser = " + AuthenticationSingleton.getInstance().getUser().getId());
         } catch (SQLException var7) {
             System.out.println("An error occurred on executing the registration query for updateEmail");
         }
@@ -322,7 +322,7 @@ public class DatabaseConnection {
     }
 
 
-    public static void addFavorite(int userid, int favouriteid) {
+    public void addFavorite(int userid, int favouriteid) {
 
         try {
             statement.executeQuery("INSERT INTO user_has_activity VALUES (" + userid + "," + favouriteid + ",null,null)");
@@ -735,14 +735,59 @@ public class DatabaseConnection {
 
         return emailList;
     }
-    public void addCommercialUser(String email, String password) {
+    public void addCommercialUser(String email, String password, String name, String address, String phonenumber) {
         try {
-            statement.executeUpdate("INSERT INTO user (email, password) VALUES ('" + email + "','" + password + "')");
+            statement = connection.createStatement();
+            statement.executeUpdate("INSERT INTO commercialuser (email, password, name, address, phoneNumber) VALUES ('" + email + "','" + password + "','" + name + "','" + address +"','" + phonenumber + "')");
             System.out.println("Commercial user added.");
         } catch (SQLException var6) {
             System.out.println("An error occurred on executing the addUser query");
         }
     }
+    public void updateCommerPhone(String phone) {
+
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate("UPDATE commercialuser SET phoneNumber = '" + phone + "' WHERE idcommercialUser = " + AuthenticationSingleton.getInstance().getUser().getId());
+        } catch (SQLException var7) {
+            System.out.println("An error occurred on executing the query for updatePhone");
+        }
+    }
+    public void updateCommerAddress(String address) {
+
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate("UPDATE commercialuser SET address = '" + address + "' WHERE idcommercialUser = '" + AuthenticationSingleton.getInstance().getUser().getId() + "'"+";");
+        } catch (SQLException var7) {
+            System.out.println("An error occurred on executing the query for updateAddress");
+        }
+    }
+    public void updateCommerPassword(String password) {
+
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate("UPDATE commercialuser SET password = '" + password + "' WHERE idcommercialUser = '" + AuthenticationSingleton.getInstance().getUser().getId() + "'"+";");
+        } catch (SQLException var7) {
+            System.out.println("An error occurred on executing the query for updatePassword");
+        }
+    }
+    public void updateReguPassword(String password) {
+
+        try {
+            statement.executeUpdate("UPDATE user SET password = '" + password + "' WHERE iduser = '" + AuthenticationSingleton.getInstance().getUser().getId() + "'"+";");
+        } catch (SQLException var7) {
+            System.out.println("An error occurred on executing the query for updatePassword");
+        }
+    }
+    public void updateReguEmail(String email) {
+
+        try {
+            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE iduser = '" + AuthenticationSingleton.getInstance().getUser().getId() + "'"+";");
+        } catch (SQLException var7) {
+            System.out.println("An error occurred on executing the query for updateEmail");
+        }
+    }
+
 }
 
 
