@@ -43,7 +43,6 @@
                     <Font size="23.0" />
                 </font>
             </Label>
-            <Button fx:id="rating" layoutX="32.0" layoutY="492.0" mnemonicParsing="false" onAction="#rateButt" prefHeight="70.0" prefWidth="112.0" text="Rate activity" />
       <Button layoutX="195.0" layoutY="492.0" mnemonicParsing="false" onAction="#addToFavorite" prefHeight="70.0" prefWidth="112.0" text="Add to Favorite" />
       <Button layoutX="232.0" layoutY="131.0" mnemonicParsing="false" onAction="#searchButt" prefHeight="28.0" prefWidth="62.0" text="search" />
         </children>

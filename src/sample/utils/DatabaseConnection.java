@@ -322,7 +322,7 @@ public class DatabaseConnection {
     }
 
 
-    public static void addFavorite(int userid, int favouriteid) {
+    public void addFavorite(int userid, int favouriteid) {
 
         try {
             statement.executeQuery("INSERT INTO user_has_activity VALUES (" + userid + "," + favouriteid + ",null,null)");
@@ -735,10 +735,10 @@ public class DatabaseConnection {
 
         return emailList;
     }
-    public void addCommercialUser(String email, String password) {
+    public void addCommercialUser(String email, String password, String name, String address, String phonenumber) {
         try {
-            statement.executeUpdate("INSERT INTO user (email, password) VALUES ('" + email + "','" + password + "')");
-            System.out.println("User added.");
+            statement.executeUpdate("INSERT INTO commercialuser (email, password, name, address, phoneNumber) VALUES ('" + email + "','" + password + "','" + name + "','" + address +"','" + phonenumber + "')");
+            System.out.println("Commercial added.");
         } catch (SQLException var6) {
             System.out.println("An error occurred on executing the addUser query");
         }
