@@ -1,12 +1,15 @@
 package sample.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.w3c.dom.Text;
 import sample.utils.DatabaseConnection;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -15,16 +18,36 @@ public class RegisterController extends AbstractController implements Initializa
 
 
     @FXML
-    private TextField emailRegField;
+    private TextField emailRegular;
 
     @FXML
-    private PasswordField passReggie;
+    private PasswordField passRegular;
 
     @FXML
-    private Button registerOK;
+    private Button okRegular;
 
     @FXML
     private Button registerCancel;
+
+    @FXML
+    private TextField emailCom;
+
+    @FXML
+    private TextField nameCom;
+
+    @FXML
+    private TextField passCom;
+
+    @FXML
+    private TextField addressCom;
+
+    @FXML
+    private TextField nrCom;
+
+    @FXML
+    private Button okCom;
+
+
 
 
 
@@ -38,14 +61,28 @@ public class RegisterController extends AbstractController implements Initializa
 
 
 
-    public void registerOK(){
+    public void registerRegular(){
 
-        DatabaseConnection.addUser(passReggie.getText(), emailRegField.getText());
+        DatabaseConnection.addUser(passRegular.getText(), emailRegular.getText());
 
-        System.out.println("register not functional");
+        System.out.println("registered regular user");
 
 
 
     }
 
+
+    public void registerCommercial(){
+
+        DatabaseConnection.addCommercial(emailCom.getText(), passCom.getText(), nameCom.getText(), addressCom.getText(), Integer.parseInt(nrCom.getText()));
+        System.out.println("registered regular user");
+
+    }
+
+
+    @FXML
+    private void toLogin(ActionEvent event) throws IOException {
+        changeScene(event, "../views/loginView.fxml");
+
+    }
 }

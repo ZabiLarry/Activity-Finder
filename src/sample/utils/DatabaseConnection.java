@@ -98,14 +98,13 @@ public class DatabaseConnection {
         return password;
     }
 
-    public static void addUser(String password, String email){
+    public static void addUser(String password, String email) {
 
         try {
             statement.executeUpdate("INSERT INTO users (password, email)VALUES (  '" + password + "','" + email + "')");
         } catch (SQLException var7) {
             System.out.println("An error occurred on executing the registration query.");
         }
-
 
 
     }
@@ -121,20 +120,20 @@ public class DatabaseConnection {
         return 0;
     }
 
-    public String forgottenPassword(String email){
+    public String forgottenPassword(String email) {
         String returnVal = null;
         String query = "SELECT password FROM user WHERE email = ?;";
-        try{
+        try {
             PreparedStatement st = connection.prepareStatement(query);
             st.setString(1, email);
             ResultSet rs = st.executeQuery();
 
-            if(rs.next()){
+            if (rs.next()) {
                 returnVal = rs.getString("password");
             }
 
             return returnVal;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return returnVal;
@@ -146,7 +145,7 @@ public class DatabaseConnection {
     public String getEmailCommercial(int counter) {
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT email FROM commercialuser WHERE idcommercialUser = '" + counter + "'"+";");
+            ResultSet rs = statement.executeQuery("SELECT email FROM commercialuser WHERE idcommercialUser = '" + counter + "'" + ";");
             while (rs.next()) {
                 returnValue = rs.getString("email");
 
@@ -158,7 +157,7 @@ public class DatabaseConnection {
         return returnValue;
     }
 
-    public  ObservableList<Activity> getOwnedActivities() {
+    public ObservableList<Activity> getOwnedActivities() {
 
         ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
         int recieveId;
@@ -172,12 +171,12 @@ public class DatabaseConnection {
         int test = 1;
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT activity_idactivity from commercialuser_has_activity WHERE commercialUser_idcommercialUser = '" + AuthenticationSingleton.getInstance().getUser().getId() + "'"+";");
+            ResultSet rs = statement.executeQuery("SELECT activity_idactivity from commercialuser_has_activity WHERE commercialUser_idcommercialUser = '" + AuthenticationSingleton.getInstance().getUser().getId() + "'" + ";");
             while (rs.next()) {
                 recieveId = rs.getInt("activity_idactivity");
 
                 try {
-                    ResultSet rs2 = statement.executeQuery("SELECT  * FROM activity WHERE idactivity = '" + recieveId + "'"+";");
+                    ResultSet rs2 = statement.executeQuery("SELECT  * FROM activity WHERE idactivity = '" + recieveId + "'" + ";");
                     while (rs2.next()) {
                         rsID = rs2.getInt("idactivity");
                         rsName = rs2.getString("name");
@@ -202,7 +201,7 @@ public class DatabaseConnection {
     public String getEmailRegular(int counter) {
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT email FROM user WHERE iduser = '" + counter + "'"+";");
+            ResultSet rs = statement.executeQuery("SELECT email FROM user WHERE iduser = '" + counter + "'" + ";");
             while (rs.next()) {
                 returnValue = rs.getString("email");
 
@@ -218,7 +217,7 @@ public class DatabaseConnection {
     public String getPhoneCommer(int counter) {
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT phoneNumber FROM commercialuser WHERE idcommercialUser = '" + counter + "'"+";");
+            ResultSet rs = statement.executeQuery("SELECT phoneNumber FROM commercialuser WHERE idcommercialUser = '" + counter + "'" + ";");
             while (rs.next()) {
                 returnValue = rs.getString("phoneNumber");
 
@@ -233,7 +232,7 @@ public class DatabaseConnection {
     public String getAddressCommer(int counter) {
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT address FROM commercialuser WHERE idcommercialUser = '" + counter + "'"+";");
+            ResultSet rs = statement.executeQuery("SELECT address FROM commercialuser WHERE idcommercialUser = '" + counter + "'" + ";");
             while (rs.next()) {
                 returnValue = rs.getString("address");
             }
@@ -260,7 +259,7 @@ public class DatabaseConnection {
 
     public String getPasswordRegular(int counter) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT password FROM user WHERE iduser = '" + counter + "'"+";");
+            ResultSet rs = statement.executeQuery("SELECT password FROM user WHERE iduser = '" + counter + "'" + ";");
             while (rs.next()) {
                 returnValue = rs.getString(1);
                 return returnValue;
@@ -274,7 +273,7 @@ public class DatabaseConnection {
 
     public String getPasswordCommercial(int counter) {
         try {
-            ResultSet rs = statement.executeQuery("SELECT password FROM commercialuser WHERE idcommercialuser = '" + counter + "'"+";");
+            ResultSet rs = statement.executeQuery("SELECT password FROM commercialuser WHERE idcommercialuser = '" + counter + "'" + ";");
             if (rs.next()) {
                 returnValue = rs.getString("password");
                 return returnValue;
@@ -298,7 +297,7 @@ public class DatabaseConnection {
 
     public static void updateActivity(Activity activity) {
         try {
-            statement.executeUpdate("UPDATE activity SET (name, location, contact, type, indoor, outdoor) = ('" + activity.getName() + "','" + activity.getLocation() + "','" + activity.getContact()+ "','" + activity.getType() + "','" + activity.getIndoor() + "','" + activity.getOutdoor() + "') WHERE id = " + activity.getID());
+            statement.executeUpdate("UPDATE activity SET (name, location, contact, type, indoor, outdoor) = ('" + activity.getName() + "','" + activity.getLocation() + "','" + activity.getContact() + "','" + activity.getType() + "','" + activity.getIndoor() + "','" + activity.getOutdoor() + "') WHERE id = " + activity.getID());
         } catch (SQLException var7) {
             System.out.println("An error occurred on executing the registration query for updateActivity");
         }
@@ -352,7 +351,7 @@ public class DatabaseConnection {
         ObservableList<Activity> activitiesList = FXCollections.observableArrayList();
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM activity WHERE name = '" + ActivityName + "'"+";");
+            ResultSet rs = statement.executeQuery("SELECT * FROM activity WHERE name = '" + ActivityName + "'" + ";");
             int rsId;
             String rsName;
             String rsLocation;
@@ -368,7 +367,7 @@ public class DatabaseConnection {
                 rsType = rs.getString("type");
                 rsIndoor = rs.getByte("indoor");
                 rsOutdoor = rs.getByte("outdoor");
-                activitiesList.add(new Activity(rsId,rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
+                activitiesList.add(new Activity(rsId, rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
             }
         } catch (SQLException var10) {
             System.out.println(var10.getMessage());
@@ -399,7 +398,7 @@ public class DatabaseConnection {
                 rsIndoor = rs.getByte("indoor");
                 rsOutdoor = rs.getByte("outdoor");
 
-                listForDisplay.add(new Activity(rsId,rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
+                listForDisplay.add(new Activity(rsId, rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
             }
         } catch (SQLException | NullPointerException ex) {
             System.err.println(LocalDateTime.now() + " : " + ex.getMessage());
@@ -429,7 +428,7 @@ public class DatabaseConnection {
                 rsType = rs.getString("type");
                 rsIndoor = rs.getByte("indoor");
                 rsOutdoor = rs.getByte("outdoor");
-                activitiesList.add(new Activity(rsId,rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
+                activitiesList.add(new Activity(rsId, rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
             }
         } catch (SQLException var10) {
             System.out.println("An error occurred on executing select query.");
@@ -458,7 +457,7 @@ public class DatabaseConnection {
                 rsType = rs.getString("type");
                 rsIndoor = rs.getByte("indoor");
                 rsOutdoor = rs.getByte("outdoor");
-                activitiesList.add(new Activity(rsId,rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
+                activitiesList.add(new Activity(rsId, rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
             }
         } catch (SQLException var10) {
             System.out.println("An error occurred on executing select query.");
@@ -482,7 +481,7 @@ public class DatabaseConnection {
     public int getIDRegular(String email) {
 
         try {
-            ResultSet rs = statement.executeQuery("SELECT iduser FROM user WHERE email = '" + email + "'"+";");
+            ResultSet rs = statement.executeQuery("SELECT iduser FROM user WHERE email = '" + email + "'" + ";");
             if (rs.next()) {
                 returnValue = rs.getString("iduser");
                 System.out.println("success on fetching id");
@@ -501,7 +500,7 @@ public class DatabaseConnection {
     public int getIDCommercial(String email) {
 
         try {
-            ResultSet rs = statement.executeQuery("SELECT idcommercialUser FROM commercialuser WHERE email = '" + email + "'"+";");
+            ResultSet rs = statement.executeQuery("SELECT idcommercialUser FROM commercialuser WHERE email = '" + email + "'" + ";");
             if (rs.next()) {
                 returnValue = rs.getString(1);
                 return returnValueInt;
@@ -518,7 +517,7 @@ public class DatabaseConnection {
     public String getName(String email) {
 
         try {
-            ResultSet rs = statement.executeQuery("SELECT name FROM commercialuser WHERE email = '" + email + "'"+";");
+            ResultSet rs = statement.executeQuery("SELECT name FROM commercialuser WHERE email = '" + email + "'" + ";");
             if (rs.next()) {
                 returnValue = rs.getString(1);
                 return returnValue;
@@ -531,11 +530,6 @@ public class DatabaseConnection {
 
         return "";
     }
-
-
-
-
-
 
 
     public static Activity selectActivity(int id) {
@@ -553,7 +547,7 @@ public class DatabaseConnection {
             byte outdoor = rsOutdoor.getByte("outdoor");
 
 
-            activity = new Activity(id,name, location, contact, type, indoor, outdoor);
+            activity = new Activity(id, name, location, contact, type, indoor, outdoor);
 
         } catch (SQLException var1) {
             System.out.println("An error occurred on executing the query for selectActivity");
@@ -607,7 +601,7 @@ public class DatabaseConnection {
                 rsType = rs.getString("type");
                 rsIndoor = rs.getByte("indoor");
                 rsOutdoor = rs.getByte("outdoor");
-                activitiesList.add(new Activity(rsId,rsName, rsLocation, rsContact,rsType, rsIndoor, rsOutdoor));
+                activitiesList.add(new Activity(rsId, rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
             }
         } catch (SQLException var10) {
             System.out.println("An error occurred on executing select query.");
@@ -637,7 +631,7 @@ public class DatabaseConnection {
                 rsType = rs.getString("type");
                 rsIndoor = rs.getByte("indoor");
                 rsOutdoor = rs.getByte("outdoor");
-                activitiesList.add(new Activity(rsId,rsName, rsLocation, rsContact,rsType, rsIndoor, rsOutdoor));
+                activitiesList.add(new Activity(rsId, rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
             }
         } catch (SQLException var10) {
             System.out.println("An error occurred on executing select query.");
@@ -667,7 +661,7 @@ public class DatabaseConnection {
                 rsType = rs.getString("type");
                 rsIndoor = rs.getByte("indoor");
                 rsOutdoor = rs.getByte("outdoor");
-                activitiesList.add(new Activity(rsId,rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
+                activitiesList.add(new Activity(rsId, rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
             }
         } catch (SQLException var10) {
             System.out.println("An error occurred on executing query.");
@@ -678,5 +672,14 @@ public class DatabaseConnection {
     }
 
 
+    public static void addCommercial(String email, String password, String name, String address, int phone) {
+        try {
+            statement.executeUpdate("INSERT INTO users (email, password, name, address, phone)VALUES (  '" + email + "','" + password + "','" + name + "','" + address + "','" + phone + "')");
+        } catch (SQLException var7) {
+            System.out.println("An error occurred on executing the commercial user registration query.");
+        }
+
+
+    }
 
 }

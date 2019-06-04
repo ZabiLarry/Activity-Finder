@@ -125,7 +125,7 @@ public class LogInController extends AbstractController {
         }
     }
 
-    private void toRegistration(ActionEvent event) throws IOException {
+    public void toRegistration(ActionEvent event) throws IOException {
         changeScene(event, "../views/registerView.fxml");
     }
 

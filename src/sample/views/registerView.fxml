@@ -6,22 +6,45 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.RegisterController">
    <children>
-      <TextField fx:id="emailRegField" layoutX="78.0" layoutY="90.0" promptText="Enter your email address" />
-      <Label layoutX="87.0" layoutY="48.0" text="Email">
+      <TextField fx:id="emailRegular" layoutX="78.0" layoutY="107.0" promptText="Enter your email address" />
+      <Label layoutX="91.0" layoutY="64.0" text="Email">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="87.0" layoutY="135.0" text="Password">
+      <Label layoutX="93.0" layoutY="157.0" text="Password">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="registerOK" layoutX="76.0" layoutY="239.0" mnemonicParsing="false" text="OK" />
-      <Button fx:id="registerCancel" layoutX="166.0" layoutY="239.0" mnemonicParsing="false" text="Cancel" />
-      <PasswordField fx:id="passReggie" layoutX="78.0" layoutY="175.0" promptText="Enter your password" />
+      <Button fx:id="okRegular" layoutX="91.0" layoutY="264.0" mnemonicParsing="false" onAction="#registerRegular" text="OK" />
+      <Button fx:id="registerCancel" layoutX="160.0" layoutY="264.0" mnemonicParsing="false" onAction="#toLogin" text="Cancel" />
+      <PasswordField fx:id="passRegular" layoutX="78.0" layoutY="200.0" promptText="Enter your password" />
+      <Label layoutX="91.0" layoutY="7.0" prefHeight="37.0" prefWidth="75.0" text="Regular">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="435.0" layoutY="17.0" text="Commercial">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="emailCom" layoutX="411.0" layoutY="86.0" />
+      <Label layoutX="428.0" layoutY="69.0" text="Email" />
+      <TextField fx:id="nameCom" layoutX="411.0" layoutY="188.0" />
+      <Text layoutX="418.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+      <Text layoutX="419.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+      <PasswordField fx:id="passCom" layoutX="411.0" layoutY="132.0" />
+      <TextField fx:id="addressCom" layoutX="411.0" layoutY="234.0" />
+      <Label layoutX="421.0" layoutY="217.0" text="Address" />
+      <TextField fx:id="nrCom" layoutX="411.0" layoutY="289.0" />
+      <Label layoutX="414.0" layoutY="268.0" text="phone number" />
+      <Button fx:id="okCom" layoutX="417.0" layoutY="332.0" mnemonicParsing="false" onAction="#registerCommercial" text="OK" />
+      <Button fx:id="register2cancel" layoutX="493.0" layoutY="332.0" mnemonicParsing="false" onAction="#toLogin" text="Cancel" />
    </children>
 </AnchorPane>
