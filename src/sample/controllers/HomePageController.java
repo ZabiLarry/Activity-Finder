@@ -26,6 +26,7 @@ public class HomePageController extends AbstractController implements Initializa
     private Button authenticationButton;
 
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
