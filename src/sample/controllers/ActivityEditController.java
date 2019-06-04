@@ -1,18 +1,14 @@
 package sample.controllers;
 
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import sample.model.Activity;
 import sample.utils.DatabaseConnection;
 
-import javax.mail.FetchProfile;
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,6 +34,8 @@ public class ActivityEditController extends AbstractController {
 
     @FXML
     TableColumn<Activity, String> typeDis;
+    
+    public Activity selectedActivity = null;
 
     private ObservableList<Activity> list = FXCollections.observableArrayList();
     private byte i;
@@ -46,7 +44,7 @@ public class ActivityEditController extends AbstractController {
     DatabaseConnection db = new DatabaseConnection();
 
     @FXML
-    private void reload(ActionEvent event){
+    private void reload(){
 
         list = db.getOwnedActivities();
         fillTable();
@@ -85,7 +83,9 @@ public class ActivityEditController extends AbstractController {
             type = typeTF.getText();
             in = i;
             out = o;
-            addActivityList.add(new Activity(id,name,location,contact,type,in,out));
+            Activity activity = new Activity(id,name,location,contact,type,in,out);
+            addActivityList.add(activity);
+            list.add(activity);
 
         }else {
             System.out.println("blanks");
@@ -98,8 +98,13 @@ public class ActivityEditController extends AbstractController {
 
         if (noBlanks()) {
             TablePosition position = table.getSelectionModel().getSelectedCells().get(0);
-            int row = position.getRow();
-            Activity activity = table.getItems().get(row);
+            System.out.println(position.toString());
+
+            System.out.println(position.getTableColumn());
+            TableColumn col = position.getTableColumn();
+            String data = (String) col.getCellObservableValue(0).getValue();
+            System.out.println(data);
+
             int id = 0;
             String name;
             String location;
@@ -114,27 +119,26 @@ public class ActivityEditController extends AbstractController {
             in = i;
             out = o;
             Activity newActivity = new Activity(id,name,location,contact,type,in,out);
-            DatabaseConnection.updateActivity(newActivity, activity.getID());
+            DatabaseConnection.updateActivity(selectedActivity.getId(), newActivity);
             //list.add(activity);
         }
-        fillTable();
+        reload();
     }
 
     @FXML
     private void deleteActivity() {
+        TablePosition position = table.getSelectionModel().getSelectedCells().get(0);
+        System.out.println(position.toString());
 
-        ObservableList<Activity> deleteActivityList;
-        //TablePosition position = table.getSelectionModel().getSelectedCells().get(0);
-        System.out.println(table.getSelectionModel().getSelectedCells().get(0).toString());
-        System.out.println(table.getItems().get(0));
-        System.out.println(table.getItems().get(1));
-        String name = table.getItems().get(0).nameProperty();
-        String type = table.getItems().get(1).typeProperty();
-        DatabaseConnection.deleteActivity(DatabaseConnection.getActivityID(name, type));
-        deleteActivityList = db.getOwnedActivities();
+        System.out.println(position.getTableColumn());
+        TableColumn col = position.getTableColumn();
+        String data = (String) col.getCellObservableValue(0).getValue();
+        System.out.println(data);
+        Activity activity = table.getItems().get(position.getRow());
+        DatabaseConnection.deleteActivity(activity.getID());
 
-        fillTable();
-        //fillTable(deleteActivityList);
+        reload();
+
     }
 
     private boolean noBlanks() {
@@ -171,24 +175,22 @@ public class ActivityEditController extends AbstractController {
 
     public void fillFields() {
         TablePosition position = table.getSelectionModel().getSelectedCells().get(0);
-        System.out.println(position.toString());
 
         System.out.println(position.getTableColumn());
         TableColumn col = position.getTableColumn();
-        //String data = (String) col.getCellObservableValue(activity).getValue();
-        //System.out.println(data);
-        String name = table.getItems().get(0).nameProperty();
-        String type = table.getItems().get(1).typeProperty();
-        int activityid = DatabaseConnection.getActivityID(name, type);
-        nameTF.setText(DatabaseConnection.selectActivity(activityid).getName());
-        locTF.setText(DatabaseConnection.selectActivity(activityid).getLocation());
-        contactTF.setText(DatabaseConnection.selectActivity(activityid).getContact());
-        typeTF.setText(DatabaseConnection.selectActivity(activityid).getType());
+        String data = (String) col.getCellObservableValue(0).getValue();
+        System.out.println(data);
+        selectedActivity = table.getItems().get(position.getRow());
 
-       /* if (activity.getOutdoor() == 1)
+        nameTF.setText(selectedActivity.getName());
+        locTF.setText(selectedActivity.getLocation());
+        contactTF.setText(selectedActivity.getContact());
+        typeTF.setText(selectedActivity.getType());
+
+        if (selectedActivity.getOutdoor() == 1)
             outdoorCB.setSelected(true);
 
-        if (activity.getIndoor() == 1)
-            indoorCB.setSelected(true);*/
+        if (selectedActivity.getIndoor() == 1)
+            indoorCB.setSelected(true);
     }
 }
