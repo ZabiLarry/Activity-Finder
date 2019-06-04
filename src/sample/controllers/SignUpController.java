@@ -36,6 +36,47 @@ import java.util.ResourceBundle;
 
 public class SignUpController extends AbstractController implements Initializable {
 
+    @FXML
+    private Button home;
+    @FXML
+    private Button commercialSign;
+    @FXML
+    private Button regularSign;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private TextField passField;
+    @FXML
+    private TextField confirmpassField;
+
+
+
+    @FXML
+    private void toLogin(ActionEvent event) throws IOException {
+        changeScene(event, "../views/loginView.fxml");
+    }
+
+    @FXML
+    private void emailTF(ActionEvent event) {
+
+    }
+    @FXML
+    private void passTF(ActionEvent event) {
+
+    }
+    @FXML
+    private void confirmpassTF(ActionEvent event) {
+
+    }
+    @FXML
+    private void signUpCommer(ActionEvent event) {
+
+    }
+    @FXML
+    private void signUpRegular(ActionEvent event) {
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
