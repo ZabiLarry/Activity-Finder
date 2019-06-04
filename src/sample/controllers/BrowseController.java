@@ -27,10 +27,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 public class BrowseController extends AbstractController implements Initializable {
@@ -42,6 +39,12 @@ public class BrowseController extends AbstractController implements Initializabl
 
     @FXML
     public Button saveEventBtn;
+
+    @FXML
+    Button favoritesbtn;
+
+    @FXML
+    Button addToFavoritebtn;
 
     ObservableList<Activity> listForDisplay = FXCollections.observableArrayList();
     @FXML
@@ -59,6 +62,14 @@ public class BrowseController extends AbstractController implements Initializabl
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (Objects.equals(String.valueOf(AuthenticationSingleton.getInstance().getUser().getClass()), "class sample.model.CommercialUser")){
+            System.out.println("is commercial");
+
+        }else{
+            favoritesbtn.setDisable(false);
+            addToFavoritebtn.setDisable(false);
+            System.out.println("is not commercial" );
+        }
 
     }
     @FXML
