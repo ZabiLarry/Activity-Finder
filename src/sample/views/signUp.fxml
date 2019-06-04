@@ -7,36 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="602.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.SignUpController">
+<AnchorPane prefHeight="367.0" prefWidth="367.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.SignUpController">
    <children>
-      <Button fx:id="commercialSign" layoutX="55.0" layoutY="533.0" mnemonicParsing="false" onAction="#signUpCommer" prefHeight="25.0" prefWidth="149.0" text="Sign up Commercial" />
-      <Button fx:id="regularSign" layoutX="271.0" layoutY="533.0" mnemonicParsing="false" onAction="#signUpRegular" prefHeight="25.0" prefWidth="149.0" text="Sign up Regular" />
+      <Button fx:id="regularSign" layoutX="110.0" layoutY="306.0" mnemonicParsing="false" onAction="#signUpRegular" prefHeight="25.0" prefWidth="149.0" text="Sign up Regular" />
       <Button fx:id="back" layoutX="32.0" layoutY="26.0" mnemonicParsing="false" onAction="#toLogin" prefHeight="41.0" prefWidth="56.0" text="Back" />
-      <PasswordField fx:id="passField" layoutX="80.0" layoutY="301.0" onAction="#passTF" prefHeight="25.0" prefWidth="232.0" />
-      <PasswordField fx:id="confirmpassField" layoutX="80.0" layoutY="395.0" onAction="#confirmpassTF" prefHeight="25.0" prefWidth="232.0" />
-      <Label layoutX="190.0" layoutY="45.0" prefHeight="45.0" prefWidth="106.0" text="Sign Up">
+      <PasswordField fx:id="passField" layoutX="73.0" layoutY="207.0" prefHeight="25.0" prefWidth="232.0" promptText="Password" />
+      <PasswordField fx:id="confirmpassField" layoutX="73.0" layoutY="254.0" prefHeight="25.0" prefWidth="232.0" promptText="Confrim password" />
+      <Label layoutX="131.0" layoutY="82.0" prefHeight="45.0" prefWidth="106.0" text="Regular">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label layoutX="80.0" layoutY="155.0" prefHeight="34.0" prefWidth="94.0" text="Email">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="80.0" layoutY="260.0" text="Password">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
-      <Label layoutX="83.0" layoutY="356.0" text="Confirm password">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
-      <TextField fx:id="emailField" layoutX="80.0" layoutY="199.0" onAction="#emailTF" prefHeight="25.0" prefWidth="232.0" />
-      <Label layoutX="227.0" layoutY="529.0" prefHeight="34.0" prefWidth="30.0" text="OR">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
+      <TextField fx:id="emailField" layoutX="73.0" layoutY="159.0" prefHeight="25.0" prefWidth="232.0" promptText="Email" />
    </children>
 </AnchorPane>

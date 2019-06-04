@@ -26,6 +26,7 @@ public class HomePageController extends AbstractController implements Initializa
     private Button authenticationButton;
 
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -133,6 +134,11 @@ public class HomePageController extends AbstractController implements Initializa
     private void logIn(ActionEvent event) throws IOException {
         changeScene(event, "../views/loginView.fxml");
 
+    }
+
+    @FXML
+    private void toHelp(ActionEvent event) throws IOException {
+        changeScene(event, "../views/helpView.fxml");
     }
 
 }
