@@ -40,6 +40,8 @@ public class SignUpCommercialController extends AbstractController implements In
     @FXML
     private TextField addressField;
     @FXML
+    private TextField phonenumberField;
+    @FXML
     private TextField passField;
     @FXML
     private TextField confirmpassField;
@@ -61,7 +63,7 @@ public class SignUpCommercialController extends AbstractController implements In
         boolean b = true;
         boolean c= true;
         boolean d = true;
-        if(!emailField.getText().isEmpty() && !passField.getText().isEmpty() && !confirmpassField.getText().isEmpty()){
+        if(!emailField.getText().isEmpty() && !passField.getText().isEmpty() && !nameField.getText().isEmpty() && !addressField.getText().isEmpty() && !phonenumberField.getText().isEmpty()){
             email = emailField.getText();
             password = passField.getText();
             confirmPassword = confirmpassField.getText();
@@ -105,10 +107,13 @@ public class SignUpCommercialController extends AbstractController implements In
                 Optional<ButtonType> action = alert.showAndWait();
                 if(action.get() == ButtonType.OK) {
                     try {
-                        db.addCommercialUser(emailField.getText(), confirmpassField.getText());
+                        db.addCommercialUser(emailField.getText(), confirmpassField.getText(), nameField.getText(), addressField.getText(), phonenumberField.getText());
                         emailField.setText("");
                         passField.setText("");
                         confirmpassField.setText("");
+                        nameField.setText("");
+                        addressField.setText("");
+                        phonenumberField.setText("");
                         changeScene(event, "../views/loginView.fxml");
                     } catch (Exception e) {
                         System.out.println("Something went wrong!");

@@ -78,7 +78,7 @@ public class BrowseController extends AbstractController implements Initializabl
    @FXML
     private void bringFavorite(ActionEvent event) {
         DatabaseConnection dbconnect = new DatabaseConnection();
-        listForDisplay = dbconnect.sortByRFavorite(1);
+       listForDisplay = dbconnect.sortByRFavorite(AuthenticationSingleton.getInstance().getUser().getId());
         StringBuilder vel = new StringBuilder();
         int c = 1;
         for (Activity a: listForDisplay){
@@ -92,10 +92,6 @@ public class BrowseController extends AbstractController implements Initializabl
         savePDF.setOnMouseClicked(event1 -> {
             PdfFormatter.openPDFRecipeSaver(event,vel.toString());
         });
-    }
-
-    @FXML
-    private void addToFavorite(ActionEvent event) {
     }
 
     @FXML
@@ -160,6 +156,10 @@ public class BrowseController extends AbstractController implements Initializabl
     }
 
     public void addToFavorite() {
+        if(displayTable.getSelectionModel().getSelectedCells().size()==0){
+            System.out.println("No row selected");
+            return;
+        }
 
         TablePosition position = displayTable.getSelectionModel().getSelectedCells().get(0);
         int row = position.getRow();
@@ -173,7 +173,9 @@ public class BrowseController extends AbstractController implements Initializabl
 
         if (AuthenticationSingleton.getInstance().getUser() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "loginRegular failed", ButtonType.OK);
+            alert.showAndWait();
             System.out.println("no user");
+
         } else {
 
             AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().add(activity);
@@ -185,8 +187,7 @@ public class BrowseController extends AbstractController implements Initializabl
 
                 DatabaseConnection dbconnect = new DatabaseConnection();
 
-                /*dbconnect.addFavorite(AuthenticationSingleton.getInstance().getUser().getId(),
-                        AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getActivityID());*/
+                dbconnect.addFavorite(AuthenticationSingleton.getInstance().getUser().getId(), AuthenticationSingleton.getInstance().getUser().getFavoritedActivities().get(x).getId());
 
             }
 
