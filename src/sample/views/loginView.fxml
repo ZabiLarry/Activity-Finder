@@ -24,7 +24,7 @@
             <Font size="14.0" />
          </font>
       </PasswordField>
-      <Label fx:id="lblStatus" layoutX="20.0" layoutY="21.0" prefHeight="38.0" prefWidth="83.0" text="Sign In">
+      <Label fx:id="signin" layoutX="20.0" layoutY="21.0" prefHeight="38.0" prefWidth="83.0" text="Sign In">
          <font>
             <Font size="18.0" />
          </font>
@@ -35,12 +35,12 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="signUp" layoutX="223.0" layoutY="306.0" mnemonicParsing="false" onAction="#signUp" prefHeight="30.0" prefWidth="152.0" text="Sign up Regular">
+      <Button fx:id="signUp" layoutX="228.0" layoutY="306.0" mnemonicParsing="false" onAction="#signUp" prefHeight="30.0" prefWidth="152.0" text="Sign up Regular">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="signUpCommercial" layoutX="19.0" layoutY="306.0" mnemonicParsing="false" onAction="#signUpCommercial" prefHeight="30.0" prefWidth="152.0" text="Sign up Commercial">
+      <Button fx:id="signUpCommercial" layoutX="14.0" layoutY="306.0" mnemonicParsing="false" onAction="#signUpCommercial" prefHeight="30.0" prefWidth="152.0" text="Sign up Commercial">
          <font>
             <Font size="14.0" />
          </font>

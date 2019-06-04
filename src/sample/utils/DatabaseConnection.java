@@ -738,7 +738,7 @@ public class DatabaseConnection {
     public void addCommercialUser(String email, String password) {
         try {
             statement.executeUpdate("INSERT INTO user (email, password) VALUES ('" + email + "','" + password + "')");
-            System.out.println("User added.");
+            System.out.println("Commercial user added.");
         } catch (SQLException var6) {
             System.out.println("An error occurred on executing the addUser query");
         }
