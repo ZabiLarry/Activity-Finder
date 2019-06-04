@@ -158,7 +158,6 @@ public class DatabaseConnection {
         String rsType;
         byte rsIndoor;
         byte rsOutdoor;
-        int test = 1;
         try {
             statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT activity_idactivity from commercialuser_has_activity WHERE commercialUser_idcommercialUser = '" + AuthenticationSingleton.getInstance().getUser().getId() + "'"+";");
@@ -194,14 +193,12 @@ public class DatabaseConnection {
             ResultSet rs = statement.executeQuery("SELECT email FROM user WHERE iduser = '" + counter + "'"+";");
             while (rs.next()) {
                 returnValue = rs.getString("email");
-
-                return returnValue;
             }
         } catch (SQLException var2) {
             System.out.println("An error occurred on fetching regular email query");
         }
 
-        return "";
+        return returnValue;
     }
 
     public String getPhoneCommer(int counter) {
@@ -473,8 +470,7 @@ public class DatabaseConnection {
         try {
             ResultSet rs = statement.executeQuery("SELECT iduser FROM user WHERE email = '" + email + "'"+";");
             if (rs.next()) {
-                returnValue = rs.getString("iduser");
-                return returnValueInt;
+                returnValueInt = rs.getInt("iduser");
             }
         } catch (SQLException var2) {
             System.out.println("An error occurred on fetching ID query");
@@ -518,12 +514,6 @@ public class DatabaseConnection {
 
         return "";
     }
-
-
-
-
-
-
 
     public static Activity selectActivity(int id) {
 
@@ -704,8 +694,55 @@ public class DatabaseConnection {
         activityList = list;
         return activityList;
     }
+    public ObservableList<String> getAllUserEmail() {
+        ObservableList<String> emailList = FXCollections.observableArrayList();
+        String email;
+        try {
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT email FROM user;");
+            while (rs.next()) {
+               email = rs.getString("email");
+               emailList.addAll(email);
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching email query");
+        }
 
+        return emailList;
+    }
+    public void addRegularUser(String email, String password) {
+        try {
+            statement.executeUpdate("INSERT INTO user (email, password) VALUES ('" + email + "','" + password + "')");
+            System.out.println("User added.");
+        } catch (SQLException var6) {
+            System.out.println("An error occurred on executing the addUser query");
+        }
+    }
 
+    public ObservableList<String> getAllCommercialEmail() {
+        ObservableList<String> emailList = FXCollections.observableArrayList();
+        String email;
+        try {
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT email FROM commercialuser;");
+            while (rs.next()) {
+                email = rs.getString("email");
+                emailList.addAll(email);
+            }
+        } catch (SQLException var2) {
+            System.out.println("An error occurred on fetching email query");
+        }
+
+        return emailList;
+    }
+    public void addCommercialUser(String email, String password) {
+        try {
+            statement.executeUpdate("INSERT INTO user (email, password) VALUES ('" + email + "','" + password + "')");
+            System.out.println("User added.");
+        } catch (SQLException var6) {
+            System.out.println("An error occurred on executing the addUser query");
+        }
+    }
 }
 
 

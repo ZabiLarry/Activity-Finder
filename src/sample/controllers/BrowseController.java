@@ -42,6 +42,7 @@ public class BrowseController extends AbstractController implements Initializabl
 
     @FXML
     public Button saveEventBtn;
+
     ObservableList<Activity> listForDisplay = FXCollections.observableArrayList();
     @FXML
     private TableView<Activity> displayTable;
