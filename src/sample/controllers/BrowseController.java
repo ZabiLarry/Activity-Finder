@@ -15,7 +15,7 @@ import sample.utils.PdfFormatter;
 import java.io.IOException;
 import java.net.URL;
 
-import java.util.*;
+import java.util.Objects;
 
 import java.util.ResourceBundle;
 
@@ -23,6 +23,8 @@ import java.util.ResourceBundle;
 
 public class BrowseController extends AbstractController implements Initializable {
 
+    @FXML
+    public Button addTofavoritesBtn;
     private String text;
 
     @FXML
@@ -34,8 +36,7 @@ public class BrowseController extends AbstractController implements Initializabl
     @FXML
     Button favoritesbtn;
 
-    @FXML
-    Button addToFavoritebtn;
+
 
     ObservableList<Activity> listForDisplay = FXCollections.observableArrayList();
     @FXML
@@ -58,9 +59,10 @@ public class BrowseController extends AbstractController implements Initializabl
 
         }else{
             favoritesbtn.setDisable(false);
-            addToFavoritebtn.setDisable(false);
+            addTofavoritesBtn.setDisable(false);
             System.out.println("is not commercial" );
         }
+
 
     }
 
