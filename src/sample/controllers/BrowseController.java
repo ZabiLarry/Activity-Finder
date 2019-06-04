@@ -70,7 +70,7 @@ public class BrowseController extends AbstractController implements Initializabl
             alert.showAndWait();
             return;
         }
-        
+
         listForDisplay = dbconnect.sortByRFavorite(AuthenticationSingleton.getInstance().getUser().getId());
         StringBuilder vel = new StringBuilder();
         int c = 1;

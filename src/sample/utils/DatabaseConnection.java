@@ -612,7 +612,7 @@ public class DatabaseConnection {
             byte rsIndoor;
             byte rsOutdoor;
             while (rs.next()) {
-                rsId = rs.getInt("idActivity");
+                rsId = rs.getInt("idactivity");
                 rsName = rs.getString("name");
                 rsLocation = rs.getString("location");
                 rsContact = rs.getString("contact");
@@ -641,7 +641,7 @@ public class DatabaseConnection {
             byte rsIndoor;
             byte rsOutdoor;
             while (rs.next()) {
-                rsId = rs.getInt("idaactivity");
+                rsId = rs.getInt("idactivity");
                 rsName = rs.getString("name");
                 rsLocation = rs.getString("location");
                 rsContact = rs.getString("contact");
