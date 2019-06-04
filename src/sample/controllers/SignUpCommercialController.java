@@ -31,16 +31,20 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 
-public class SignUpController extends AbstractController implements Initializable {
+public class SignUpCommercialController extends AbstractController implements Initializable {
 
     @FXML
     private TextField emailField;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField addressField;
     @FXML
     private TextField passField;
     @FXML
     private TextField confirmpassField;
 
-    String email, password, confirmPassword;
+    private String email, name, address, password, confirmPassword;
 
     ObservableList<String> compareList = FXCollections.observableArrayList();
 
@@ -51,7 +55,7 @@ public class SignUpController extends AbstractController implements Initializabl
     }
 
     @FXML
-    private void signUpRegular(ActionEvent event) {
+    private void signUpCommercial(ActionEvent event) {
         DatabaseConnection db = new DatabaseConnection();
         boolean a = true;
         boolean b = true;
@@ -84,7 +88,7 @@ public class SignUpController extends AbstractController implements Initializabl
                 c = false;
             }
             else{
-                compareList = db.getAllUserEmail();
+                compareList = db.getAllCommercialEmail();
             }
             for(int i=0; i < compareList.size();i++){
                 if(compareList.get(i).equals(email)){
@@ -101,7 +105,7 @@ public class SignUpController extends AbstractController implements Initializabl
                 Optional<ButtonType> action = alert.showAndWait();
                 if(action.get() == ButtonType.OK) {
                     try {
-                        db.addRegularUser(emailField.getText(), confirmpassField.getText());
+                        db.addCommercialUser(emailField.getText(), confirmpassField.getText());
                         emailField.setText("");
                         passField.setText("");
                         confirmpassField.setText("");

@@ -71,12 +71,10 @@ public class LogInController extends AbstractController {
                     System.out.println("loginRegular success");
                     RegularUser user = new RegularUser(db.getEmailRegular(counter), db.getIDRegular(email));
                     lblStatus.setText("Login Success");
-
                     AuthenticationSingleton.getInstance().setUser(user);
                     homePage(event);
                 }
             } else {
-                System.out.println("failed");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "loginRegular failed", ButtonType.OK);
                 lblStatus.setText("Login Failed");
             }
@@ -94,7 +92,7 @@ public class LogInController extends AbstractController {
             if (Objects.equals(email, db.getEmailCommercial(counter))) {
                 if (Objects.equals(passwordTF.getText(), db.getPasswordCommercial(counter))) {
                     System.out.println("loginCommercial success");
-                    CommercialUser user = new CommercialUser(db.getEmailCommercial(counter),db.getIDCommercial(email), db.getName(email), db.getPhoneCommer(one), db.getAddressCommer(one));
+                    CommercialUser user = new CommercialUser(db.getEmailCommercial(counter), db.getIDCommercial(email), db.getName(email), db.getPhoneCommer(one), db.getAddressCommer(one));
                     lblStatus.setText("Login Success");
                     AuthenticationSingleton.getInstance().setUser(user);
                     homePage(event);
@@ -125,8 +123,15 @@ public class LogInController extends AbstractController {
             e.printStackTrace();
         }
     }
-}
 
+    public void signUpCommercial(ActionEvent event) {
+        try {
+            changeScene(event, "../views/signUpCommercial.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
 
 
 
