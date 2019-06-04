@@ -99,15 +99,20 @@ public class DatabaseConnection {
         return password;
     }
 
-    public static int getActivityID(String name, String type) {
-
+    public int getActivityID(String name, String type) {
+        String q = "SELECT idactivity FROM activity WHERE name = '" + name + "' AND type = '" + type + "';";
         try {
-            return Integer.parseInt(String.valueOf(statement.executeQuery("SELECT idactivity FROM activity WHERE name = '" + name + "' AND type = '" + type + "';")));
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("SELECT idactivity FROM activity WHERE name = '" + name + "' AND type = '" + type + "'");
+            if (rs.next()) {
+                System.out.println(rs.getInt("idactivity"));
+                return rs.getInt("idactivity");
+            }
 
         } catch (SQLException var2) {
             System.out.println("An error occurred on executing the query for getActivityID");
         }
-        return 0;
+        return -1;
     }
 
     public String forgottenPassword(String email){
@@ -190,16 +195,11 @@ public class DatabaseConnection {
         String rsType;
         byte rsIndoor;
         byte rsOutdoor;
-        int test = 1;
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT activity_idactivity from commercialuser_has_activity WHERE commercialUser_idcommercialUser = '" + AuthenticationSingleton.getInstance().getUser().getId() + "'"+";");
-            while (rs.next()) {
-                receivedId = rs.getInt("activity_idactivity");
-
-                try {
-                    ResultSet rs2 = statement.executeQuery("SELECT  * FROM activity WHERE idactivity = '" + receivedId + "'"+";");
-                    while (rs2.next()) {
+            ResultSet rs2 = statement.executeQuery("SELECT * FROM activity INNER JOIN commercialuser_has_activity ON commercialuser_has_activity.activity_idactivity=activity.idactivity WHERE" +
+                    " commercialuser_has_activity.commercialUser_idcommercialUser=" + AuthenticationSingleton.getInstance().getUser().getId()+ ";");
+            while (rs2.next()) {
                         rsID = rs2.getInt("idactivity");
                         rsName = rs2.getString("name");
                         rsLocation = rs2.getString("location");
@@ -209,10 +209,6 @@ public class DatabaseConnection {
                         rsOutdoor = rs2.getByte("outdoor");
                         activitiesList.add(new Activity(rsID, rsName, rsLocation, rsContact, rsType, rsIndoor, rsOutdoor));
                         System.out.println(rs2.getString("name"));
-                    }
-                } catch (SQLException var10) {
-                    System.out.println("An error occurred on executing getOwnedActivities query. p2");
-                }
             }
 
         } catch (SQLException e) {
@@ -319,27 +315,31 @@ public class DatabaseConnection {
         }
     }
 
-    public static void updateActivity(Activity activity, int activityId) {
+    public static void updateActivity(int id, Activity activity) {
         try {
-            statement.executeUpdate("UPDATE activity SET (name, location, contact, type, indoor, outdoor) = ('" + activity.getName() + "','" + activity.getLocation() + "','" + activity.getContact()+ "','" + activity.getType() + "','" + activity.getIndoor() + "','" + activity.getOutdoor() + "') WHERE id = " + activityId);
+            statement.executeUpdate("UPDATE activity SET name = '" + activity.getName() + "', location = '" + activity.getLocation() + "', contact = '"+ activity.getContact() + "', type = '"+ activity.getType() + "', indoor = "+ activity.getIndoor() + ", outdoor = "+ activity.getOutdoor() + " WHERE idactivity = " + id);
         } catch (SQLException var7) {
             System.out.println("An error occurred on executing the registration query for updateActivity");
+            var7.printStackTrace();
         }
     }
 
     public static void deleteActivity(int idactivity) {
 
         try {
-            statement.executeUpdate("DELETE FROM activity WHERE idactivity = '" + idactivity + "'");
+            statement.executeUpdate("DELETE FROM commercialuser_has_activity WHERE activity_idactivity = " + idactivity);
+            statement.executeUpdate("DELETE FROM activity WHERE idactivity = " + idactivity);
+            System.out.println(idactivity);
         } catch (SQLException var7) {
             System.out.println("An error occurred on executing the registration query for deleteEmail");
+            var7.printStackTrace();
         }
     }
 
     public void addActivity(String name, String location, String contact, String type, byte indoor, byte outdoor) {
         try {
             statement.executeUpdate("INSERT INTO activity (name, location, contact, type, indoor, outdoor) VALUES ('" + name + "','" + location + "','" + contact + "','" + type + "','" + indoor + "','" + outdoor + "')");
-            statement.executeQuery("INSERT INTO commercialuser_has_activity (commercialUser_idcommercialUser, activity_idactivity) VALUES ('" + AuthenticationSingleton.getInstance().getUser().getId() + "','" + DatabaseConnection.getActivityID(name, type) + "')");
+            statement.executeUpdate("INSERT INTO commercialuser_has_activity (commercialUser_idcommercialUser, activity_idactivity) VALUES ('" + AuthenticationSingleton.getInstance().getUser().getId() + "','" + getActivityID(name, type) + "')");
         } catch (SQLException var6) {
             System.out.println("An error occurred on executing the adding query for addActivity");
         }
@@ -475,10 +475,10 @@ public class DatabaseConnection {
     public int getIDRegular(String email) {
 
         try {
-            ResultSet rs = statement.executeQuery("SELECT iduser FROM user WHERE email = '" + email + "'"+";");
+           ResultSet rs = statement.executeQuery("SELECT iduser FROM user WHERE email = '" + email + "'"+";");
             if (rs.next()) {
-                returnValue = rs.getString("iduser");
-                return returnValueInt;
+
+                return rs.getInt("iduser");
             }
         } catch (SQLException var2) {
             System.out.println("An error occurred on fetching ID query");
@@ -490,12 +490,11 @@ public class DatabaseConnection {
     }
 
     public int getIDCommercial(String email) {
-
+        int returnVal = 0;
         try {
             ResultSet rs = statement.executeQuery("SELECT idcommercialUser FROM commercialuser WHERE email = '" + email + "'"+";");
             if (rs.next()) {
-                returnValue = rs.getString(1);
-                return returnValueInt;
+              return rs.getInt(1);
             }
         } catch (SQLException var2) {
             System.out.println("An error occurred on fetching ID query");

@@ -31,20 +31,25 @@ public class Activity {
         this.id = id;
     }
 
+
+
+    public int getID() {
+        DatabaseConnection db = new DatabaseConnection();
+        return db.getActivityID(getName(), getType());
+    }
+
+
     public String getName() {
         return name.get();
     }
 
-    public int getID() {
-        return DatabaseConnection.getActivityID(String.valueOf(name), String.valueOf(type));
+    public StringProperty nameProperty() {
+        return name;
     }
 
-    public void setName(String value) {
-        name.set(value);
+    public void setName(String name) {
+        this.name.set(name);
     }
-
-
-
 
     public String getLocation() {
         return location.get();
@@ -62,13 +67,6 @@ public class Activity {
         contact.set(value);
     }
 
-    public String getType() {
-        return type.get();
-    }
-
-    public void setType(String type) {
-        this.type.set(type);
-    }
 
     public Byte getIndoor() {
         return indoor;
@@ -86,9 +84,6 @@ public class Activity {
         this.outdoor = outdoor;
     }
 
-    public String nameProperty() {
-        return String.valueOf(name);
-    }
 
     public StringProperty locationProperty() {
         return location;
@@ -98,8 +93,17 @@ public class Activity {
         return contact;
     }
 
-    public String typeProperty() {
-        return String.valueOf(type);
+
+    public String getType() {
+        return type.get();
+    }
+
+    public StringProperty typeProperty() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type.set(type);
     }
 
     private String getActivityPlace(){
