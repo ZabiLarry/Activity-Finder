@@ -135,4 +135,9 @@ public class HomePageController extends AbstractController implements Initializa
 
     }
 
+    @FXML
+    private void toHelp(ActionEvent event) throws IOException {
+        changeScene(event, "../views/helpView.fxml");
+    }
+
 }
