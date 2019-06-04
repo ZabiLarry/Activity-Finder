@@ -90,8 +90,8 @@ public class HomePageController extends AbstractController implements Initializa
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/browseView.fxml"));
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
-            browseController.receiveFunction(db.browseController());
-            Stage stage = new Stage();
+            browseController.receiveFunction(db.shuffleList(db.browseController()));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
 

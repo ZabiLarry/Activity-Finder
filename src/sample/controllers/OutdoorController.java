@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -30,8 +31,10 @@ public class OutdoorController extends AbstractController implements Initializab
         BackgroundSize bs = new BackgroundSize(112, 70, false, false, true, false);
 
 
-        BackgroundImage backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/vollyball.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
+        BackgroundImage backgroundImage = new BackgroundImage(new Image(getClass().getResource("../resources/Scenic-River-Canoe.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, bs);
         kajak.setBackground(new Background(backgroundImage));
+
+
 
     }
 
@@ -47,7 +50,7 @@ public class OutdoorController extends AbstractController implements Initializab
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.receiveFunction(dbconnect.selectActivities("kayaking"));
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         }catch (IOException e){
@@ -62,7 +65,7 @@ public class OutdoorController extends AbstractController implements Initializab
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.receiveFunction(dbconnect.selectActivities("climbing"));
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         }catch (IOException e){
@@ -77,7 +80,7 @@ public class OutdoorController extends AbstractController implements Initializab
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.receiveFunction(dbconnect.selectActivities("swimming"));
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         }catch (IOException e){
@@ -92,7 +95,7 @@ public class OutdoorController extends AbstractController implements Initializab
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.receiveFunction(dbconnect.selectActivities("fishing"));
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         }catch (IOException e){
@@ -107,7 +110,7 @@ public class OutdoorController extends AbstractController implements Initializab
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.receiveFunction(dbconnect.selectActivities("zipline"));
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         }catch (IOException e){
@@ -121,7 +124,7 @@ public class OutdoorController extends AbstractController implements Initializab
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.receiveFunction(dbconnect.selectActivities("golf"));
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         }catch (IOException e){
@@ -135,7 +138,7 @@ public class OutdoorController extends AbstractController implements Initializab
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.receiveFunction(dbconnect.selectActivities("hiking"));
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         }catch (IOException e){
@@ -149,7 +152,7 @@ public class OutdoorController extends AbstractController implements Initializab
             Parent root = (Parent) loader.load();
             BrowseController browseController = loader.getController();
             browseController.receiveFunction(dbconnect.selectActivities("zipline"));
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         }catch (IOException e){

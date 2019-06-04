@@ -15,22 +15,21 @@
                     <Font size="48.0" />
                 </font>
             </Label>
-            <Button fx:id="btnName" layoutX="32.0" layoutY="233.0" mnemonicParsing="false" onAction="#typeButt" prefHeight="70.0" prefWidth="112.0" text="Type" />
-            <Button fx:id="btnLoc" layoutX="32.0" layoutY="332.0" mnemonicParsing="false" onAction="#locationButt" prefHeight="70.0" prefWidth="112.0" text="Location" />
+            <Button layoutX="108.0" layoutY="340.0" mnemonicParsing="false" onAction="#bringFavorite" prefHeight="70.0" prefWidth="112.0" text="Favorites" />
             <Button layoutX="195.0" layoutY="233.0" mnemonicParsing="false" onAction="#indoorButt" prefHeight="70.0" prefWidth="112.0" text="Indoor" />
-            <Button layoutX="195.0" layoutY="332.0" mnemonicParsing="false" onAction="#outdoorButt" prefHeight="70.0" prefWidth="112.0" text="Outdoor" />
+            <Button layoutX="31.0" layoutY="233.0" mnemonicParsing="false" onAction="#outdoorButt" prefHeight="70.0" prefWidth="112.0" text="Outdoor" />
             <Button layoutX="32.0" layoutY="30.0" mnemonicParsing="false" onAction="#toHome" prefHeight="41.0" prefWidth="56.0" text="Home" />
             <Label layoutX="128.0" layoutY="185.0" text="Sort by">
                 <font>
                     <Font size="23.0" />
                 </font>
             </Label>
-            <Label layoutX="34.0" layoutY="131.0" text="Search">
+            <Label layoutX="34.0" layoutY="105.0" text="Search">
                 <font>
                     <Font size="18.0" />
                 </font>
             </Label>
-            <TextField fx:id="tfSearch" layoutX="120.0" layoutY="132.0" prefHeight="25.0" prefWidth="187.0" />
+            <TextField fx:id="searchText" layoutX="34.0" layoutY="132.0" prefHeight="25.0" prefWidth="187.0" />
             <TableView fx:id="displayTable" layoutX="346.0" layoutY="71.0" prefHeight="484.0" prefWidth="1045.0">
                 <columns>
                     <TableColumn fx:id="activityDis" prefWidth="139.0" text="Activity" />
@@ -44,7 +43,8 @@
                     <Font size="23.0" />
                 </font>
             </Label>
-            <Button fx:id="rateButt" layoutX="32.0" layoutY="492.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="112.0" text="Rate activity" />
-            <Button fx:id="favoriteButt" layoutX="195.0" layoutY="492.0" mnemonicParsing="false" onAction="#favoriteButt" prefHeight="70.0" prefWidth="112.0" text="Favorite" />
+            <Button fx:id="rating" layoutX="32.0" layoutY="492.0" mnemonicParsing="false" onAction="#rateButt" prefHeight="70.0" prefWidth="112.0" text="Rate activity" />
+      <Button layoutX="195.0" layoutY="492.0" mnemonicParsing="false" onAction="#addToFavorite" prefHeight="70.0" prefWidth="112.0" text="Add to Favorite" />
+      <Button layoutX="232.0" layoutY="131.0" mnemonicParsing="false" onAction="#searchButt" prefHeight="28.0" prefWidth="62.0" text="search" />
         </children>
     </AnchorPane>
