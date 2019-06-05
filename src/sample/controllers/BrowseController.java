@@ -54,13 +54,17 @@ public class BrowseController extends AbstractController implements Initializabl
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (Objects.equals(String.valueOf(AuthenticationSingleton.getInstance().getUser().getClass()), "class sample.model.CommercialUser")){
-            System.out.println("is commercial");
+        try{
+            if (Objects.equals(String.valueOf(AuthenticationSingleton.getInstance().getUser().getClass()), "class sample.model.RegularUser")){
+                System.out.println("is commercial");
+                favoritesbtn.setDisable(false);
+                addTofavoritesBtn.setDisable(false);
+            }else{
 
-        }else{
-            favoritesbtn.setDisable(false);
-            addTofavoritesBtn.setDisable(false);
-            System.out.println("is not commercial" );
+                System.out.println("is not commercial" );
+            }
+        }catch (Exception e){
+            System.out.println("is anon");
         }
         savePDF.setVisible(false);
 
