@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import java.util.Objects;
 import java.util.Properties;
 
 public class DatabaseConnection {
@@ -117,21 +118,40 @@ public class DatabaseConnection {
 
     public String forgottenPassword(String email){
         String returnVal = null;
-        String query = "SELECT password FROM user WHERE email = ?;";
-        try{
-            PreparedStatement st = connection.prepareStatement(query);
-            st.setString(1, email);
-            ResultSet rs = st.executeQuery();
 
-            if(rs.next()){
-                returnVal = rs.getString("password");
+
+
+
+            try{
+                String query = "SELECT password FROM commercialuser WHERE email = ?;";
+                PreparedStatement st = connection.prepareStatement(query);
+                st.setString(1, email);
+                ResultSet rs = st.executeQuery();
+
+                if(rs.next()){
+                    returnVal = rs.getString("password");
+                }
+
+            }catch (SQLException e){
+                e.printStackTrace();
             }
 
+            try{
+                String query = "SELECT password FROM user WHERE email = ?;";
+                PreparedStatement st = connection.prepareStatement(query);
+                st.setString(1, email);
+                ResultSet rs = st.executeQuery();
+
+                if(rs.next()){
+                    returnVal = rs.getString("password");
+                }
+
+                return returnVal;
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
             return returnVal;
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return returnVal;
+
     }
 
 
