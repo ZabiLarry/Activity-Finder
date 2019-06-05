@@ -45,9 +45,14 @@ public class SettingsController extends AbstractController{
     @FXML
     private void changeEmail(){
 
-        DatabaseConnection.updateEmail(emailTF.getText());
-        updatelbl.setVisible(true);
-
+        DatabaseConnection.updateEmail(emailTF.getText(), passwordTF.getText());
+        if (DatabaseConnection.updateEmail(emailTF.getText(), passwordTF.getText())) {
+            updatelbl.setVisible(true);
+            updatelbl.setText("Data updated");
+        }else {
+            updatelbl.setVisible(true);
+            updatelbl.setText("Wrong password");
+        }
     }
     
 
@@ -59,13 +64,18 @@ public class SettingsController extends AbstractController{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        phoneTF.setVisible(false);
+        addressTF.setVisible(false);
+
         if (Objects.equals(String.valueOf(AuthenticationSingleton.getInstance().getUser().getClass()), "class sample.model.CommercialUser")){
             System.out.println("is commercial");
             phoneTF.setDisable(false);
             addressTF.setDisable(false);
             goToEditBTN.setDisable(false);
+            emailTF.setText(AuthenticationSingleton.getInstance().getUser().getEmail());
         }else{
             System.out.println("is not commercial" );
+            emailTF.setText(AuthenticationSingleton.getInstance().getUser().getEmail());
         }
 
     }

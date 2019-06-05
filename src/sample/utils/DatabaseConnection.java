@@ -324,13 +324,27 @@ public class DatabaseConnection {
     }
 
 
-    public static void updateEmail(String email) {
+    public static boolean updateEmail(String email, String password) {
 
         try {
-            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE iduser = " + AuthenticationSingleton.getInstance().getUser().getId());
+            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE iduser = " + AuthenticationSingleton.getInstance().getUser().getId() + " AND password = '" + password + "';");
+            statement.executeUpdate("UPDATE commercialuser SET email = '" + email + "' WHERE idcommercialuser = " + AuthenticationSingleton.getInstance().getUser().getId() + " AND password = '" + password + "';");
+
+            ResultSet rs = statement.executeQuery("SELECT password FROM commercialuser WHERE email = '" + email + "';");
+            if (rs.next()) {
+                returnValue = rs.getString("password");
+            }
+            if (email == returnValue)return true;
+
+           rs = statement.executeQuery("SELECT password FROM user WHERE email = '" + email + "';");
+            if (rs.next()) {
+                returnValue = rs.getString("password");
+            }
+            if (email == returnValue)return true;
         } catch (SQLException var7) {
             System.out.println("An error occurred on executing the registration query for updateEmail");
         }
+        return false;
     }
 
     public static void updateActivity(int id, Activity activity) {

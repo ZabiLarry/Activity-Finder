@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.BrowseController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="1198.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.BrowseController">
 
         <children>
             <Label layoutX="145.0" layoutY="30.0" text="Browse">
@@ -34,7 +34,7 @@
                 </font>
             </Label>
             <TextField fx:id="searchText" layoutX="34.0" layoutY="132.0" prefHeight="25.0" prefWidth="187.0" />
-            <TableView fx:id="displayTable" layoutX="339.0" layoutY="30.0" prefHeight="363.0" prefWidth="385.0">
+            <TableView fx:id="displayTable" layoutX="339.0" layoutY="30.0" prefHeight="363.0" prefWidth="847.0">
                 <columns>
                     <TableColumn fx:id="activityDis" prefWidth="104.0" text="Activity" />
                     <TableColumn fx:id="locationDis" prefWidth="279.2000732421875" text="Location " />
