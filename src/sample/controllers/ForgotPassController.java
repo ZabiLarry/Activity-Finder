@@ -41,7 +41,7 @@ public class ForgotPassController extends AbstractController implements Initiali
 
     public void goHome(ActionEvent event){
         try {
-            homePage(event);
+            changeScene(event, "../views/loginView.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }

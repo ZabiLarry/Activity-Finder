@@ -29,7 +29,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="142.0" layoutY="236.0" mnemonicParsing="false" onAction="#forgotPass" text="Forgot password?" />
+      <Button layoutX="67.0" layoutY="236.0" mnemonicParsing="false" onAction="#forgotPass" text="Forgot password?" />
       <Button fx:id="txtLogin1" layoutX="95.0" layoutY="179.0" mnemonicParsing="false" onAction="#loginRegular" prefHeight="30.0" prefWidth="94.0" text="Regular">
          <font>
             <Font size="14.0" />
@@ -55,5 +55,6 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <Button layoutX="218.0" layoutY="236.0" mnemonicParsing="false" onAction="#toHome" text="Anonymous log-in" />
    </children>
 </AnchorPane>

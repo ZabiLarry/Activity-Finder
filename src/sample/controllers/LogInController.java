@@ -33,6 +33,12 @@ public class LogInController extends AbstractController {
 
     String email;
 
+    @FXML
+    private void toHome(ActionEvent event) throws IOException {
+        homePage(event);
+    }
+
+
     /*public void login() {
 
         main = new Main();
@@ -56,6 +62,8 @@ public class LogInController extends AbstractController {
     public void initialize(URL location, ResourceBundle resources) {
         main = new Main();
     }
+
+
 
 
     //login  method that creates an object
@@ -101,8 +109,9 @@ public class LogInController extends AbstractController {
                     System.out.println("failed password retrieve");
                 }
             } else {
-                System.out.println("failed to get email");
+                System.out.println(".");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "loginCommercial failed", ButtonType.OK);
+                //alert.show();
                 lblStatus.setText("Login Failed");
             }
         }
