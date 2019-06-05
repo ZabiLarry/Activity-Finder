@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.model.CommercialUser;
@@ -41,11 +38,15 @@ public class SettingsController extends AbstractController{
     @FXML
     Button goToEditBTN;
 
+    @FXML
+    Label updatelbl;
+
 
     @FXML
     private void changeEmail(){
 
         DatabaseConnection.updateEmail(emailTF.getText());
+        updatelbl.setVisible(true);
 
     }
     

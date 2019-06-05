@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="357.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.LogInController">
+<AnchorPane prefHeight="357.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.LogInController">
    <children>
       <Button fx:id="txtLogin" layoutX="206.0" layoutY="179.0" mnemonicParsing="false" onAction="#loginCommercial" prefHeight="30.0" prefWidth="94.0" text="Commercial">
          <font>
@@ -45,7 +45,12 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="lblStatus" layoutX="183.0" layoutY="302.0" prefHeight="38.0" prefWidth="28.0" text="OR">
+      <Label layoutX="183.0" layoutY="302.0" prefHeight="38.0" prefWidth="28.0" text="OR">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblStatus" layoutX="122.0" layoutY="21.0" prefHeight="38.0" prefWidth="152.0">
          <font>
             <Font size="18.0" />
          </font>

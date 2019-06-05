@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.SettingsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.SettingsController">
    <children>
       <Label layoutX="214.0" layoutY="34.0" text="Settings">
          <font>
@@ -25,5 +25,11 @@
       <Button fx:id="goToEditBTN" disable="true" layoutX="423.0" layoutY="337.0" mnemonicParsing="false" onAction="#toEditActivities" text="Go to Edit Activities" />
       <Label layoutX="40.0" layoutY="259.0" text="Password:" />
       <PasswordField fx:id="passwordTF" layoutX="39.0" layoutY="290.0" />
+      <Label layoutX="213.0" layoutY="111.0" text="Change your data">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="updatelbl" layoutX="40.0" layoutY="341.0" text="Data updated" visible="false" />
    </children>
 </AnchorPane>
