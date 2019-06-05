@@ -35,17 +35,17 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="signUp" layoutX="223.0" layoutY="306.0" mnemonicParsing="false" onAction="#signUp" prefHeight="30.0" prefWidth="152.0" text="Sign up Regular">
+      <Button fx:id="signUp" layoutX="19.0" layoutY="308.0" mnemonicParsing="false" onAction="#signUp" prefHeight="30.0" prefWidth="152.0" text="Sign up Regular">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="signUpCommercial" layoutX="19.0" layoutY="306.0" mnemonicParsing="false" onAction="#signUpCommercial" prefHeight="30.0" prefWidth="152.0" text="Sign up Commercial">
+      <Button fx:id="signUpCommercial" layoutX="217.0" layoutY="308.0" mnemonicParsing="false" onAction="#signUpCommercial" prefHeight="30.0" prefWidth="152.0" text="Sign up Commercial">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label layoutX="183.0" layoutY="302.0" prefHeight="38.0" prefWidth="28.0" text="OR">
+      <Label layoutX="183.0" layoutY="304.0" prefHeight="38.0" prefWidth="28.0" text="OR">
          <font>
             <Font size="18.0" />
          </font>

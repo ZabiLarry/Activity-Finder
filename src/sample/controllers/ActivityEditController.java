@@ -187,10 +187,16 @@ public class ActivityEditController extends AbstractController {
         contactTF.setText(selectedActivity.getContact());
         typeTF.setText(selectedActivity.getType());
 
-        if (selectedActivity.getOutdoor() == 1)
+        if (selectedActivity.getOutdoor() == 1) {
             outdoorCB.setSelected(true);
 
-        if (selectedActivity.getIndoor() == 1)
+        }else {
+            outdoorCB.setSelected(false);
+        }
+        if (selectedActivity.getIndoor() == 1){
             indoorCB.setSelected(true);
+        }else {
+            indoorCB.setSelected(false);
+        }
     }
 }
