@@ -8,18 +8,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="1419.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.BrowseController">
+
         <children>
             <Label layoutX="145.0" layoutY="30.0" text="Browse">
                 <font>
                     <Font size="48.0" />
                 </font>
             </Label>
-            <Button layoutX="108.0" layoutY="340.0" mnemonicParsing="false" onAction="#bringFavorite" prefHeight="70.0" prefWidth="112.0" text="Favorites" />
+
+            <Button fx:id="favoritesbtn" disable="true" layoutX="108.0" layoutY="340.0" mnemonicParsing="false" onAction="#bringFavorite" prefHeight="70.0" prefWidth="112.0" text="Favorites" />
+
             <Button layoutX="195.0" layoutY="233.0" mnemonicParsing="false" onAction="#indoorButt" prefHeight="70.0" prefWidth="112.0" text="Indoor" />
             <Button layoutX="31.0" layoutY="233.0" mnemonicParsing="false" onAction="#outdoorButt" prefHeight="70.0" prefWidth="112.0" text="Outdoor" />
             <Button layoutX="32.0" layoutY="30.0" mnemonicParsing="false" onAction="#toHome" prefHeight="41.0" prefWidth="56.0" text="Home" />
-            <Label layoutX="128.0" layoutY="185.0" text="Sort by">
+            <Label layoutX="128.0" layoutY="185.0" text="Filter by">
                 <font>
                     <Font size="23.0" />
                 </font>
@@ -38,12 +42,16 @@
                     <TableColumn fx:id="typeDis" minWidth="0.0" prefWidth="226.0" text="Type" />
                 </columns>
             </TableView>
-            <Label layoutX="96.0" layoutY="430.0" text="Favorite/Rate">
+
+            <Label layoutX="128.0" layoutY="429.0" text="Favorite">
+
                 <font>
                     <Font size="23.0" />
                 </font>
             </Label>
-      <Button layoutX="195.0" layoutY="492.0" mnemonicParsing="false" onAction="#addToFavorite" prefHeight="70.0" prefWidth="112.0" text="Add to Favorite" />
+
+      <Button fx:id="addTofavoritesBtn" disable="true" layoutX="195.0" layoutY="492.0" mnemonicParsing="false" onAction="#addToFavorite" prefHeight="70.0" prefWidth="112.0" text="Add to Favorite" />
+
       <Button layoutX="232.0" layoutY="131.0" mnemonicParsing="false" onAction="#searchButt" prefHeight="28.0" prefWidth="62.0" text="search" />
       <Button fx:id="savePDF" layoutX="233.0" layoutY="367.0" mnemonicParsing="false" text="Save PDF" visible="false" />
         </children>

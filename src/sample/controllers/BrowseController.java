@@ -14,11 +14,17 @@ import sample.utils.PdfFormatter;
 
 import java.io.IOException;
 import java.net.URL;
+
+import java.util.Objects;
+
 import java.util.ResourceBundle;
+
 
 
 public class BrowseController extends AbstractController implements Initializable {
 
+    @FXML
+    public Button addTofavoritesBtn;
     private String text;
 
     @FXML
@@ -26,6 +32,11 @@ public class BrowseController extends AbstractController implements Initializabl
 
     @FXML
     public Button saveEventBtn;
+
+    @FXML
+    Button favoritesbtn;
+
+
 
     ObservableList<Activity> listForDisplay = FXCollections.observableArrayList();
     @FXML
@@ -43,6 +54,15 @@ public class BrowseController extends AbstractController implements Initializabl
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (Objects.equals(String.valueOf(AuthenticationSingleton.getInstance().getUser().getClass()), "class sample.model.CommercialUser")){
+            System.out.println("is commercial");
+
+        }else{
+            favoritesbtn.setDisable(false);
+            addTofavoritesBtn.setDisable(false);
+            System.out.println("is not commercial" );
+        }
+        savePDF.setVisible(false);
 
     }
 
@@ -51,7 +71,7 @@ public class BrowseController extends AbstractController implements Initializabl
         DatabaseConnection dbconnect = new DatabaseConnection();
         listForDisplay = dbconnect.sortByIndoor();
         displayTable.setItems(listForDisplay);
-        savePDF.setDisable(true);
+        savePDF.setVisible(false);
     }
 
     @FXML
@@ -59,7 +79,7 @@ public class BrowseController extends AbstractController implements Initializabl
         DatabaseConnection dbconnect = new DatabaseConnection();
         listForDisplay = dbconnect.sortByOutdoor();
         displayTable.setItems(listForDisplay);
-        savePDF.setDisable(true);
+        savePDF.setVisible(false);
     }
 
 
@@ -96,7 +116,7 @@ public class BrowseController extends AbstractController implements Initializabl
 
     @FXML
     private void searchButt(ActionEvent event) {
-
+        savePDF.setVisible(false);
         ObservableList<Activity> listForDisplayName;
         ObservableList<Activity> listForDisplayLocation;
         ObservableList<Activity> listForDisplayType;
@@ -125,6 +145,7 @@ public class BrowseController extends AbstractController implements Initializabl
 
     @FXML
     private void toHome(ActionEvent event) throws IOException {
+        savePDF.setVisible(false);
         homePage(event);
     }
 
