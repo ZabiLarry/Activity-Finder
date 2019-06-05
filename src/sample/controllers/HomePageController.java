@@ -26,14 +26,14 @@ public class HomePageController extends AbstractController implements Initializa
     private Button authenticationButton;
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
             System.out.println(AuthenticationSingleton.getInstance().getUser().getId());
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("no logged in user");
+            authenticationButton.setText("Log-in");
         }
 
         /*BackgroundImage backgroundImage = new BackgroundImage( new Image( getClass().getResource("../resources/vollyball.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
@@ -69,16 +69,16 @@ public class HomePageController extends AbstractController implements Initializa
 
     @FXML
     private void toSettings(ActionEvent event) throws IOException {
-        if(AuthenticationSingleton.getInstance().getUser() != null){
+        if (AuthenticationSingleton.getInstance().getUser() != null) {
             Parent homeViewParent = FXMLLoader.load(getClass().getResource("../views/settingsView.fxml"));
             Scene homeScene = new Scene(homeViewParent);
 
-            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(homeScene);
             window.show();
 
-        }else{
-            Alert alert = new Alert(Alert.AlertType.WARNING,"Please log in first!");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please log in first!");
             alert.show();
         }
     }
@@ -97,7 +97,7 @@ public class HomePageController extends AbstractController implements Initializa
             stage.show();
 
 
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -119,7 +119,7 @@ public class HomePageController extends AbstractController implements Initializa
     private void logOut(ActionEvent event) throws IOException {
 
         AuthenticationSingleton.getInstance().setUser(null);
-        authenticationButton.setText("Log in");
+        authenticationButton.setText("Log-in");
         authenticationButton.setOnAction(event2 -> {
             try {
                 logIn(event2);
@@ -127,8 +127,8 @@ public class HomePageController extends AbstractController implements Initializa
                 ex.printStackTrace();
             }
         });
-
     }
+
 
     @FXML
     private void logIn(ActionEvent event) throws IOException {

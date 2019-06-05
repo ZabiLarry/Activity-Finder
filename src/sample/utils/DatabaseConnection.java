@@ -307,7 +307,7 @@ public class DatabaseConnection {
     public static void updateEmail(String email) {
 
         try {
-            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE id = " + AuthenticationSingleton.getInstance().getUser().getId());
+            statement.executeUpdate("UPDATE user SET email = '" + email + "' WHERE iduser = " + AuthenticationSingleton.getInstance().getUser().getId());
         } catch (SQLException var7) {
             System.out.println("An error occurred on executing the registration query for updateEmail");
         }
