@@ -360,10 +360,10 @@ public class DatabaseConnection {
     public void addFavorite(int userid, int favouriteid) {
 
         try {
-            statement.executeQuery("INSERT INTO user_has_activity VALUES (" + userid + "," + favouriteid + ",null,null)");
+            statement.executeUpdate("INSERT INTO user_has_activity VALUES (" + userid + "," + favouriteid + ",null,null)");
             System.out.println("favorite added");
         } catch (SQLException var7) {
-            System.out.println();
+            var7.printStackTrace();
         }
     }
 

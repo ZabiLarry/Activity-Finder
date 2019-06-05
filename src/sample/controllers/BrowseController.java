@@ -51,6 +51,7 @@ public class BrowseController extends AbstractController implements Initializabl
         DatabaseConnection dbconnect = new DatabaseConnection();
         listForDisplay = dbconnect.sortByIndoor();
         displayTable.setItems(listForDisplay);
+        savePDF.setDisable(true);
     }
 
     @FXML
@@ -58,6 +59,7 @@ public class BrowseController extends AbstractController implements Initializabl
         DatabaseConnection dbconnect = new DatabaseConnection();
         listForDisplay = dbconnect.sortByOutdoor();
         displayTable.setItems(listForDisplay);
+        savePDF.setDisable(true);
     }
 
 
